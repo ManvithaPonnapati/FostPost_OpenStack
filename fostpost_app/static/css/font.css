@@ -1,0 +1,144 @@
+/* Copyright @ CraftCloud */
+.OutsideContainer
+		    {
+				width:100%;
+				height:100%;
+				position:relative;
+				background-color:white;
+			}
+.TopContainer
+			{
+				width:100%;
+				height:20%;
+				position:relative;
+				background-color:white;
+				margin-bottom:1%;
+				margin-left:4.5%;
+				margin-right:4.5%;
+			}
+.TheButton
+			{
+				width:35%;
+				height:26%;
+				position:absolute;
+				background-color:white;
+				margin-left:75%;
+				
+			}
+.next {
+	width:50%;
+	height:100%;
+	margin-left:5%;
+}
+.TheText
+			{
+				width:56%;
+				height:100%;
+				position:absolute;
+				background-color:white;
+				float:left;
+				
+			}
+li.heading
+			{
+				color:#565656;
+				font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+				font-weight:500;
+				font-stretch:normal;
+				font-size:48px;
+				margin-left:0 px;
+			}
+li.heading1
+			{
+				color:#000000;
+				font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+				font-weight:500;
+				font-stretch:normal;
+				font-size:48px;
+				margin-left:0 px;
+			}
+li.description
+			{
+				color:565656;
+				font-family: "HelveticaNeueLightExtended", "HelveticaNeue-Light-Extended", "Helvetica Neue Light Extended", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+				font-weight:300; 
+				font-stretch:expanded;
+				font-size:24px;
+				
+			}
+.TextList
+			{
+				padding:0;
+				list-style-type:none;
+			}
+.MiddleContainer
+			{
+				background-color:white;
+				height:35%;
+				padding:0;
+				position:relative;
+				width:100%;
+			}
+.svgfile:hover 
+{
+	height:60%;width:7% !important;background-color:white;text-align:center;valign:top; border-radius: 10px !important;margin:0%; padding:0;border: 2px solid #FA7937 !important;
+				font-family: "HelveticaNeueLightExtended", "HelveticaNeue-Light-Extended", "Helvetica Neue Light Extended", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+				font-weight:300; 
+				font-stretch:expanded;
+}
+.svgfil 
+{
+	height:60%;width:7% !important;background-color:white;text-align:center;valign:top; border-radius: 10px !important;margin:0%; padding:0;border: 2px solid #FA7937 ;
+				font-family: "HelveticaNeueLightExtended", "HelveticaNeue-Light-Extended", "Helvetica Neue Light Extended", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+				font-weight:300; 
+				font-stretch:expanded;
+}
+.FontPeople
+			{
+				margin-left:4.5%;
+				margin-right:4.5%;
+				width:91%;
+				position:absolute;
+				margin-top:3%;
+				
+			}
+.svgfile
+			{
+				height:60%;width:7% !important;background-color:white;text-align:center;valign:top; border-radius: 10px !important;margin:0%; padding:0;border: 2px solid #FFF ;
+				font-family: "HelveticaNeueLightExtended", "HelveticaNeue-Light-Extended", "Helvetica Neue Light Extended", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+				font-weight:300; 
+				font-stretch:expanded;
+			}
+.descrip
+			{
+				height:60%;width:7% !important;background-color:white;text-align:center;valign:top;
+				font-family: "HelveticaNeueLightExtended", "HelveticaNeue-Light-Extended", "Helvetica Neue Light Extended", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+				font-weight:300; 
+				font-stretch:expanded;
+				visibility:hidden;
+			}
+.imge
+{
+	width:100%;
+	height:15%;
+	
+}
+.TextContainer 
+{
+	text-align:center;
+	margin-top:3%;
+
+	height:4% !important;
+	
+}
+.FontSearch
+{
+	border-radius:5px;
+	padding:0;
+	border: 3px solid #FA7937;
+	width:20%;
+	height:5% !important;
+	margin-right:4.5%;
+	margin-left:75%;
+	margin-top:3%;
+}
