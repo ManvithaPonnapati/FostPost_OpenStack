@@ -3,5 +3,11 @@ anyjson==0.3.3
 billiard==3.3.0.23
 celery==3.1.23
 Django==1.9.2
+django-extensions==1.6.7
+djangorestframework==3.3.3
 kombu==3.0.35
+numpy==1.11.0
+protobuf==3.0.0b2
 pytz==2016.4
+six==1.10.0
+tensorflow==0.8.0
