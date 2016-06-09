@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="1000px" height="1000px" viewBox="-13.109 -10.957 1000 1000"
+	 overflow="visible" enable-background="new -13.109 -10.957 1000 1000" xml:space="preserve">
+<defs>
+</defs>
+<g>
+	<text transform="matrix(1 0 0 1 382.5435 969.7466)" fill="#010101" font-family="'HelveticaNeue-Light'" font-size="48">© Yorlmar Campos</text>
+</g>
+<g>
+	<defs>
+		<rect id="SVGID_10_" width="973.674" height="922.043"/>
+	</defs>
+	<clipPath id="SVGID_11_">
+		<use xlink:href="#SVGID_10_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_11_)" fill="#010101" d="M783.779,373.894c0-24.044-19.422-45.168-43.393-47.165l-171.746-37.96
+		l6.746-70.986l-31.16,43.56h-87.101l-31.012-43.486l6.818,70.913h-0.073l-171.673,37.96c-24.006,1.997-43.43,23.12-43.43,47.165
+		l-0.092,671.588c0,24.044,17.426,52.247,38.938,63.077l48.089,24.043h0.074l43.561,697.038H653.23l43.596-697.038l48.145-24.043
+		c21.514-10.83,38.939-39.033,38.939-63.077L783.779,373.894z M478.988,326.729c0-12.068,9.739-21.808,21.734-21.808
+		c12.049,0,21.844,9.74,21.844,21.808c0,7.522-3.862,14.212-9.775,18.057l30.827,46.258l-5.712,23.453l-37.184,151.842
+		l-36.888-150.862l-5.988-24.525l30.826-46.184C482.813,340.849,478.988,334.251,478.988,326.729z"/>
+	<path clip-path="url(#SVGID_11_)" fill="#010101" d="M417.667,128.555l60.675-32.582l43.431-23.287l0.073,0.148l62.228,54.482
+		l3.862-40.178c0-15.82-4.25-30.734-11.698-43.579C561.192,17.502,533.064,0,500.796,0c-48.125,0-87.139,38.94-87.139,87.139
+		l4.01,41.342V128.555z"/>
+</g>
+</svg>

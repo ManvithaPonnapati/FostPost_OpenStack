@@ -1,0 +1,346 @@
+/* SC mods of bootstrap css */
+
+
+#adflowlogo{
+	width:240px;
+}
+
+.tagline{
+	font-weight: 100;
+	font-size:1.2rem;
+	color:#ef4223;
+	margin-left:3%;
+}
+
+html{
+  font-size:16px; //1rem=16px
+}
+
+
+
+
+
+.footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+  	background-color:yellow;
+} 
+
+
+
+/* SC  make text field width smaller than canvas tabs */
+.input-group {
+width:100%
+}
+
+/* SC text field height */
+.form-control {
+	height:75px;
+	/*width:50%; */
+	border:1px solid #ef4223;
+	font-size:25px;
+	float:left;
+	 box-shadow: 0px 5px 10px #888888;
+	 border-radius: 0px 0px 0px 10px;
+}
+
+
+
+#text-field-label{
+	background-color:#ef4223;
+	border:5px solid #ef4223;
+	color:white;
+	margin-bottom: 0px;
+	width:100%;
+	font-family: 'muli', 'helvetica', arial;
+    color: white;
+    font-weight: 100;
+    font-size:.7rem;
+
+}
+#percent-field-label{
+	background-color:gray;
+	border:12px solid gray;
+	color:white;
+	margin-bottom: 0px;
+	width:100%;
+	color: white;
+    font-weight: 100;
+    font-size:.7rem;
+}
+
+#custom-canvas-width{
+	height:50px;
+	width:90%;
+}
+
+#custom-canvas-height{
+	height:50px;
+	width:90%;
+}
+
+/* SC % text height */
+.percent-text {
+	height:75px;
+	border-style:inset;
+	border:1px solid gray;
+	border-radius: 0px 10px 10px 10px;
+	/*width:20%;*/
+	/*display:inline-block; */
+	/*float:right; */
+	position: relative;
+	font-size:25px;
+	 /*box-shadow: 5px 5px 10px #888888;
+	 background-image: */
+}
+
+/* SC  space form from canvas tabs */
+.input-group .form-control{
+	width:80%;
+	margin-bottom:20px;
+}
+
+/* floats for tabs and ad canvas */
+#fields{
+	float:right;
+}
+#tabs{
+	float:right;
+}
+#adcanvas{
+	float:left;
+}
+.rollout{
+	float:right;
+}
+
+.btn {
+	font-family: 'muli', 'helvetica', arial;
+    color: #ef4223;
+    font-weight: 100;
+    background:#F7F8FD;
+}
+
+#headline-text{
+	height:30px;
+	background:#ef4223;
+	border-color:white;
+	color:white;
+	font-size:.7rem;
+}
+#body-text{
+	height:30px;
+	background:#ef4223;
+	border-color:white;
+	color:white;
+	font-size:.7rem;
+}
+#small-text{
+	height:30px;
+	background:#ef4223;
+	border-color:white;
+	color:white;
+	font-size:.7rem;
+}
+#headline-text:focus{
+	background:#00b2e2;
+}
+
+#body-text:focus{
+	background:#00b2e2;
+}
+#small-text:focus{
+	background:#00b2e2;
+}
+
+headline-text{
+	border-radius: 3px 0px 0px 0px;
+}
+
+#percent-text-bottom{
+	margin-bottom: -10px;
+	border-bottom:0px;
+}
+
+#addtextbutton{
+	height:75px;
+	border-style:inset;
+	border:1px white;
+	background-color: #ef4223;
+	border-radius: 0px 10px 10px 0px;
+	color:white;
+	font-size: 2em;
+	box-shadow: 0px 5px 10px #888888;
+}
+
+#addtextbutton:hover{
+	box-shadow: 0px 0px 0px 0px white;
+}
+
+.btn-default:hover{
+	background:white;
+	border-color:#5ec9e2;
+	box-shadow: 2px 2px 20px 5px #5ec9e2;
+	} 
+
+ .btn-default:focus{
+ 	background:white;
+ 	border-color:red;
+ 	background-color: #00b2e2;
+ 	color:white;
+ }
+
+ .dropdown-toggle:focus{
+ 	background-color:#00b2e2;
+ }
+
+
+.list-group-item{
+	margin-top:-10px;
+ 	margin-bottom:-10px;
+ 	color:black;
+ 	font-family:'muli', 'helvetica', 'arial';
+ 	font-size:.75rem;
+}
+
+a.list-group-item{
+	color:black;
+	font-family:'muli', 'helvetica', 'arial';
+	font-size:.75rem;
+}
+ .list-group-item:hover{
+ 	background:white;
+ 	border-color:red;
+ 	border-color:#5ec9e2;
+ }
+
+
+
+/* START Side NavBar */
+/* remove bootstrap default padding for side navbars and rollout */
+.nopad{
+	padding-left: 0px;
+	padding-right:0px;
+}
+
+#sidenavbar{
+	height: 20px;
+}
+/* add fillets for navbars/sidebars */
+.list-group-item:first-child {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px; 
+}
+/* END - Side NavBar */
+
+
+
+
+/* START  Side Rollouts */
+/* color swatches */
+.swatch{
+	height:80px;
+	width:80px;
+	background-color:cyan;
+}
+
+/* text swatches */
+.txtswatch{
+	height:80px;
+	width:80px;
+	background-color:blue;
+}
+
+
+
+
+/* SC horizontal button tabs for canvases */
+.btn-default {
+	height:40px;
+	border-color:#ef4223;
+}
+
+
+
+
+
+/* SC failing to change button colors */
+.list-group-item {
+	border-color:#c6c4c4;
+}
+
+
+
+
+
+
+
+
+/* SC
+.list-group-item .active a:hover {
+	background-color: #ef4223;
+}
+
+a.list-group-item {
+	background-color: #ef4223;
+}
+
+.list-group-item {
+	background-color: #ef4453;
+}
+*/
+.list-group-item .active a{
+	background-color: #ef4453 !important;
+}
+
+/*a {
+
+	background-color: #ef4453;
+}
+*/
+
+.list-group-item .active> li > a:hover, .list-group-item > li > a:focus {
+    background-color: #ef4453;
+    color: #ef4453;
+}
+
+.list-group-item:hover, .list-group-item:active {
+	background-color: #ef4453;
+}
+
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #ef4453;
+    background-color: #ef4453;
+    border-color: #ef4453; /*set the color you want here*/
+}
+
+/* SC
+this makes the active link background color orange - not needed...
+.list-group-item > .active > a {
+	background-color: #ef4453;
+}
+*/
+
+/*********************************************
+* Media Queries Tablet and Beyond
+/*********************************************/
+
+  @media only screen and (max-width: 480px){
+
+#adflowlogo{
+	width:30%;
+}
+
+
+
+
+
+
+
+
+
+  }
