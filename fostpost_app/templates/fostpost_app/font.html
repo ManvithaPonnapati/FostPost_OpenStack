@@ -18,11 +18,11 @@
           <p>What's your brand's dress code ? </p>
         </div>
      
-        <div class="conte_row">
+        <div class="content_row">
 
           <div class="col-md-2" ng-repeat="font in fonts" ng-click="chooseFont($index)" ng-show="user_authenticated">
               <img src="[[font.image]]">
-              <p> [[font.font_name]] </p>
+              <p> {font.font_name} </p>
           </div>
           <div class="col-md-2" ng-repeat="font in fonts" ng-click="chooseFont($index)" ng-show="!(user_authenticated)">
               Please Login into fostpost
