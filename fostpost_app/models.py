@@ -1,63 +1,62 @@
 __author__ = 'manvitha_ponnapati'
 
+from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 from django.utils import timezone
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import BaseUserManager
+class CraftCloud_AccountManager(BaseUserManager):
+    def create_user(self,email,password=None,**kwargs):
+        if not email:
+            raise ValueError('Users must have a valid email address')
+        if not kwargs.get('username'):
+            raise ValueError('Users must have a valid email address')
+        craftCloud_account=self.model(email=self.normalize_email(email))
+        craftCloud_account.set_password(password)
+        craftCloud_account.save()
+    def create_superuser(self,email,password,**kwargs):
+        craftCloud_account=self.create_user(email,password,**kwargs)
+        craftCloud_account.is_admin=True
+        craftCloud_account.save()
+        return craftCloud_account
+
+class CraftCloud_Account(AbstractBaseUser):
+    email = models.EmailField(unique=True)
+    username = models.CharField(max_length=40, unique=True)
+    is_admin = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+
+    objects = CraftCloud_AccountManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
 
 
-class User(models.Model):
-    """ An awesome fostpost customer"""
-    email = models.CharField(max_length=100)
-    created_date = models.CharField(max_length=500)
+    def _unicode_(self):
+        return self.email
+
+    def get_full_name(self):
+        return self.email
+
+    def get_short_name(self):
+        return self.email
+
+    @property
+    def is_superuser(self):
+        return self.is_admin
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+    def has_perm(self,perm,Obj=None):
+        return self.is_admin
+    def has_module_perms(self,app_label):
+        return self.is_admin
+    
+    
+
    
 
 
-class asset_image(models.Model):
-    """ Model for any uploaded images to the database."""
-    user = models.ForeignKey(User)
-    image_upload = models.ImageField(upload_to=image_file_name)
 
-class asset_logo(models.Model):
-    """ Model for any uploaded logos to the database."""
-    user = models.ForeignKey(User)
-    image_upload = models.ImageField(upload_to=image_file_name)
-
-
-class saved_creative(models.Model):
-    """ Model for any saved creatives to the database."""
-    user = models.ForeignKey(User)
-    image_array= models.CharField(max_length=200)
-    logo=models.CharField(max_length=200)
-    text_array=models.CharField(max_length=200)
-    text_positions=models.CharField(max_length=200)
-    creative_size_x=models.IntegerField(max_length=10)
-    creative_size_y=models.IntegerField(max_length=10)
-    def set_image_array(self, x):
-        self.image_array = json.dumps(x)
-
-    def get_image_array(self, x):
-        return json.loads(self.image_array)
-    def set_logo(self, x):
-        self.image_array = json.dumps(x)
-
-    def get_logo(self, x):
-        return json.loads(self.image_array)
-
-    def set_text_strings(self, x):
-        self.image_array = json.dumps(x)
-
-    def get_text_strings(self, x):
-        return json.loads(self.image_array)
-
-    def set_text_positions(self, x):
-        self.image_array = json.dumps(x)
-
-    def get_text_postions(self, x):
-        return json.loads(self.image_array)
-
-
-def image_file_name(instance):
-    return '/'.join(['image_asset', instance.user.email, "%Y %M %d:%H:%M:%S"])
-
-def logo_file_name(instance):
-    return '/'.join(['logo_asset', instance.user.email, "%Y %M %d:%H:%M:%S"])
