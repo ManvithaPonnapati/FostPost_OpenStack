@@ -15,7 +15,7 @@
     $routeProvider.when('/register', {
       controller: 'RegisterController', 
       controllerAs: 'vm',
-      templateUrl: '/static/templates/fostpost_app/index.html'
+      templateUrl: '/static/templates/fostpost_app/register.html'
     }).otherwise('/');
   }
 })();

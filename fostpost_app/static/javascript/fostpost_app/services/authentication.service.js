@@ -38,6 +38,7 @@
     * @memberOf thinkster.authentication.services.Authentication
     */
     function register(email, password, username) {
+      console.log("I got here")
       return $http.post('/api/v1/accounts/', {
         username: username,
         password: password,
