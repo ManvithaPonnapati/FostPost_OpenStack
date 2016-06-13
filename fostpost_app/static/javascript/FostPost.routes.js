@@ -17,5 +17,25 @@
       controllerAs: 'vm',
       templateUrl: '/static/templates/fostpost_app/register.html'
     }).otherwise('/');
+     $routeProvider.when('/create', {
+      controller: 'CreateController', 
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/fostpost_app/create.html'
+    }).otherwise('/');
+      $routeProvider.when('/login', {
+      controller: 'LoginController', 
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/fostpost_app/login.html'
+    }).otherwise('/');
+       $routeProvider.when('/index', {
+      controller: 'IndexController', 
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/fostpost_app/index.html'
+    }).otherwise('/');
+         $routeProvider.when('/font', {
+      controller: 'FontController', 
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/fostpost_app/font.html'
+    }).otherwise('/');
   }
 })();
