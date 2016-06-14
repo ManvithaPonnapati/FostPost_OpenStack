@@ -1,31 +1,45 @@
-/**
-* IndexController controller
-* @namespace FostPost.fostpost_app.controllers
-*/
-(function () {
-  'use strict';
-
-  angular
-    .module('FostPost.fostpost_app.controllers')
-    .controller('IndexController', IndexController);
-
-  IndexController.$inject = ['$location', '$scope', 'Authentication'];
-
-  /**
-  * @namespace IndexController
-  */
-  function RegisterController($location, $scope, Authentication) {
-    var vm = this;
-
-    vm.register = register;
-
-    /**
-    * @name register
-    * @desc Register a new user
-    * @memberOf FostPost.fostpost_App.controllers.IndexController
-    */
-    function register() {
-      Authentication.register(vm.email, vm.password, vm.username);
-    }
+$scope.user_authenticated=1
+var list_of_fonts=
+[
+  {
+    "Font_Person": "Tuxedo",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Business Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Dressy Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Smart Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Street",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
   }
-})();
+]
+
+angular
+    .module('FostPost.fostpost_app.controllers').controller('FontController', function ($scope, $http){
+
+        
+
+          $scope.fonts = list_of_fonts;
+
+        
+
+      });

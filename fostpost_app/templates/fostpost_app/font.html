@@ -4,13 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!--- Include Angular min.js -------------->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   </head> 
-  <body fontApp>
+  <body ng-app="fontApp" ng-controller="FontController" data-ng-init="loadFonts()">
     <!--------------------Begining Container-->
     <div class="container-fluid">
         <div class="header_row">
@@ -21,8 +21,8 @@
         <div class="content_row">
 
           <div class="col-md-2" ng-repeat="font in fonts" ng-click="chooseFont($index)" ng-show="user_authenticated">
-              <img src="[[font.image]]">
-              <p> {font.font_name} </p>
+             < <img ng-src="{{font.Font_Person_URL}}" width="100">
+              <p> {font.Font_Person} </p>
           </div>
           <div class="col-md-2" ng-repeat="font in fonts" ng-click="chooseFont($index)" ng-show="!(user_authenticated)">
               Please Login into fostpost
@@ -38,4 +38,58 @@
 
     <!------------------Ending Container-->
   </body>
+  <script type="text/javascript">
+ 
+var list_of_fonts="json=" + encodeURI(JSON.stringify(
+[
+  {
+    "Font_Person": "Tuxedo",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Business Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Dressy Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Smart Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Casual",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  },
+  {
+    "Font_Person": "Street",
+    "Font_Family": "Helvetica",
+    "Font_Person_URL": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+  }
+]));
+var app = angular.module("fontApp", []);
+
+app.controller("FontController", function($scope,$http) {
+    $scope.fonts=[];
+    $scope.loadFonts = function() {
+        var httpRequest = $http({
+            method: 'POST',
+            url: '/echo/json/',
+            data: list_of_fonts
+
+        }).success(function(data, status) {
+            $scope.fonts = data;
+        });
+
+    };
+
+     $scope.user_authenticated=1
+});
+</script>
 </html>

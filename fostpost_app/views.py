@@ -4,6 +4,15 @@ from fostpost_app.models import CraftCloud_Account
 from fostpost_app.permissions import IsAccountOwner
 from fostpost_app.serializers import CraftCloud_AccountSerializer
 
+def index(request):
+    return render(request, '/fostpost_app/index.html')
+
+def font(request):
+    return render(request,'/fostpost_app/font.html')
+
+def create(request):
+    return render(request,'/fostpost_app/create.html')
+    
 class CraftCloud_AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = CraftCloud_Account.objects.all()

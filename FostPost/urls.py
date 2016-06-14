@@ -22,4 +22,10 @@ from fostpost_app.views import CraftCloud_AccountViewSet
 router = routers.SimpleRouter()
 router.register(r'accounts', CraftCloud_AccountViewSet,base_name='accounts')
 
-urlpatterns = router.urls
+urlpatterns = 
+{
+	 
+     
+     url(r'^accounts/',include(router.urls))
+     url(r'^fostpost/', include('FostPost.fostpost_app.urls'))
+}
