@@ -25,6 +25,7 @@
     * @memberOf FostPost.fostpost_App.controllers.RegisterController
     */
     function register() {
+      alert(vm.email, vm.password, vm.username)
       Authentication.register(vm.email, vm.password, vm.username);
     }
   }
