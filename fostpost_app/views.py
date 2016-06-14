@@ -14,14 +14,15 @@ def RegisterView(request):
 
 
 def index(request):
-    return render(request, '/fostpost_app/index.html')
+    return render(request, 'fostpost_app/index.html')
 
 def font(request):
-    return render(request,'/fostpost_app/font.html')
+    return render(request,'fostpost_app/font.html')
 
 def create(request):
-    return render(request,'/fostpost_app/create.html')
+    return render(request,'fostpost_app/create.html')
     
+
 class CraftCloud_AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = CraftCloud_Account.objects.all()
