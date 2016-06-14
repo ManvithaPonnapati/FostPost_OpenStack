@@ -116,7 +116,7 @@ html{
 #makesmallforstart{
   z-index: 0;
   position:relative;
-  width:1%;
+  width:100%;
   background:transparent;
   border-color:transparent;
   text-align: center;
@@ -190,7 +190,8 @@ html{
 
 .btn-success{
   font-family:'Quicksand';
-  background: #EF4223;
+  font-size: 1.4rem;
+  background: #3397ff;
   border-color:black;
   border:5px;
 
@@ -207,7 +208,9 @@ html{
 }
 
 
-.modal-header h3 { width: 90% }
+.modal-header h3 { 
+  width: 90% 
+}
 
 
 
@@ -228,11 +231,11 @@ body{
   width: 100%;
 }
 h1 {
-  font-family: 'Muli';
+  font-family: 'Avenir Next';
   font-weight:400;
   font-size:5vmin;
   white-space: nowrap;
-  color:black;
+  color:#EF4223;
   text-align: center;
   width:100%;
   margin-bottom:4px;
@@ -254,7 +257,7 @@ h3{
   font-weight: normal;
   text-align:center;
   margin-top: 0px;
-  color:black;
+  color:#EF4223;
   font-weight:800;
 }
 
@@ -264,7 +267,7 @@ h3{
   font-weight: normal;
   text-align:center;
   margin-top: 0px;
-  color:white;
+  color:black;
   font-weight:500;
 }
 .textbox{
@@ -334,6 +337,7 @@ h3{
 
 
    @media only screen and (max-width: 480px){
+
         .navbar{
           height:5%;
             max-width:600px !important;
@@ -355,8 +359,9 @@ h3{
         padding-top:1%;
       }
       .start-button{
-      display:none;
+      width:70%;
       }
+
 
       #mc_embed_signup input.email {
         width:100%;
@@ -369,6 +374,13 @@ h3{
   .textbox{
     width:85%;
   }
+  .imageSize img{
+  width:40%;
+  margin: 0px auto;
+  border: 1px solid #737373;
+  border-radius: 10px 10px 0px 0px;
+  padding: 10px;
+}
 }
 
 
