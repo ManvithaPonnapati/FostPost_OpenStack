@@ -1,8 +1,17 @@
 from rest_framework import permissions, viewsets
+from rest_framework import status
+from rest_framework.response import Response
+
 
 from fostpost_app.models import CraftCloud_Account
 from fostpost_app.permissions import IsAccountOwner
 from fostpost_app.serializers import CraftCloud_AccountSerializer
+from django.shortcuts import render
+
+def RegisterView(request):
+    return render(request,'fostpost_app/register.html')
+
+
 
 class CraftCloud_AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
