@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+    'rest_framework',
+>>>>>>> 20ff531a66d8e8117778f42582682b6842d4bf3c
                   'fostpost_app'
 ]
 
@@ -77,8 +81,17 @@ WSGI_APPLICATION = 'FostPost.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+=======
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fostpostdata_db',
+        'USER': 'fostpostadmin',
+        'PASSWORD':'Scamozzi1616',
+        'HOST':'localhost',
+        'PORT':'5432'
+>>>>>>> 20ff531a66d8e8117778f42582682b6842d4bf3c
     }
 }
 
@@ -120,3 +133,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
+=======
+
+AUTH_USER_MODEL='fostpost_app.CraftCloud_Account'
+>>>>>>> 20ff531a66d8e8117778f42582682b6842d4bf3c
