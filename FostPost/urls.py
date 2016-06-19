@@ -27,6 +27,5 @@ urlpatterns = patterns(
      '',
     # ... URLs
     url(r'^api/v1/', include(router.urls)),
-    url(r'^fostpost/', include('FostPost.fostpost_app.urls'))
-    
+    url(r'^$', include('fostpost_app.urls'))   
 )
