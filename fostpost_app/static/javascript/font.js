@@ -181,7 +181,7 @@ $('#Guy1').click(function() {
 	 $('#Des13').css("visibility","hidden");
 	  sessionStorage.fontgroup=1
 	 changefont(1);
-	 window.location.href="create.html"
+	 window.location.href="{% url 'create' %}"
 	 
 });
 $('#Guy2').click(function() {
@@ -214,7 +214,7 @@ $('#Guy2').click(function() {
 	 $('#Des13').css("visibility","hidden");
 	  sessionStorage.fontgroup=2
 	  changefont(2);
-	  window.location.href="create.html"
+	  window.location.href="{% url 'create' %}"
 });
 $('#Guy3').click(function() {
 	 sessionStorage.fontgroup=3;
@@ -246,7 +246,7 @@ $('#Guy3').click(function() {
 	 $('#Des13').css("visibility","hidden");
 	  sessionStorage.fontgroup=3
 	  changefont(3);
-	  window.location.href="create.html"
+	  window.location.href="{% url 'create' %}"
 });
 
 $('#Guy4').click(function() {
@@ -280,7 +280,7 @@ $('#Guy4').click(function() {
 	 $('#Des13').css("visibility","hidden");
 	 sessionStorage.fontgroup=4
 	  changefont(4);
-	  window.location.href="create.html"
+	  window.location.href="{% url 'create' %}"
 });
 
 $('#Guy5').click(function() {
@@ -313,7 +313,9 @@ $('#Guy5').click(function() {
 	 $('#Des13').css("visibility","hidden");
 	  sessionStorage.fontgroup=5
 	  changefont(5);
-	  window.location.href="create.html"
+	  console.log("DXXXXXXXXX")
+	  window.location.href="{% url 'create' %}"
+	  
 });
 
 $('#Guy6').click(function() {
@@ -347,7 +349,7 @@ $('#Guy6').click(function() {
 	 $('#Des13').css("visibility","hidden");
 	  sessionStorage.fontgroup=6
 	  changefont(6);
-	 window.location.href="create.html"
+	 window.location.href="{% url 'create' %}"
 });
 
 function changefont(id)
