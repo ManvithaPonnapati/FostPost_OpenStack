@@ -4,6 +4,12 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import BaseUserManager
+
+class account_by_email(models.Model):
+    def create_craftcloud(self,email):
+        if not email:
+            return 'need an email to login'
+
 class CraftCloud_AccountManager(BaseUserManager):
     def create_user(self,email,password=None,**kwargs):
         if not email:

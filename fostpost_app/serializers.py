@@ -4,6 +4,8 @@ from rest_framework import serializers
 
 from fostpost_app.models import CraftCloud_Account
 
+class account_by_email_serializer(serializers.ModelSerializer):
+    email=serializers.CharField(required=True)
 
 class CraftCloud_AccountSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=False)
