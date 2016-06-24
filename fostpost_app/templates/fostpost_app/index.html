@@ -14,6 +14,8 @@
     <meta name="google-site-verification" content="_zsBCrq61jCldtc0qr91SgJN-JWg-EMzIT34LXRb1fE" />
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript" src="{% static 'javascript/fostpost_app/controllers/font_controller.js' %}"></script>
 
     <title>Simple, Breezy Image Edits</title>
 
@@ -40,7 +42,7 @@
 
 </head>
 
-<body>
+<body ng-app="font_app" ng-controller="font_controller">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -92,10 +94,10 @@
          </a>
         </div>
         <div>
-        	<form action="/email_submit/" method="post">
+        	<form ng-submit="email_submit()" method="post">
 			    <label for="Email">Email: </label>
-			    <input id="Email" type="text" name="Email_Address" placeholder="Enter your email address">
-			    <input type="submit" value="OK">
+			    <input id="Email" type="text" name="Email_Address" ng-model="email_field" placeholder="Enter your email address">
+			    <input type="submit" value="Login">
 			</form>
         </div>
         <!-- END SC Modal Boostrap code -->
