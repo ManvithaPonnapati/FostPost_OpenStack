@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <html ng-app="angularjs-starter">
   
   <head lang="en">
@@ -39,18 +40,18 @@ html, body {
 	<title>FostPost</title>
    
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
     
-    <script src="app.js"></script>
+    <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}"></script>
   </head>
   
   <body style="margin-top: -8px;background-color:#F5F7FA">
   <div ng-controller="createCtrl" id="wrapper">
     <div calss="header row" style="width:100%;height:65px;background-color: #0E1B2A;" >
         <div align="left " style="width: 10%; display: table-cell;">
-            <img src="./images/fostpostword.png" style="height:50px;width: auto;margin-top: 12px;">
+            <img src="{% static 'images/fostpostword.png' %}" style="height:50px;width: auto;margin-top: 12px;">
         </div>
           <div style="margin-top: -57px;" align="right">
                 <div  style="display: table-cell;padding: 20px;">
@@ -95,7 +96,7 @@ html, body {
             </div>
             <div class="col-xs-6 col-sm-6 tabInner" style="background-color: #EF3E36;">
                 <div class="divInner">Download
-                <img src="images/download.png" style="margin-top: -10px;text-align: right;" align="right"/>
+                <img src="{% static 'images/download.png' %}" style="margin-top: -10px;text-align: right;" align="right"/>
                 </div>
             </div>
         </div>
@@ -106,35 +107,35 @@ html, body {
            <div style="width: 140px;background-color: #1E355E;display: table-cell;">
             <div style="width:133px;height:148px;">
                <div style="width:135px;height:90px;background-color: #0D223F;border:0.5px solid #ffffff;border-width: 0.01em; margin-top: 2px;">
-                <img  src="images/toolbar/layout.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                <img  src="{% static 'svg/layout.svg' %}" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                 <p style="text-align: center;color:#EF3D37; ">Layouts</p>
                </div>
                 <div style="width:135px;height:90px;">
-                    <img  src="images/toolbar/image.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                    <img  src="{% static 'svg/image.svg' %}" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                     <p style="text-align: center;color:#EF3D37; ">Images</p>
                 </div>
                 <div style="width:135px;height:90px;background-color: #0D223F;border-top:0.5px solid #ffffff;">
-                    <img  src="images/toolbar/layout.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                    <img  src="{% static 'svg/layout.svg' %}" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                     <p style="text-align: center;color:#EF3D37; ">Layouts</p>
                 </div>
                 <div style="width:135px;height:90px;background-color: #0D223F;border-top:0.5px solid #ffffff;">
-                    <img  src="images/toolbar/font.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                    <img  src="{% static 'svg/font.svg' %}" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                     <p style="text-align: center;color:#EF3D37; ">Fonts</p>
                 </div>
                 <div style="width:135px;height:90px;background-color: #0D223F;border-top:0.5px solid #ffffff;">
-                    <img  src="images/toolbar/addlogo.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                    <img  src="{% static 'svg/addlogo.svg' %}" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                     <p style="text-align: center;color:#EF3D37; ">Logo</p>
                 </div>
                 <div style="width:135px;height:90px;background-color: #0D223F;border-top:0.5px solid #ffffff;">
-                    <img  src="images/toolbar/save.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                    <img  src="{% static 'svg/save.svg' %}" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                     <p style="text-align: center;color:#EF3D37; ">Versions</p>
                 </div>
                 <div style="width:135px;height:90px;background-color: #0D223F;border-top:0.5px solid #ffffff;">
-                    <img  src="images/toolbar/background.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                    <img  src="{% static 'svg/background.svg' %}"style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                     <p style="text-align: center;color:#EF3D37; ">Color</p>
                 </div>
                 <div style="width:135px;height:90px;background-color: #0D223F;border-top:0.5px solid #ffffff;">
-                    <img  src="images/toolbar/textcolor.svg" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
+                    <img  src="{% static 'svg/textcolor.svg' %}" style="width: 60px;margin-left: 37px;;margin-top: 8px;" align="middle" />
                     <p style="text-align: center;color:#EF3D37; ">Logo</p>
                 </div>
                 <div style="width:135px;height:90px;background-color: #0D223F;border-top:0.5px solid #ffffff;border-bottom:0.5px solid #ffffff;">
@@ -152,13 +153,13 @@ html, body {
 
             </div>
                <div ng-show="showUp" ng-click="changeImageUp()" class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 10px;" align="center">
-                 <img src="images/arrowdown.png" style="transform: rotate(180deg);"/>
+                 <img src="{% static 'images/arrowdown.png' %}" style="transform: rotate(180deg);"/>
                </div>
                <div ng-repeat="img in imgarray" class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 7px;" align="center">
                    <img src={{img}} style="width:160px;height: 110px;"/>
                </div>
                <div ng-show="showDown"  ng-click="changeImageDown()" class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 8px; cursor: pointer;" align="center">
-                   <img src="images/arrowdown.png"/>
+                   <img src="{% static 'images/arrowdown.png' %}"/>
                </div>
 
            </div>
