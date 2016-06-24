@@ -79,15 +79,12 @@ WSGI_APPLICATION = 'FostPost.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-<<<<<<< HEAD
         'NAME': 'fostpost_data',
         'USER': 'super_user',
         'PASSWORD':'Scamozzi1616',
         'HOST':'localhost',
         'PORT':'5432',
-=======
-        
->>>>>>> 6948fa90a54daf6059087f24291901dd081393c4
+
     }
 }
 
