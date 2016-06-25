@@ -24,14 +24,14 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
     <!-- Custom CSS -->
-  
+    <link rel="stylesheet" href="{% static 'css/aboutmods.css' %}" >
    <link rel="stylesheet" href="{% static 'css/landing-page.css' %}">
-
+   
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/aboutmods.css' %}" rel="stylesheet">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,35 +80,30 @@
     <!-- Header -->
     <a name="about"></a>
     <div class="intro-header">
-        <div class="container">
+        <div class="container ">
 
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
+                <div class="col-md-12 col-sm-12">
+
+                    <div class="intro-message sunny-background">
                         <h1>Simple, Breezy Image Edits</h1>
                         <h3>For Newsletters, Blogs, & Social Media</h3>
+                  </div>
                         <!--<hr class="intro-divider"> -->
-                                <!-- START SC Modal Boostrap code -->              
-        <div class="start-button">
-         <a href="{% url 'font' %}" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Start Making Images!
-         </a>
-        </div>
-        <div>
-        	<form ng-submit="email_submit()" method="post">
-                {% csrf_token %}
-			    <label for="Email">Email: </label>
-			    <input id="Email" type="text" name="Email_Address" ng-model="email_field" placeholder="Enter your email address">
-			    <input type="submit" value="Login">
-			</form>
-        </div>
+                                <!-- START SC Modal Boostrap code -->
+                    <div class="start-button">
+                     <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Start Making Images
+                     </a>
+                    </div>
+
         <!-- END SC Modal Boostrap code -->
                     </div>
         <!-- TRY to put image in -->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <div class="row">
-                  <div class="col-lg-1 col-lg-offset-6 col-sm-offset-3 col-sm-6">
-                       <img class= "img-responsive" "center-start" src="{% static 'images/product1sm.jpg'%}" alt="Description" >
+                  <div class="col-md-12 imac-padding center-block mountains">
+                       <img class= "img-responsive" "center-start" src="{% static 'images/prod_imac.png'%}" alt="Description" >
                     </div>
                 </div>
             </div>
@@ -129,15 +124,15 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-sm-6">
+                <div class="col-md-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Instant Media Sizes<br>For Social</h2>
-                    <p class="lead">Start with any media size, change to a different one easily. Web based application. Integrate file storage, smart color suggestions, dynamic simple clean layouts</p>
+                    <p class="lead">Start with any media size, quickly create another one. Easily switch between different image sizes without having to redo anything. </p>
                 </div>
                 <div class="row">
                     <div class="col-lg-5  col-sm-6">
-                        <img class="img-responsive" src="img/product1sm.jpg" alt="">
+                        <img class="img-responsive" src="{% static 'images/prod_images.jpg'%}" alt="">
                     </div>
                 </div>
             </div>
@@ -156,11 +151,11 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Curated Fonts and Images/h2>
-                    <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                    <h2 class="section-heading">Professionally Designed Layouts</h2>
+                    <p class="lead">Easily organize your content with our designer layout engine. Try out different versions of your media quickly, save versions and come back to them later. </p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="img/dog.png" alt="">
+                    <img class="img-responsive" src="{% static 'images/prod_layouts.jpg'%}" alt="">
                 </div>
             </div>
 
@@ -178,11 +173,11 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                    <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                    <h2 class="section-heading">Curated Fonts and Images</h2>
+                    <p class="lead">Choose from professionally curated Google Fonts for your media. Find your perfect image from a curated image collection in seconds.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/phones.png" alt="">
+                    <img class="img-responsive" src="{% static 'images/prod_fonts.jpg'%}" alt="">
                 </div>
             </div>
 
@@ -198,15 +193,14 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6">
-                    <h2>Stay Fosty</h2>
+                <div class= "col-md-offset-4 col-md-3 col-sm-offset-4 col-sm-2">
+                     <div class="start-button">
+                         <a href="#" class="btn btn-lg btn-success center-block" data-toggle="modal" data-target="#basicModal">Start Making Images
+                         </a>
+                    </div>
+                     <h3>be fosty ;)
+                    </h3>
                 </div>
-                <div class="col-lg-6">
-                    <ul class="list-inline banner-social-buttons">
-                        <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
@@ -253,33 +247,39 @@
     <!-- Footer -->
     <footer>
         <div class="container">
+                <div class="row">
+                    <div class=" col-md-6">
+                        <img class= "img-responsive" "center-start" src="{% static 'svg/fostpostwordSM.svg'%}" alt="Description" >
+                    </div>
+                </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-6">
                     <ul class="list-inline">
                         <li>
                             <a href="#">Home</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="#about">Features</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="#services">Legal</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
                             <a href="#contact">Contact</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; CraftCloud.io, Inc. 2016. All Rights Reserved</p>
+
                 </div>
             </div>
         </div>
     </footer>
 <!---Js-Modules------>
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{% static 'javascript/bootstrap.min.js'%}"></script>
 <!---Js-Modules------>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
