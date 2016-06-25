@@ -95,6 +95,7 @@
         </div>
         <div>
         	<form ng-submit="email_submit()" method="post">
+                {% csrf_token %}
 			    <label for="Email">Email: </label>
 			    <input id="Email" type="text" name="Email_Address" ng-model="email_field" placeholder="Enter your email address">
 			    <input type="submit" value="Login">

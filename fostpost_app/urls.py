@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^font/',views.font,name='font'),
     url(r'^create/',views.create,name='create'),
     url(r'^emails/', views.email_list, name='email_list'),
+    url(r'^authenticate_email/', views.authenticate_email, name='authenticate_email'),
 )
