@@ -4,6 +4,7 @@ app.controller('font_controller', function($scope,$http) {
     $scope.email_field="me@example.com"
     $scope.email_submit=function()
     {
+        console.log("Submit clicked")
     	console.log($scope.email_field)
     	//Api calls to the Django Backend
     	return $http({
