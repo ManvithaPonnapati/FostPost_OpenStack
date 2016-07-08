@@ -14,8 +14,6 @@
     <meta name="google-site-verification" content="_zsBCrq61jCldtc0qr91SgJN-JWg-EMzIT34LXRb1fE" />
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
-    <script type="text/javascript" src="{% static 'javascript/fostpost_app/controllers/font_controller.js' %}"></script>
 
     <title>Simple, Breezy Image Edits</title>
 
@@ -32,7 +30,7 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript" src="{% static 'javascript/fostpost_app/controllers/font_controller.js'%}"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,7 +40,7 @@
 
 </head>
 
-<body ng-app="font_app" ng-controller="font_controller">
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -55,14 +53,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">fostpost.com</a>
+                <a class="navbar-brand topnav top-logo" href="#">
+                    <img class= " center-start"src="{% static 'svg/fostpostwordSM.svg'%}" alt="Description" >
+                </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#about">Features</a>
-                    </li>
+                <!--<ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#services">Legal</a>
                     </li>
@@ -70,7 +67,7 @@
                         <a href="#contact">Contact</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -83,21 +80,29 @@
         <div class="container ">
 
             <div class="row">
-                <div class="col-md-12 col-sm-12">
-
-                    <div class="intro-message sunny-background">
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <div class="intro-message">
                         <h1>Simple, Breezy Image Edits</h1>
-                        <h3>For Newsletters, Blogs, & Social Media</h3>
+                        <h3>For Social Media, Blogs & Newsletters</h3>
                   </div>
+                  <div class="row">
+                    <div class="sunny-background center-block">
+                    </div>
+                  </div>
+              </div>
+          </div>
+
                         <!--<hr class="intro-divider"> -->
-                                <!-- START SC Modal Boostrap code -->
-                    <div class="start-button">
+                                <!-- START SC Modal Boostrap code --> 
+            <div class="row">             
+                <div class="start-button col-md-4 col-md-offset-4">
                      <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Start Making Images
                      </a>
-                    </div>
-
-        <!-- END SC Modal Boostrap code -->
-                    </div>
+                </div>
+            </div>
+    <!-- END SC Modal Boostrap code -->
+            
+            
         <!-- TRY to put image in -->
         <div class="row">
             <div class="col-md-12">
@@ -125,8 +130,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
                     <h2 class="section-heading">Instant Media Sizes<br>For Social</h2>
                     <p class="lead">Start with any media size, quickly create another one. Easily switch between different image sizes without having to redo anything. </p>
                 </div>
@@ -149,10 +152,9 @@
 
             <div class="row">
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
+
                     <h2 class="section-heading">Professionally Designed Layouts</h2>
-                    <p class="lead">Easily organize your content with our designer layout engine. Try out different versions of your media quickly, save versions and come back to them later. </p>
+                    <p class="lead">Professionally organize your content with our designer layout engine. Try out different versions with a click, save the ones you like. </p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="{% static 'images/prod_layouts.jpg'%}" alt="">
@@ -171,10 +173,8 @@
 
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
                     <h2 class="section-heading">Curated Fonts and Images</h2>
-                    <p class="lead">Choose from professionally curated Google Fonts for your media. Find your perfect image from a curated image collection in seconds.</p>
+                    <p class="lead">Choose from professionally curated Google Fonts to add text on your image. Find the perfect image for your audience with built in keyword searches.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="{% static 'images/prod_fonts.jpg'%}" alt="">
@@ -189,24 +189,19 @@
 
 	<a  name="contact"></a>
     <div class="banner">
-
         <div class="container">
-
             <div class="row">
-                <div class= "col-md-offset-4 col-md-3 col-sm-offset-4 col-sm-2">
-                     <div class="start-button">
-                         <a href="#" class="btn btn-lg btn-success center-block" data-toggle="modal" data-target="#basicModal">Start Making Images
-                         </a>
+                <div class= "col-md-10 center-block">
+                    <div class="row">
+                         <div class="start-button">
+                             <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Start Making Images
+                             </a>
+                        </div>
                     </div>
-                     <h3>be fosty ;)
-                    </h3>
-                </div>
                 </div>
             </div>
-
         </div>
         <!-- /.container -->
-
     </div>
     <!-- /.banner -->
 
@@ -218,7 +213,7 @@
                               <a class="close" data-dismiss="modal">×</a>
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Get Started with AdFlow.io!
+                          <h4 class="modal-title" id="myModalLabel">Get Fosty!
                           </h4>
                         </div>
                         <div class="modal-body">
@@ -230,9 +225,9 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address
                                 </label>
-                                <input type="email" class="form-control input-lg" id="logInEmail" placeholder="Email" ng-model="email_field">
+                                <input type="email" class="form-control input-lg" id="logInEmail" placeholder="Email">
                           </div>
-                          <button type="submit" ng-submit="email_submit()" class="btn btn-default">Submit
+                          <button type="submit" class="btn btn-default">Submit
                           </button>
                        </div>
                             <div class="modal-footer">
@@ -247,31 +242,25 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-                <div class="row">
-                    <div class=" col-md-6">
-                        <img class= "img-responsive" "center-start" src="{% static 'svg/fostpostwordSM.svg'%}" alt="Description" >
+                <div class="row center-block">
+                     <h3>be fosty ;)
+                    </h3>
+                </div>
+                    <div class="row">
+                    <div class=" col-md-6 bottom-logo">
+                                            
+                        <img class= " center-start bottom-logo" src="{% static 'svg/fostpostwordSM.svg'%}" alt="Description" >
                     </div>
                 </div>
             <div class="row">
                 <div class="col-md-6">
                     <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">Features</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#services">Legal</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contact</a>
+                            <a href="mailto:sean@craftcloud.io">sean@craftcloud.io</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; CraftCloud.io, Inc. 2016. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; CraftCloud.io, Inc. 2016. All Rights Reserved<br>Privacy and Terms of Service
+
+                    </p>
 
                 </div>
             </div>
