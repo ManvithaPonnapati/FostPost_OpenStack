@@ -22,6 +22,8 @@ def index(request):
 	return render(request, 'fostpost_app/index.html')
 
 def font(request):
+	message = request.GET.get('user')
+	print message
 	return render(request,'fostpost_app/font.html')
 
 def create(request):

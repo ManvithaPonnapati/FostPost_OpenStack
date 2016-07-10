@@ -16,8 +16,7 @@ app.controller('font_controller', function($scope,$http,$window) {
     	{
             console.log("I am back")
             console.log(data)
-
-            $window.location.href = 'font/'
+            $window.location.href = 'font/?user=me@example.com'
             console.log("Sending back")
     		return data;
     	});
