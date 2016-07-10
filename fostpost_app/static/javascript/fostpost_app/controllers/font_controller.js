@@ -1,6 +1,6 @@
 var app = angular.module('font_app', []);
 
-app.controller('font_controller', function($scope,$http) {
+app.controller('font_controller', function($scope,$http,$window) {
     $scope.email_field="me@example.com"
     $scope.email_submit=function()
     {
@@ -16,6 +16,9 @@ app.controller('font_controller', function($scope,$http) {
     	{
             console.log("I am back")
             console.log(data)
+
+            $window.location.href = 'font/'
+            console.log("Sending back")
     		return data;
     	});
     }
