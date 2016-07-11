@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<html ng-app="angularjs-starter">
+<html >
   
   <head lang="en">
   <style>
@@ -92,18 +92,23 @@ canvas
 </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-	<title>FostPost</title>
-   
+  <title>FostPost</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
-    
+    <script src="http://code.createjs.com/createjs-2014.12.12.min.js"></script>
+
     <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}"></script>
-    
+   <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js
+"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.js"></script>
+     
   </head>
   
-  <body style="margin-top: -8px;background-color:#F5F7FA;width:100%;margin-right:0">
+  <body ng-app="angularjs-starter" style="margin-top: -8px;background-color:#F5F7FA;width:100%;margin-right:0">
   <div ng-controller="createCtrl" id="wrapper">
 
     <!--Header Row-->
@@ -126,55 +131,83 @@ canvas
     </div>
 
     <div class="row" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
-       <div class="col-sm-2">
+       <div class="col-sm-2" ng-click="change_canvas_size(1)">
 
             <select >
               <option value="1200x628" selected> Facebook </option>
               <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
        </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2" ng-click="change_canvas_size(2)">
             <select >
               <option value="300x600" selected> Google </option>
               <option ng-repeat="(key, value) in googleSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
        </div>
-        <div class="col-sm-2">
-        Twitter 420x220
+        <div class="col-sm-2"  ng-click="change_canvas_size(3)">
+        Twitter 
        </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2" ng-click="change_canvas_size(4)">
         Instagram
        </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2" ng-click="change_canvas_size(5)">
         Pinterest
        </div>
-       <div class="col-sm-2">
+       <div class="col-sm-2"  ng-click="change_canvas_size(6)">
         LinkedIn
        </div>
-        <div class="col-sm-2">
-        Custom Canvas
+        <div class="col-sm-2"  ng-click="change_canvas_size(7)">
+        Custom
        </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2"  ng-click="change_canvas_size(8)">
         Download
        </div>
     </div>
-    <div class="sidenav row" style="margin-top:1%;background-color:transparent">
+    <div class="sidenav row" style="margin-top:1%;background-color:transparent;position:fixed">
        <div align="left " style="width:20%; display: table-cell;">
             <ul style="position:fixed;width:10%;float:left;background-color:#0c223f;margin-left:0px;">
-              <li> <a href="#"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Images</p></a></li>
-              <li>  <a href="#"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Layouts</p></a></li>
-              <li>  <a href="#"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Fonts</p></a></li>
-              <li>  <a href="#"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Save</p></a></li>
-              <li>  <a href="#"><img  src="{% static 'svg/textcolor.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Colors</p></a></li>
-              <li>  <a href="#"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /><p> ???? </p></a></li>
+              <li> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Layouts</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Images</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Fonts</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Logo</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/textcolor.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Colors</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Save </p></a></li>
             </ul>
-            <ul style="position:fixed;width:10%;margin-left:10%;float:right;background-color:#1e345d;">
-              <li ng-repeat="render in renderArray">{[render]}</li>
+            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white">
+              <li><table><tr><td><button ng-click="craftcloud_item()">Images</button></td><td><button ng-click="uploaded_item()">Uploaded</button></td></tr></table></li>
+              <li ng-bind-html="html_test"></li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
             </ul>
         </div>
         
-          <div style="width:60%;background-color:transparent" align="right">
-                <canvas>I am the cool canvas</canvas>
+          <div style="width:75%;background-color:transparent;margin-left:50%" id="canvasParent" align="right">
+                <canvas id="adcanvas" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : canvas_color }">I am the cool canvas</canvas>
+                <!--<canvas id="zoomcanvas">I am the cool canvas</canvas>-->
+                <input type="text" id="maintext_line">
+                <input type="text" id="bodytext_line">
+                <input type="text" id="smalltext_line">
           </div>
     </div>
 
@@ -183,5 +216,6 @@ canvas
 </div>
     
   </body>
+
 
 </html>
