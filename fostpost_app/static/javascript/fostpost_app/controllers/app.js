@@ -4,9 +4,11 @@ var app = angular.module('angularjs-starter', ['ngResource','ngSanitize']);
         $interpolateProvider.endSymbol(']}');
     });
 
-app.controller('createCtrl', function($scope,$http,$sce) {
+app.controller('createCtrl', function($scope,$http,$sce,$window) {
   console.log("Inside create");
   //Initializations for Images and Logo
+  $scope.dummy="I am dummy";
+   $window.dummy = $scope.dummy; 
   $scope.image_sources=[];
   $scope.logo_source=[];
   $scope.image_positionsX=[];
@@ -15,11 +17,11 @@ app.controller('createCtrl', function($scope,$http,$sce) {
   $scope.image_sizesH=[];
   $scope.logo_sizeW=10;
   $scope.logo_sizeH=10;
-  $scope.background_r=0;
-  $scope.background_g=12;
-  $scope.background_b=100;
+  $scope.background_r=230;
+  $scope.background_g=221;
+  $scope.background_b=236;
   $scope.background_img="{% static 'images/placeholdergoog_360.jpg' %}"
-  var processingInstance1=new Processing(adcanvas,sketchProc);
+ 
   $scope.selected_item=1
   $scope.html_test=$sce.trustAsHtml("<img  src='{% static 'svg/layout.svg' %}' style='width: 50%;height:65%' align='middle' />")
   $scope.parentWidth=(document.getElementById("canvasParent")).clientWidth;
@@ -35,6 +37,7 @@ app.controller('createCtrl', function($scope,$http,$sce) {
   console.log($scope.googleSizes)
   $scope.changeItem=function(navbar_item)
   {
+
     $scope.selected_navbar_item=navbar_item
     $scope.change_subItems(navbar_item)
     console.log($scope.selected_navbar_item)
@@ -95,7 +98,8 @@ app.controller('createCtrl', function($scope,$http,$sce) {
     {
 
         $scope.canvas_width=$scope.parentWidth;
-        $scope.canvas_height=(220/440)*$scope.canvas_width;  
+        $scope.canvas_height=(220/440)*$scope.canvas_width; 
+        pjs.setup() 
 
     }
     if(ad_type==5)
@@ -137,25 +141,51 @@ app.controller('createCtrl', function($scope,$http,$sce) {
               xhr.open('GET', url);
               xhr.send();
         }
-       function sketchProc(processing) {
-        var background_PImage = new processing.PImage;
-         console.log($scope.background_img)
-        processing.setup=function()
-        {
-          background_PImage=processing.requestImage($scope.background_img)
-          processing.size($scope.canvas_width,$scope.canvas_height)
-          processing.background($scope.background_r,$scope.background_g,$scope.background_b)
-        }
-        processing.draw=function()
-        {
-          console.log("##")
-          processing.size($scope.canvas_width,$scope.canvas_height)
-          processing.background($scope.background_r,$scope.background_g,$scope.background_b)
-          processing.image(background_PImage,0,0,100,200)
 
-        }
+   
+    $scope.cx=100
+    $scope.cy=60
+    //var pjs = new Processing(c,sketchProc);
+    // function sketchProc(processing)
+    // {
+    //   processing.setup=function()
+    //   {
+    //      $('#adcanvas').css('width',$scope.canvas_width)
+    //         $('#adcanvas').css('height',$scope.canvas_height)
+    //         pjs.size($scope.canvas_width,$scope.canvas_height);
+    //         pjs.background($scope.background_r,$scope.background_g,$scope.background_b,1.0);
+    //         pjs.fill($scope.background_r,$scope.background_g,$scope.background_b)
+    //         pjs.rect(0,0,$scope.canvas_width,$scope.canvas_height)
+    //         pjs.draw()
+    //   }
+    // }
+   
+    //  pjs.draw = function() {
+    //       //background color
+    //       $('#adcanvas').css('width',$scope.canvas_width)
+    //       $('#adcanvas').css('height',$scope.canvas_height)
+    //       pjs.size($scope.canvas_width,$scope.canvas_height);
+    //       pjs.textFont("Arial",32)
+    //       pjs.text("I am the canvas",$scope.cx,$scope.cy)
+
+          
+    //     }
+
+
+    //   pjs.mousePressed=function()
+    //   {
+    //     console.log(" mouse Pressed")
+    //   }
+    //     pjs.setup()
+    //    $scope.addOnClick=function(event)
+    //    {
+    //       $('#adcanvas').css('width',$scope.canvas_width)
+    //         $('#adcanvas').css('height',$scope.canvas_height)
   
-  }
-  
+    //       $scope.cx=event.offsetX
+    //       $scope.cy=event.offsetY
+    //       pjs.setup()
+    //       pjs.draw()
+    //    }
   
 });
