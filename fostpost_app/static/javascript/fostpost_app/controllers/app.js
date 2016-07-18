@@ -9,12 +9,12 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   //Initializations for Images and Logo
   $scope.dummy="I am dummy";
    $window.dummy = $scope.dummy; 
-  $scope.image_sources=[];
+  $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
   $scope.logo_source=[];
-  $scope.image_positionsX=[];
-  $scope.image_positionsY=[];
-  $scope.image_sizesW=[];
-  $scope.image_sizesH=[];
+  $scope.image_positionsX=[0];
+  $scope.image_positionsY=[0];
+  $scope.image_sizesW=[1200];
+  $scope.image_sizesH=[628];
   $scope.logo_sizeW=10;
   $scope.logo_sizeH=10;
   $scope.background_r=230;
@@ -29,6 +29,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   console.log($scope.parentWidth)
   $scope.canvas_width=$scope.parentWidth;
   $scope.canvas_height=(628/1200)*$scope.canvas_width;
+  $scope.image_sizesW[0]=$scope.canvas_width;
+  $scope.image_sizesH[0]=$scope.canvas_height;
   $scope.canvas_color='#dfd333'
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
   $scope.facebookSizes={"Conversions": "1200x628", "Post Page Engagement": "1200x900", "Carousel": "600x600"};
@@ -145,8 +147,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
    
     $scope.cx=100
     $scope.cy=60
-    $scope.image_url=DJANGO_STATIC_URL+"images/fostpostword.png"
-    console.log($scope.image_url)
+    
+    
     var c=document.getElementById('adcanvas');
     var processingInstance1=new Processing(c,sketchProc);
     function sketchProc(processing) {
@@ -156,14 +158,14 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
 
         processing.size($scope.canvas_width,$scope.canvas_height)
         processing.background($scope.background_r,$scope.background_g,$scope.background_b)
-        background_image=processing.requestImage($scope.image_url)
+        background_image=processing.requestImage($scope.image_sources[0])
         console.log(background_image)
-        
+
 
       }
       processing.draw=function()
       {
-        processing.image(background_image,0,0,100,100)
+        processing.image(background_image,$scope.image_positionsX[0],$scope.image_positionsY[0],$scope.image_sizesW[0],$scope.image_sizesH[0])
       }
     }
   
