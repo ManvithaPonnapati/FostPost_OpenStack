@@ -166,6 +166,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
       processing.draw=function()
       {
         processing.image(background_image,$scope.image_positionsX[0],$scope.image_positionsY[0],$scope.image_sizesW[0],$scope.image_sizesH[0])
+        processing.text($scope.MainText,10,120)
+        processing.text($scope.SmallText,10,140)
+        processing.text($scope.BodyText,10,100)
       }
     }
   
