@@ -102,11 +102,15 @@ canvas
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js
 "></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.js"></script>
-   
-    
-  <body  style="margin-top: -8px;background-color:#F5F7FA;width:100%;margin-right:0">
-  <div id="wrapper">
+ <script src="{% static 'javascript/processing.js' %}"></script>
+     <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}"></script>
+
+ 
+     
+  </head>
+  
+  <body ng-app="angularjs-starter" style="margin-top: -8px;background-color:#F5F7FA;width:100%;margin-right:0">
+  <div ng-controller="createCtrl" id="wrapper">
 
     <!--Header Row-->
 
@@ -128,50 +132,50 @@ canvas
     </div>
 
     <div class="row" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
-       <div class="col-sm-2" >
+       <div class="col-sm-2" ng-click="change_canvas_size(1)">
 
             <select >
               <option value="1200x628" selected> Facebook </option>
-              <option value="{[value]}" > {[key]} {[value]}</option>
+              <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
        </div>
-        <div class="col-sm-2" >
+        <div class="col-sm-2" ng-click="change_canvas_size(2)">
             <select >
               <option value="300x600" selected> Google </option>
-              <option value="{[value]}" > {[key]} {[value]}</option>
+              <option ng-repeat="(key, value) in googleSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
        </div>
-        <div class="col-sm-2"  >
+        <div class="col-sm-2"  ng-click="change_canvas_size(3)">
         Twitter 
        </div>
-        <div class="col-sm-2" >
+        <div class="col-sm-2" ng-click="change_canvas_size(4)">
         Instagram
        </div>
-        <div class="col-sm-2" >
+        <div class="col-sm-2" ng-click="change_canvas_size(5)">
         Pinterest
        </div>
-       <div class="col-sm-2"  >
+       <div class="col-sm-2"  ng-click="change_canvas_size(6)">
         LinkedIn
        </div>
-        <div class="col-sm-2"  >
+        <div class="col-sm-2"  ng-click="change_canvas_size(7)">
         Custom
        </div>
-        <div class="col-sm-2" >
+        <div class="col-sm-2"  ng-click="change_canvas_size(8)">
         Download
        </div>
     </div>
     <div class="sidenav row" style="margin-top:1%;background-color:transparent;position:fixed">
        <div align="left " style="width:20%; display: table-cell;">
             <ul style="position:fixed;width:10%;float:left;background-color:#0c223f;margin-left:0px;">
-              <li> <a href="#"  ><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Layouts</p></a></li>
-              <li>  <a href="#" ><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Images</p></a></li>
-              <li>  <a href="#"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Fonts</p></a></li>
-              <li>  <a href="#" ><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Logo</p></a></li>
-              <li>  <a href="#" ><img  src="{% static 'svg/textcolor.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Colors</p></a></li>
-              <li>  <a href="#" ><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Save </p></a></li>
+              <li> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Layouts</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Images</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Fonts</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Logo</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/textcolor.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Colors</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Save </p></a></li>
             </ul>
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white">
-              <li><table><tr><td><button >Images</button></td><td><button >Uploaded</button></td></tr></table></li>
+              <li><table><tr><td><button ng-click="craftcloud_item()">Images</button></td><td><button ng-click="uploaded_item()">Uploaded</button></td></tr></table></li>
               <li ng-bind-html="html_test"></li>
               <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
               <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
@@ -200,7 +204,7 @@ canvas
         </div>
         
           <div style="width:75%;background-color:transparent;margin-left:50%" id="canvasParent" align="right">
-                <canvas id="adcanvas"  >I am the cool canvas</canvas>
+                <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : canvas_color }">I am the cool canvas</canvas>
                 <!--<canvas id="zoomcanvas">I am the cool canvas</canvas>-->
                 <input type="text" id="maintext_line">
                 <input type="text" id="bodytext_line">
@@ -211,10 +215,7 @@ canvas
 
 
 </div>
-   <script src="{% static 'javascript/fostpost_app/controllers/canvas_code.js' %}"></script>
- 
-  </head>
-   
+    
   </body>
 
 

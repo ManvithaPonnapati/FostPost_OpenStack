@@ -99,7 +99,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
 
         $scope.canvas_width=$scope.parentWidth;
         $scope.canvas_height=(220/440)*$scope.canvas_width; 
-        pjs.setup() 
+        
 
     }
     if(ad_type==5)
@@ -145,47 +145,21 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
    
     $scope.cx=100
     $scope.cy=60
-    //var pjs = new Processing(c,sketchProc);
-    // function sketchProc(processing)
-    // {
-    //   processing.setup=function()
-    //   {
-    //      $('#adcanvas').css('width',$scope.canvas_width)
-    //         $('#adcanvas').css('height',$scope.canvas_height)
-    //         pjs.size($scope.canvas_width,$scope.canvas_height);
-    //         pjs.background($scope.background_r,$scope.background_g,$scope.background_b,1.0);
-    //         pjs.fill($scope.background_r,$scope.background_g,$scope.background_b)
-    //         pjs.rect(0,0,$scope.canvas_width,$scope.canvas_height)
-    //         pjs.draw()
-    //   }
-    // }
-   
-    //  pjs.draw = function() {
-    //       //background color
-    //       $('#adcanvas').css('width',$scope.canvas_width)
-    //       $('#adcanvas').css('height',$scope.canvas_height)
-    //       pjs.size($scope.canvas_width,$scope.canvas_height);
-    //       pjs.textFont("Arial",32)
-    //       pjs.text("I am the canvas",$scope.cx,$scope.cy)
 
-          
-    //     }
+    var c=document.getElementById('adcanvas');
+    var processingInstance1=new Processing(c,sketchProc);
+    function sketchProc(processing) {
+      var background_image=new processing.PImage;
+      processing.setup=function()
+      {
+        processing.size($scope.canvas_width,$scope.canvas_height)
+        processing.background(background_r,background_g,background_b)
 
-
-    //   pjs.mousePressed=function()
-    //   {
-    //     console.log(" mouse Pressed")
-    //   }
-    //     pjs.setup()
-    //    $scope.addOnClick=function(event)
-    //    {
-    //       $('#adcanvas').css('width',$scope.canvas_width)
-    //         $('#adcanvas').css('height',$scope.canvas_height)
-  
-    //       $scope.cx=event.offsetX
-    //       $scope.cy=event.offsetY
-    //       pjs.setup()
-    //       pjs.draw()
-    //    }
+      }
+      processing.draw=function()
+      {
+        
+      }
+    }
   
 });
