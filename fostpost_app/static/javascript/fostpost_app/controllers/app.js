@@ -145,20 +145,25 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
    
     $scope.cx=100
     $scope.cy=60
-
+    $scope.image_url=DJANGO_STATIC_URL+"images/fostpostword.png"
+    console.log($scope.image_url)
     var c=document.getElementById('adcanvas');
     var processingInstance1=new Processing(c,sketchProc);
     function sketchProc(processing) {
       var background_image=new processing.PImage;
       processing.setup=function()
       {
+
         processing.size($scope.canvas_width,$scope.canvas_height)
-        processing.background(background_r,background_g,background_b)
+        processing.background($scope.background_r,$scope.background_g,$scope.background_b)
+        background_image=processing.requestImage($scope.image_url)
+        console.log(background_image)
+        
 
       }
       processing.draw=function()
       {
-        
+        processing.image(background_image,0,0,100,100)
       }
     }
   
