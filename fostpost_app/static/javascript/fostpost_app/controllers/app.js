@@ -21,7 +21,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.background_g=221;
   $scope.background_b=236;
   $scope.background_img="{% static 'images/placeholdergoog_360.jpg' %}"
- 
+  $scope.text_array=[]
+  $scope.text_x=[]
+  $scope.text_y=[]
+  $scope.text_font=[]
+  $scope.text_fontSize=[]
   $scope.selected_item=1
   $scope.html_test=$sce.trustAsHtml("<img  src='{% static 'svg/layout.svg' %}' style='width: 50%;height:65%' align='middle' />")
   $scope.parentWidth=(document.getElementById("canvasParent")).clientWidth;
