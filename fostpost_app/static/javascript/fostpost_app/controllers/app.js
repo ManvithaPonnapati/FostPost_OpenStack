@@ -7,8 +7,11 @@ var app = angular.module('angularjs-starter', ['ngResource','ngSanitize']);
 app.controller('createCtrl', function($scope,$http,$sce,$window) {
   console.log("Inside create");
   //Initializations for Images and Logo
+  var image_mouseFlag=0
+  var logo_mouseFlag=0
+  var text_mouseFlags=[]
   $scope.dummy="I am dummy";
-   $window.dummy = $scope.dummy; 
+  $window.dummy = $scope.dummy; 
   $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
   $scope.logo_source=[];
   $scope.image_positionsX=[0];
@@ -22,10 +25,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.background_b=236;
   $scope.background_img="{% static 'images/placeholdergoog_360.jpg' %}"
   $scope.text_array=[]
-  $scope.text_x=[]
-  $scope.text_y=[]
-  $scope.text_font=[]
-  $scope.text_fontSize=[]
+  $scope.text_x=[20,20,20]
+  $scope.text_y=[100,140,180]
+  $scope.text_font=["Arial"]
+  $scope.text_fontSize=["32","16","8"]
   $scope.selected_item=1
   $scope.html_test=$sce.trustAsHtml("<img  src='{% static 'svg/layout.svg' %}' style='width: 50%;height:65%' align='middle' />")
   $scope.parentWidth=(document.getElementById("canvasParent")).clientWidth;
@@ -152,7 +155,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     $scope.cx=100
     $scope.cy=60
     
-    
+    var images_dragX=[0]
+    var images_dragY=[0]
     var c=document.getElementById('adcanvas');
     var processingInstance1=new Processing(c,sketchProc);
     function sketchProc(processing) {
@@ -169,10 +173,37 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
       }
       processing.draw=function()
       {
+        processing.background($scope.background_r,$scope.background_g,$scope.background_b)
         processing.image(background_image,$scope.image_positionsX[0],$scope.image_positionsY[0],$scope.image_sizesW[0],$scope.image_sizesH[0])
-        processing.text($scope.MainText,10,120)
-        processing.text($scope.SmallText,10,140)
-        processing.text($scope.BodyText,10,100)
+        processing.text($scope.MainText,$scope.text_x[0],$scope.text_y[0])
+        processing.text($scope.SmallText,$scope.text_x[1],$scope.text_y[1])
+        processing.text($scope.BodyText,$scope.text_x[2],$scope.text_y[2])
+
+      }
+      processing.mousePressed=function()
+      {
+        var mx=processing.mouseX;
+        var my=processing.mouseY;
+        
+        if(processing.mouseX>$scope.image_positionsX[0] && processing.mouseX < ($scope.image_positionsX[0]+$scope.image_sizesW[0]) && processing.mouseY > $scope.image_positionsY[0] && processing.mouseY<($scope.image_positionsY[0]+$scope.image_sizesH[0]))
+        {
+          $scope.image_mouseFlag=1
+          images_dragX[0]=$scope.image_positionsX[0]-mx
+          images_dragY[0]=$scope.image_positionsY[0]-my
+        }
+
+      }
+      processing.mouseDragged=function()
+      {
+          if($scope.image_mouseFlag==1)
+          {
+            $scope.image_positionsX[0]=processing.mouseX+images_dragX[0]
+            $scope.image_positionsY[0]=processing.mouseY+images_dragY[0]
+          }
+      }
+      processing.mouseReleased=function()
+      {
+        $scope.image_mouseFlag=0
       }
     }
   
