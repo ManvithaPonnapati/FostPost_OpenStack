@@ -157,23 +157,57 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
          
           
       }
-      if(navbar_item==5)
+      if(navbar_item==2)
       {
-            console.log("I am going to go get dominant colors")
-            $scope.toDataUrl('/fostpost_app/static/images/placeholdergoog_360.jpg', function(base64Img) {
-                console.log(base64Img);
-            });
-            $http({
+         console.log("I am going to display images")
+         $http({
                 method: 'GET',
                 url: '/api/get_colors'
                     }).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
+    
                 console.log(response)
                     }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
                 });
+         
+          
+      }
+      if(navbar_item==3)
+      {
+         console.log("I am going to display fonts")
+         
+          
+      }
+      if(navbar_item==4)
+      {
+         console.log("I am going to display logo")
+         
+          
+      }
+      if(navbar_item==5)
+      {
+         console.log("I am going to display colors")
+         
+          
+      }
+      if(navbar_item==6)
+      {
+    //   {
+    //         console.log("I am going to go get dominant colors")
+    //         $scope.toDataUrl('/fostpost_app/static/images/placeholdergoog_360.jpg', function(base64Img) {
+    //             console.log(base64Img);
+    //         });
+    //         $http({
+    //             method: 'GET',
+    //             url: '/api/get_colors'
+    //                 }).then(function successCallback(response) {
+    // // this callback will be called asynchronously
+    // // when the response is available
+    //             console.log(response)
+    //                 }, function errorCallback(response) {
+    // // called asynchronously if an error occurs
+    // // or server returns response with an error status.
+    //             });
       }
                                   
   }

@@ -178,32 +178,23 @@ canvas
               <li>  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/textcolor.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Colors</p></a></li>
               <li>  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Save </p></a></li>
             </ul>
-            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white">
-              <li><table><tr><td><button ng-click="craftcloud_item()">Images</button></td><td><button ng-click="uploaded_item()">Uploaded</button></td></tr></table></li>
-              <li ng-bind-html="html_test"></li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> </li>
+            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
+              <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()">Uploaded</div></li>
+              <li><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout_4.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout_5.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout_6.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout_7.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+
+            </ul>
+
+            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2">
+              <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()">Uploaded</div></li>
+              <li ng-repeat="i in imageArray"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li><img  src={{i}} style="width: 100%;height:100%" align="middle" /> </li>
             </ul>
         </div>
         
