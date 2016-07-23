@@ -127,7 +127,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   {
     $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
     wrapWidths[i]=copywidth;
-    console.log(wrapWidths)
+    
     textdragx[i]=0;
     textdragy[i]=0;
   }
@@ -867,8 +867,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         if(TextHandles[2]==1&&layout3_extra==0)
         { dragged=1;
           document.body.style.cursor="w-resize"
-          ////console.log("fgdfs")
-          console.log(wrapWidths,selectedLineofText)
+  
           wrapWidths[selectedLineofText-1]+=processing.mouseX-processing.pmouseX;
           TextHandles[0]=0;
           TextHandles[1]=0;
