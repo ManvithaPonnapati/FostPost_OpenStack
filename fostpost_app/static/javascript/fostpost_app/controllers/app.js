@@ -304,9 +304,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         
       processing.size($scope.canvas_width,parseInt($scope.canvas_height))
       processing.fill(0,14,23)
-      TextArray[0]=$scope.MainText+"Text 1"
-      TextArray[1]=$scope.BodyText+"Text 2"
-      TextArray[2]=$scope.SmallText+"Text 3"
+      TextArray[0]=$scope.MainText
+      TextArray[1]=$scope.BodyText
+      TextArray[2]=$scope.SmallText
       $('#adcanvas').css('width',$scope.canvas_width);
       $('#adcanvas').css('height',parseInt($scope.canvas_height));
       adcanvas.width=$scope.canvas_width;
@@ -394,83 +394,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
       }
       for(i=0;i<TextArray.length;i++)
       {
-         var selectory=selectors[i][1];
-         var selectorx=selectors[i][0];
-         var words=TextArray[i].split(" ");
-         
-         var wordlengths=[];
-         
-         copywidth=processing.textWidth(TextArray[0])+30
-         textlengths[i]=processing.textWidth(TextArray[i])
-         
-         for(j=0;j<words.length;j++)
-         {
-          
-           wordlengths[j]=processing.textWidth(words[j]);
-         }
-         var spacelength=processing.textWidth(" ")
-         var stringholder=[]
-         var sum=0;
-      var strings=[]
-      var dumbstr="";
-      var count=0;
-        var tempword=""
-        
-         for(j=0;j<words.length;j++)
-    {
-        sum=sum+wordlengths[j]+spacelength;
-          dumbstr=tempword+dumbstr+words[j]+" "
-        if(sum>wrapWidths[i])
-        {
-        
-          dumbstr=(dumbstr.trim())
-            dumbstr=(dumbstr.substring(0, dumbstr.lastIndexOf(" ")))
-          strings[count]=dumbstr;
-          dumbstr="";
-          count=count+1
-          dumbstr=words[j]+" ";
-            sum=wordlengths[j]+spacelength;
-        }
-        
-     }
-     strings[count]=dumbstr
-       var texttempy=selectory;
-       
-       var stringlengths=[];
-       var copyy=selectory;
-       for(k=0;k<strings.length;k++)
-       {
-       
-        processing.textAlign(processing.LEFT,processing.TOP)
-        processing.fill(text1r,text1g,text1b)
-        processing.text(TextArray[0],selectorx,texttempy)
-        stringlengths[k]=processing.textWidth(strings[k]);
-        texttempy=texttempy+fontArray[i];
-       
-       }
-      
-    
-       var addtoy=(strings.length)*fontArray[i];
-       
-       var selectorw=Math.max.apply(Math,stringlengths);
-       
-          if(HandlesArray[i]==1)
-       {
-        processing.fill(0,0);
-        
-        processing.rect(selectorx,copyy,selectorw,addtoy);
-        processing.fill(255)
-        processing.stroke(233,72,44)
-        processing.strokeWeight(4)
-        processing.line(selectorx+selectorw,copyy,selectorx+selectorw,copyy+addtoy)
-        processing.fill(233,72,44)
-        processing.image(sizearrow,selectorx+selectorw,copyy+addtoy,20,20)
-        processing.ellipse(selectorx+selectorw,copyy+addtoy/2,10,10)
-        processing.image(delButton,selectorx+selectorw,copyy-20,20,20)
-             }
-       selectory=selectory+addtoy;
-       selectors[i]=[selectorx,copyy,selectorw,addtoy]
-       totalarea=totalarea+textlengths[i]*fontArray[i];
+        processing.textFont("Helvetica",$scope.text_fontSize[i])
+        processing.text(TextArray[i],$scope.text_x[i],$scope.text_y[i])
       }
         
     processing.fill(233,72,44)
@@ -480,7 +405,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         var x = processing.lerp(dottedx1, dottedx2, i/50.0);
 
         var y = processing.lerp(dottedy1, dottedy2, i/50.0);
-      var x1=processing.lerp(dottedx11, dottedx21, i/50.0);
+          var x1=processing.lerp(dottedx11, dottedx21, i/50.0);
       var y1=processing.lerp(dottedy11, dottedy21, i/50.0);
       processing.point(x1, y1);
       processing.point(x,y)
