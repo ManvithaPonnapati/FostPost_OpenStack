@@ -446,8 +446,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         processing.text(TextArray[0],selectorx,texttempy)
         stringlengths[k]=processing.textWidth(strings[k]);
         texttempy=texttempy+fontArray[i];
-        console.log("I am printing Text")
-        console.log(strings[k])
+       
        }
       
     
