@@ -25,10 +25,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var TextHandles=[];
   var textdragx=[];
   var textdragy=[]
-  var fontArray=[];
+  $scope.text_fontSize=[];
   var wrapWidths=[];
   var addLogo=0;
-  var copywidth=0;
+  var copywidth=$scope.canvas_width;
   var delText=0;
   var delLogo=0;
   var delLogoX=0;
@@ -55,7 +55,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var text1b=0;
   for(i=0;i<TextArray.length;i++)
   {
-    fontArray[i]=parseInt($scope.canvas_height)*0.08;
+    $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
     wrapWidths[i]=copywidth;
     ////console.log(wrapWidths)
     textdragx[i]=0;
@@ -88,9 +88,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   wrapWidths[2]=copywidth;
   textdragx[2]=0;
   textdragy[2]=0;
-  fontArray[0]=0.1*parseInt($scope.canvas_height)
-  fontArray[1]=0.08*parseInt($scope.canvas_height)
-  fontArray[2]=0.05*parseInt($scope.canvas_height)
+  $scope.text_fontSize[0]=0.1*parseInt($scope.canvas_height)
+  $scope.text_fontSize[1]=0.08*parseInt($scope.canvas_height)
+  $scope.text_fontSize[2]=0.05*parseInt($scope.canvas_height)
   $scope.addMore=0
 
   $scope.addLogo=0
@@ -127,6 +127,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.canvas_height=(628/1200)*$scope.canvas_width;
   $scope.image_sizesW[0]=$scope.canvas_width;
   $scope.image_sizesH[0]=$scope.canvas_height;
+  $scope.MainText=" "
+  $scope.SmallText=" "
+  $scope.BodyText=" "
   $scope.canvas_color='#dfd333'
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
   $scope.facebookSizes={"Conversions": "1200x628", "Post Page Engagement": "1200x900", "Carousel": "600x600"};
@@ -394,8 +397,75 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
       }
       for(i=0;i<TextArray.length;i++)
       {
-        processing.textFont("Helvetica",$scope.text_fontSize[i])
-        processing.text(TextArray[i],$scope.text_x[i],$scope.text_y[i])
+        var selectory=selectors[i][1];
+        var selectorx=selectors[i][0];
+        var words=TextArray[i].split(" ");
+        var wordlengths=[];
+        for(j=0;j<words.length;j++)
+        {
+          processing.textFont("Helvetica",$scope.text_fontSize[i])
+          wordlengths[j]=processing.textWidth(words[j]);
+        }
+        var spacelength=processing.textWidth(" ")
+        var stringholder=[]
+        var sum=0;
+        var strings=[]
+        var dumbstr="";
+        var count=0;
+        var tempword=""
+        for(j=0;j<words.length;j++)
+        {
+          sum=sum+wordlengths[j]+spacelength;
+          dumbstr=tempword+dumbstr+words[j]+" "
+          if(sum>wrapWidths[i])
+            { 
+        
+                dumbstr=(dumbstr.trim())
+                dumbstr=(dumbstr.substring(0, dumbstr.lastIndexOf(" ")))
+                strings[count]=dumbstr;
+                dumbstr="";
+                count=count+1
+                dumbstr=words[j]+" ";
+                sum=wordlengths[j]+spacelength;
+            }
+        
+        }
+        strings[count]=dumbstr
+       var texttempy=selectory;
+       
+       var stringlengths=[];
+       var copyy=selectory;
+       for(k=0;k<strings.length;k++)
+       {
+       
+        processing.textAlign(processing.LEFT,processing.TOP)
+        processing.fill(text1r,text1g,text1b)
+        processing.textFont("fontfamily",$scope.text_fontSize[i])
+        processing.text(strings[k],selectorx,texttempy)
+        stringlengths[k]=processing.textWidth(strings[k]);
+        texttempy=texttempy+$scope.text_fontSize[i];
+       }
+        var addtoy=(strings.length)*$scope.text_fontSize[i];
+       
+       var selectorw=Math.max.apply(Math,stringlengths);
+       
+          if(HandlesArray[i]==1)
+       {
+        processing.fill(0,0);
+        
+        processing.rect(selectorx,copyy,selectorw,addtoy);
+        processing.fill(255)
+        processing.stroke(233,72,44)
+        processing.strokeWeight(4)
+        processing.line(selectorx+selectorw,copyy,selectorx+selectorw,copyy+addtoy)
+        processing.fill(233,72,44)
+        processing.image(sizearrow,selectorx+selectorw,copyy+addtoy,20,20)
+        processing.ellipse(selectorx+selectorw,copyy+addtoy/2,10,10)
+        processing.image(delButton,selectorx+selectorw,copyy-20,20,20)
+             }
+       selectory=selectory+addtoy;
+       selectors[i]=[selectorx,copyy,selectorw,addtoy]
+       
       }
         
     processing.fill(233,72,44)
@@ -432,7 +502,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
           
             wrapWidths[i]=0.75*parseInt($scope.canvas_width);
             selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[0][1]+numberlines*fontArray[0]
+            selectors[i][1]=selectors[0][1]+numberlines*$scope.text_fontSize[0]
             }
         }
         
@@ -469,14 +539,14 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         if(textlen>wrapWidths[0]){
         selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
         }
-        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*fontArray[0])/2
+        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
         ////console.log(selectors[0][0])
         if(TextArray.length>1){
         for(i=1;i<TextArray.length;i++){
             
             wrapWidths[i]=0.9*parseInt($scope.canvas_width);
             selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[i-1][1]+numberlines*fontArray[i-1];
+            selectors[i][1]=selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
             }
         }
         
@@ -525,14 +595,14 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         if(textlen>wrapWidths[0]){
         selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
         }
-        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*fontArray[0])/2
+        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
         ////console.log(selectors[0][0])
         if(TextArray.length>1){
         for(i=1;i<TextArray.length;i++){
             
             wrapWidths[i]=0.9*parseInt($scope.canvas_width);
             selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[i-1][1]+numberlines*fontArray[i-1];
+            selectors[i][1]=selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
             }
         }
         
@@ -639,7 +709,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
           
             textdragx[i]=sx-processing.mouseX;
                 textdragy[i]=sy-processing.mouseY;
-            inputBox.value=TextArray[selectedLineofText-1]
+          
             
             LogoSizeDrag=0
             MainImage=0;
@@ -759,19 +829,19 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
            lerpFlag=0
           if(processing.mouseX>processing.pmouseX && processing.mouseY>processing.pmouseY)
           {
-            if(0.08*parseInt($scope.canvas_height)<fontArray[selectedLineofText-1]<0.25*parseInt($scope.canvas_height))
+            if(0.08*parseInt($scope.canvas_height)<$scope.text_fontSize[selectedLineofText-1]<0.25*parseInt($scope.canvas_height))
           {
           
-          fontArray[selectedLineofText-1]+=0.02*fontArray[selectedLineofText-1];
+          $scope.text_fontSize[selectedLineofText-1]+=0.02*$scope.text_fontSize[selectedLineofText-1];
           wrapWidths[selectedLineofText-1]+=0.02*wrapWidths[selectedLineofText-1]
           ////console.log("Increasing")
           }
           }
           if(processing.mouseX<processing.pmouseX && processing.mouseY<processing.pmouseY)
           {
-            if(0.08*parseInt($scope.canvas_height)<fontArray[selectedLineofText-1]<0.25*parseInt($scope.canvas_height))
+            if(0.08*parseInt($scope.canvas_height)<$scope.text_fontSize[selectedLineofText-1]<0.25*parseInt($scope.canvas_height))
           {
-          fontArray[selectedLineofText-1]-=0.02*fontArray[selectedLineofText-1];
+          $scope.text_fontSize[selectedLineofText-1]-=0.02*$scope.text_fontSize[selectedLineofText-1];
           wrapWidths[selectedLineofText-1]-=0.02*wrapWidths[selectedLineofText-1]
           
           }
