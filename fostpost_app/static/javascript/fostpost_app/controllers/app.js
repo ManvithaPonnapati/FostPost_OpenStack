@@ -10,6 +10,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var image_mouseFlag=0
   var logo_mouseFlag=0
   var text_mouseFlags=[0,0,0]
+
   var dragging=0
   var originalW=600
   var originalH=314
@@ -25,10 +26,13 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var TextHandles=[];
   var textdragx=[];
   var textdragy=[]
+  var selectedLineofText=1
   $scope.text_fontSize=[];
-  var wrapWidths=[];
+  var wrapWidths=[0,0,0];
   var addLogo=0;
-  var copywidth=$scope.canvas_width;
+  
+  
+
   var delText=0;
   var delLogo=0;
   var delLogoX=0;
@@ -53,25 +57,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var text1r=0;
   var text1g=0;
   var text1b=0;
-  for(i=0;i<TextArray.length;i++)
-  {
-    $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
-    wrapWidths[i]=copywidth;
-    ////console.log(wrapWidths)
-    textdragx[i]=0;
-    textdragy[i]=0;
-  }
-
-  for(i=0;i<5;i++)
-  {
-    TextHandles[i]=0;
-  }
-
-  for(l=0;l<HandlesArray.length;l++)
-  {
-    selectors[l][0]=20;
-    selectors[l][1]=20;
-  }
+  
 
 
   HandlesArray[1]=0;
@@ -131,11 +117,31 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.SmallText=" "
   $scope.BodyText=" "
   $scope.canvas_color='#dfd333'
+  var copywidth=$scope.canvas_width;
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
   $scope.facebookSizes={"Conversions": "1200x628", "Post Page Engagement": "1200x900", "Carousel": "600x600"};
   console.log($scope.facebookSizes)
   $scope.googleSizes={"Large Rectangle": "336x280", "Medium Rectangle": "300x250", "Leaderboard": "728x90","Half Page":"300x600","Large Mobile Banner":"320x100"};
   console.log($scope.googleSizes)
+  for(i=0;i<TextArray.length;i++)
+  {
+    $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
+    wrapWidths[i]=copywidth;
+    console.log(wrapWidths)
+    textdragx[i]=0;
+    textdragy[i]=0;
+  }
+
+  for(i=0;i<5;i++)
+  {
+    TextHandles[i]=0;
+  }
+
+  for(l=0;l<HandlesArray.length;l++)
+  {
+    selectors[l][0]=20;
+    selectors[l][1]=20;
+  }
   $scope.changeItem=function(navbar_item)
   {
 
@@ -386,15 +392,17 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
           mouseOverLogo=0;
         }
       var totalarea=0;
-    
+      
       for(h=0;h<TextArray.length;h++)
       {
+
         if(wrapWidths[h]>0.95*parseInt($scope.canvas_width))
         {
           wrapWidths[h]=0.95*parseInt($scope.canvas_width)
           
         }
       }
+     
       for(i=0;i<TextArray.length;i++)
       {
         var selectory=selectors[i][1];
@@ -824,6 +832,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
           
           
         var oldWrapWidths=wrapWidths
+        console.log(TextHandles)
         if(TextHandles[1]==1&&layout3_extra==0)
         {
            lerpFlag=0
@@ -859,11 +868,14 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         { dragged=1;
           document.body.style.cursor="w-resize"
           ////console.log("fgdfs")
+          console.log(wrapWidths,selectedLineofText)
           wrapWidths[selectedLineofText-1]+=processing.mouseX-processing.pmouseX;
           TextHandles[0]=0;
           TextHandles[1]=0;
           MainImage=0;
           LogoImage=0;
+         
+
           
         }
         if(TextHandles[0]==1&&layout3_extra==0 ){
