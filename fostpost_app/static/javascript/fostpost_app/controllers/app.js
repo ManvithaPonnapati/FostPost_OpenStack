@@ -20,9 +20,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var subrx=0
   var subry=0
   var TextHandles=[]
-  var TextArray=[]
+  var TextArray=["Main Text","Body Text","Small Text"]
   var selectors=[[]]
   var TextHandles=[];
+  var textdragx=[];
+  var textdragy=[]
   var fontArray=[];
   var wrapWidths=[];
   var addLogo=0;
@@ -47,6 +49,48 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   HandlesArray[0]=1;
   var lerpFlag=0
   var addMore=0
+  var textlengths=[]
+  var text1r=0;
+  var text1g=0;
+  var text1b=0;
+  for(i=0;i<TextArray.length;i++)
+  {
+    fontArray[i]=parseInt($scope.canvas_height)*0.08;
+    wrapWidths[i]=copywidth;
+    ////console.log(wrapWidths)
+    textdragx[i]=0;
+    textdragy[i]=0;
+  }
+
+  for(i=0;i<5;i++)
+  {
+    TextHandles[i]=0;
+  }
+
+  for(l=0;l<HandlesArray.length;l++)
+  {
+    selectors[l][0]=20;
+    selectors[l][1]=20;
+  }
+
+
+  HandlesArray[1]=0;
+  selectors[1]=[];
+  selectors[1][0]=40
+  selectors[1][1]=40
+  wrapWidths[1]=copywidth;
+  textdragx[1]=0;
+  textdragy[1]=0;
+  HandlesArray[2]=0;
+  selectors[2]=[];
+  selectors[2][0]=50
+  selectors[2][1]=50
+  wrapWidths[2]=copywidth;
+  textdragx[2]=0;
+  textdragy[2]=0;
+  fontArray[0]=0.1*parseInt($scope.canvas_height)
+  fontArray[1]=0.08*parseInt($scope.canvas_height)
+  fontArray[2]=0.05*parseInt($scope.canvas_height)
   $scope.addMore=0
 
   $scope.addLogo=0
@@ -260,7 +304,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         
       processing.size($scope.canvas_width,parseInt($scope.canvas_height))
       processing.fill(0,14,23)
-     
+      TextArray[0]=$scope.MainText+"Text 1"
+      TextArray[1]=$scope.BodyText+"Text 2"
+      TextArray[2]=$scope.SmallText+"Text 3"
       $('#adcanvas').css('width',$scope.canvas_width);
       $('#adcanvas').css('height',parseInt($scope.canvas_height));
       adcanvas.width=$scope.canvas_width;
@@ -317,12 +363,12 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
        }
       processing.fill(0)
       processing.stroke(0)
-      sessionStorage.logoX=im1x;
-      sessionStorage.logoY=im1y
-      sessionStorage.textx=rx;
-      sessionStorage.texty=ry;
-      sessionStorage.text2x=subrx;
-      sessionStorage.text2y=subry;
+      $scope.logoX=im1x;
+      $scope.logoY=im1y
+      $scope.textx=rx;
+      $scope.texty=ry;
+      $scope.text2x=subrx;
+      $scope.text2y=subry;
       
       
         if(processing.mouseX>parseInt(im1x) && processing.mouseX<parseInt(im1x)+parseInt(im1w) && processing.mouseY>parseInt(im1y) && processing.mouseY<parseInt(im1y)+parseInt(im1h))
@@ -397,9 +443,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
        
         processing.textAlign(processing.LEFT,processing.TOP)
         processing.fill(text1r,text1g,text1b)
-        processing.text(strings[k],selectorx,texttempy)
+        processing.text(TextArray[0],selectorx,texttempy)
         stringlengths[k]=processing.textWidth(strings[k]);
         texttempy=texttempy+fontArray[i];
+        console.log("I am printing Text")
+        console.log(strings[k])
        }
       
     
@@ -425,14 +473,6 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
        selectors[i]=[selectorx,copyy,selectorw,addtoy]
        totalarea=totalarea+textlengths[i]*fontArray[i];
       }
-    
-     
-
-      localStorage["TextArray"] = JSON.stringify(TextArray);
-    localStorage["ArrayX"]=JSON.stringify(selectors);
-    localStorage["fonts"]=JSON.stringify(fontArray);
-    localStorage["WrapW"]=JSON.stringify(wrapWidths);
-     
         
     processing.fill(233,72,44)
     if(lerpFlag==1){
@@ -622,7 +662,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     processing.getLogoHandle=function()
     {
           
-        online1=processing.requestImage(sessionStorage.source1);
+        online1=processing.requestImage($scope.source1);
         $scope.addLogo=0;
         ////console.log("here")
         im1h=0.25*parseInt($scope.canvas_height)
@@ -769,7 +809,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
           {
             delLogoX=0;
             online1=""
-              sessionStorage.source1=""
+              $scope.source1=""
             im1w=0;
             im1h=0;
             im1x=-100;
@@ -912,8 +952,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
           im1x=logodragx+processing.mouseX;
           im1y=logodragy+processing.mouseY;
           dragged=0;
-          sessionStorage.logoX=im1x;
-          sessionStorage.logoY=im1y;
+          $scope.logoX=im1x;
+          $scope.logoY=im1y;
           dottedx1=im1x
           dottedx2=im1x
           dottedy11=im1y
