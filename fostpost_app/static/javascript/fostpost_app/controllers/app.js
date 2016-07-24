@@ -275,6 +275,12 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
 
     }
   }
+  $scope.changeColor=function(index)
+  {
+    $scope.background_r = $scope.colors_Array[index][0]
+    $scope.background_g = $scope.colors_Array[index][1]
+    $scope.background_b = $scope.colors_Array[index][2]
+  }
   $scope.get_image_data = function(data){
     return 'data:image/jpeg;base64,' + data;
   }

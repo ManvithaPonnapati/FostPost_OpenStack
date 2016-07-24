@@ -203,7 +203,7 @@ canvas
             </ul>
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
             
-              <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ></li>
+              <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ng-click="changeColor($index)" ></li>
             </ul>
         </div>
         
