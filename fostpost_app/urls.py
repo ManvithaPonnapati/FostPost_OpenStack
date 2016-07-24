@@ -13,4 +13,6 @@ urlpatterns = patterns('',
     url(r'^create/',views.create,name='create'),
     url(r'^emails/', views.email_list, name='email_list'),
     url(r'^authenticate_email/', views.authenticate_email, name='authenticate_email'),
+
+    url(r'^api/unsplash_images/', views.unsplash_images, name='unsplash_images'),
 )

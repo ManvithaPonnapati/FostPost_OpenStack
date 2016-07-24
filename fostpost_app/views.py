@@ -13,6 +13,10 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.http import HttpResponse
+
+import urllib
+import urllib2
+import json
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
 
@@ -29,6 +33,13 @@ def font(request):
 def create(request):
 	return render(request,'fostpost_app/create.html')
 
+@csrf_exempt
+def unsplash_images(request):
+	image_array=[]
+	x=urllib2.urlopen("https://api.unsplash.com/photos/DbeEqK0iFRQ?client_id=b348e0941b9d614b3c439557924e2b5a2b14b896bc97f2211929d9ac9fcb8a91").read()
+	x=json.loads(x)
+	y=x['urls']['thumb']
+	return HttpResponse(y)
 
 @api_view(['GET'])
 def email_list(request):
