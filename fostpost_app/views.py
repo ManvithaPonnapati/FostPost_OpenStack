@@ -50,12 +50,11 @@ def unsplash_images(request):
 	y=[]
 	for i in range(0,len(x)):
 		y.append(x[i]['urls']['thumb'])
-
-	img_temp = NamedTemporaryFile(delete=True)
-	img_temp.write(urllib2.urlopen(x[0]['urls']['thumb']).read())
-	img_temp.flush()
-	im=Photo(email="rp493@cornell.edu")
-	im.file.save("test", File(img_temp))
+		img_temp = NamedTemporaryFile(delete=True)
+		img_temp.write(urllib2.urlopen(x[i]['urls']['thumb']).read())
+		img_temp.flush()
+		im=Photo(email="rp493@cornell.edu")
+		im.file.save("uploaded_"+str(i), File(img_temp))
 	return HttpResponse(json.dumps(y))
 
 @api_view(['GET'])

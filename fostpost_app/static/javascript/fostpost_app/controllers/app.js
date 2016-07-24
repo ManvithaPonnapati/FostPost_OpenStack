@@ -170,9 +170,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
                 console.log(array_sr[1])
                 for(i=0;i<10;i++)
                 {
-                  $scope.imageArray[i]=array_sr
+                  $scope.imageArray[i]="/static/images_uploaded/uploaded_"+i
                 }
-
+                  console.log($scope.imageArray)
 
                     }, function errorCallback(response) {
     
