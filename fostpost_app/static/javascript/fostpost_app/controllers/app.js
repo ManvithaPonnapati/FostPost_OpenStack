@@ -10,7 +10,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var image_mouseFlag=0
   var logo_mouseFlag=0
   var text_mouseFlags=[0,0,0]
-
+  var imageRatio=0;
   var dragging=0
   var originalW=600
   var originalH=314
@@ -57,7 +57,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   var text1r=0;
   var text1g=0;
   var text1b=0;
-  
+  var LogoRatio=1
 
 
   HandlesArray[1]=0;
@@ -89,6 +89,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.image_positionsY=[0];
   $scope.image_sizesW=[1200];
   $scope.image_sizesH=[628];
+  imageRatio=$scope.image_sizesW[0]/$scope.image_sizesH[0]
   $scope.logo_sizeW=10;
   $scope.logo_sizeH=10;
   $scope.logo_X=0
@@ -125,6 +126,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   console.log($scope.facebookSizes)
   $scope.googleSizes={"Large Rectangle": "336x280", "Medium Rectangle": "300x250", "Leaderboard": "728x90","Half Page":"300x600","Large Mobile Banner":"320x100"};
   console.log($scope.googleSizes)
+  var copySession=$scope.image_sources[0]
   for(i=0;i<TextArray.length;i++)
   {
     $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
@@ -144,7 +146,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     selectors[l][0]=20;
     selectors[l][1]=20;
   }
-
+  $scope.changeLayout =function(index)
+  {
+    $scope.layout=index
+  }
   $scope.changeItem=function(navbar_item)
   {
 
@@ -323,6 +328,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
             var delButton=new processing.PImage;
             var logoResize=new processing.PImage;
             var sizearrow=new processing.PImage;
+            var extra=new processing.PImage;
             processing.size(parseInt($scope.canvas_width),parseInt($scope.canvas_height))
             $('#adcanvas').css('width',parseInt($scope.canvas_width));
             $('#adcanvas').css('height',parseInt($scope.canvas_height));
@@ -364,6 +370,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
         delButton=processing.requestImage(DJANGO_STATIC_URL+"images/deletetextbox.png")
         logoResize=processing.requestImage(DJANGO_STATIC_URL+"svg/logosize.svg")
         sizearrow=processing.requestImage(DJANGO_STATIC_URL+"images/sizearrow.png")
+        extra=processing.requestImage(copySession);
         console.log(online)
 
 

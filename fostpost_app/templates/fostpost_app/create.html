@@ -180,14 +180,14 @@ canvas
             </ul>
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
               <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()">Uploaded</div></li>
-              <li><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout_4.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout_5.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout_6.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout_7.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(1)"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(2)"><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(3)"><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(4)"><img  src="{% static 'svg/layout_4.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(5)"><img  src="{% static 'svg/layout_5.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(6)"><img  src="{% static 'svg/layout_6.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(7)"><img  src="{% static 'svg/layout_7.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-click="changeLayout(8)"><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
 
             </ul>
 

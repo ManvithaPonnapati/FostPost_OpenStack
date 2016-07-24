@@ -2,7 +2,6 @@ from rest_framework import permissions, viewsets
 from rest_framework import status
 from rest_framework import generics
 from rest_framework.response import Response
-
 from rest_framework.renderers import JSONRenderer
 from fostpost_app.permissions import IsAccountOwner
 from django.views.decorators.csrf import csrf_exempt
@@ -29,8 +28,6 @@ from colorthief import ColorThief
 
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
-
-
 
 def index(request):
 	return render(request, 'fostpost_app/index.html')
