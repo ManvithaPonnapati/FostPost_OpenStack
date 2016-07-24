@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 class Photo(models.Model):
-    file = models.ImageField('Label', upload_to='/CraftCloud/FostPost/fostpost_app'+settings.STATIC_URL+'images_uploaded/')
+    file = models.ImageField('Label', upload_to='/CraftCloud/FostPost_OpenStack/fostpost_app'+settings.STATIC_URL+'images_uploaded/')
     email = models.CharField(max_length=40)
 
 
