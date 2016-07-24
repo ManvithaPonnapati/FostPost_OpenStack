@@ -13,10 +13,19 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.http import HttpResponse
-
+from fostpost_app.models import Photo
 import urllib
 import urllib2
 import json
+
+import requests
+
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
+import tempfile
+
+from django.core import files
+
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
 
@@ -36,9 +45,18 @@ def create(request):
 @csrf_exempt
 def unsplash_images(request):
 	image_array=[]
-	x=urllib2.urlopen("https://api.unsplash.com/photos/DbeEqK0iFRQ?client_id=b348e0941b9d614b3c439557924e2b5a2b14b896bc97f2211929d9ac9fcb8a91").read()
+	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query=office&client_id=b348e0941b9d614b3c439557924e2b5a2b14b896bc97f2211929d9ac9fcb8a91").read()
 	x=json.loads(x)
-	y=x['urls']['thumb']
+	y=[]
+	
+	for i in range(0,len(x)):
+		y.append(x[i]['urls']['thumb'])
+
+	img_temp = NamedTemporaryFile(delete=True)
+	img_temp.write(urllib2.urlopen(x[0]['urls']['thumb']).read())
+	img_temp.flush()
+	im=Photo(email="rp493@cornell.edu")
+	im.file.save("test", File(img_temp))
 	return HttpResponse(y)
 
 @api_view(['GET'])

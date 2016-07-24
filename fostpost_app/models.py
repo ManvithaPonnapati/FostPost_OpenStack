@@ -4,6 +4,10 @@ from django.utils import timezone
 from django.contrib.auth.models import BaseUserManager
 
 
+class Photo(models.Model):
+    file = models.ImageField('Label', upload_to='images/')
+    email = models.CharField(max_length=40)
+
 
 class CraftCloud_User(models.Model):
     email = models.CharField(max_length=30)
