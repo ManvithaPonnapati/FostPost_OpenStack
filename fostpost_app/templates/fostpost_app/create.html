@@ -201,6 +201,10 @@ canvas
              
               <li ng-repeat= "i in font_imageArray track by $index"><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
             </ul>
+            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
+            
+              <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ></li>
+            </ul>
         </div>
         
           <div style="width:75%;background-color:transparent;margin-left:50%" id="canvasParent" align="right">

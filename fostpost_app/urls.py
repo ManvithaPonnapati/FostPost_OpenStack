@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^authenticate_email/', views.authenticate_email, name='authenticate_email'),
 
     url(r'^api/unsplash_images/', views.unsplash_images, name='unsplash_images'),
+    url(r'^api/get_colors/', views.get_colors, name='get_colors'),
 )

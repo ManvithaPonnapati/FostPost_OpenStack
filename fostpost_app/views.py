@@ -17,14 +17,15 @@ from fostpost_app.models import Photo
 import urllib
 import urllib2
 import json
-
 import requests
-
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 import tempfile
-
 from django.core import files
+from colorthief import ColorThief
+from django.conf import settings
+from django.conf.urls.static import static
+from colorthief import ColorThief
 
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
@@ -57,6 +58,15 @@ def unsplash_images(request):
 		im.file.save("uploaded_"+str(i), File(img_temp))
 	return HttpResponse(json.dumps(y))
 
+@csrf_exempt
+def get_colors(request):
+	color_thief = ColorThief('/CraftCloud/FostPost/fostpost_app'+settings.STATIC_URL+'images/placeholderbackground.jpg')
+	# get the dominant color
+	dominant_color = color_thief.get_color(quality=1)
+	# build a color palette
+	palette = color_thief.get_palette(color_count=6)
+	return HttpResponse(json.dumps(palette))
+
 @api_view(['GET'])
 def email_list(request):
 	renderer_classes = (JSONRenderer, )
@@ -74,6 +84,7 @@ def authenticate_email(request):
 			new_user.save()
 			return_log="New User created"
 	return HttpResponse(return_log)
+
 
 
 

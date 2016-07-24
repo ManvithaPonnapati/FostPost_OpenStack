@@ -108,6 +108,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.html_test=$sce.trustAsHtml("<img  src='{% static 'svg/layout.svg' %}' style='width: 50%;height:65%' align='middle' />")
   $scope.parentWidth=(document.getElementById("canvasParent")).clientWidth;
   $scope.parentHeight=(document.getElementById("canvasParent")).clientHeight;
+  $scope.colors_Array=[]
   console.log($scope.parentWidth)
   $scope.canvas_width=$scope.parentWidth;
   $scope.canvas_height=(628/1200)*$scope.canvas_width;
@@ -196,6 +197,21 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
       if(navbar_item==5)
       {
          console.log("I am going to display colors")
+
+         $http({
+                method: 'GET',
+                url: '/api/get_colors/'
+                    }).then(function successCallback(response) {
+    
+                    $scope.colors_Array=(response.data)
+                    
+                    $scope.background_r=$scope.colors_Array[0][1]
+                    $scope.background_g=$scope.colors_Array[0][2]
+                    $scope.background_b=$scope.colors_Array[0][3]
+                    
+                    }, function errorCallback(response) {
+    
+                });
          
           
       }
