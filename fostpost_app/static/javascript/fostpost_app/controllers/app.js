@@ -200,10 +200,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
          console.log("I am going to display colors")
 
          $http({
-                method: 'GET',
-                url: '/api/get_colors/'
+                method: 'POST',
+                url: '/api/get_colors/',
+                data: $scope.image_sources[0],
                     }).then(function successCallback(response) {
-    
+                   console.log(response)
                     $scope.colors_Array=(response.data)
                     
                     $scope.background_r=$scope.colors_Array[0][1]
@@ -312,7 +313,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     $scope.changeImage=function(index)
   {
     console.log("I am here")
-    $scope.image_sources[0]=[DJANGO_STATIC_URL+"images_uploaded/uploaded_"+index];
+    $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index;
     processingInstance1.exit()
     processingInstance1=new Processing(c,sketchProc)
   }

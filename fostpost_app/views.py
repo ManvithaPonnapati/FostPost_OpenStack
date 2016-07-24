@@ -60,7 +60,8 @@ def unsplash_images(request):
 
 @csrf_exempt
 def get_colors(request):
-	color_thief = ColorThief('/CraftCloud/FostPost/fostpost_app'+settings.STATIC_URL+'images/placeholderbackground.jpg')
+	x=request.body
+	color_thief = ColorThief('/CraftCloud/FostPost/fostpost_app'+x)
 	# get the dominant color
 	dominant_color = color_thief.get_color(quality=1)
 	# build a color palette
