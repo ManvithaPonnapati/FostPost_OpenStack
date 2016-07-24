@@ -48,7 +48,6 @@ def unsplash_images(request):
 	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query=office&client_id=b348e0941b9d614b3c439557924e2b5a2b14b896bc97f2211929d9ac9fcb8a91").read()
 	x=json.loads(x)
 	y=[]
-	
 	for i in range(0,len(x)):
 		y.append(x[i]['urls']['thumb'])
 
