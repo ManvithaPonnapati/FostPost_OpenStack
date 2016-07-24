@@ -77,14 +77,8 @@ def email_list(request):
 
 @csrf_exempt
 def authenticate_email(request):
-	if request.method=='POST':
-		new_user=CraftCloud_User(email=request.body)
-		if(CraftCloud_User.objects.filter(email=request.body).exists()):
-			return_log="User Account already exists"
-		else:
-			new_user.save()
-			return_log="New User created"
-	return HttpResponse(return_log)
+	new_user=CraftCloud_User(email=request.body)
+	return HttpResponse("Success")
 
 
 
