@@ -116,6 +116,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.MainText=" "
   $scope.SmallText=" "
   $scope.BodyText=" "
+  $scope.font_imageArray=["/static/svg/font1.svg","/static/svg/font2.svg","/static/svg/font3.svg","/static/svg/font4.svg","/static/svg/font5.svg","/static/svg/font6.svg","/static/svg/font7.svg"]
   $scope.canvas_color='#dfd333'
   var copywidth=$scope.canvas_width;
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
