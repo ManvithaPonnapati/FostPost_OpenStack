@@ -56,7 +56,7 @@ def unsplash_images(request):
 	img_temp.flush()
 	im=Photo(email="rp493@cornell.edu")
 	im.file.save("test", File(img_temp))
-	return HttpResponse(y)
+	return HttpResponse(json.dumps(y))
 
 @api_view(['GET'])
 def email_list(request):

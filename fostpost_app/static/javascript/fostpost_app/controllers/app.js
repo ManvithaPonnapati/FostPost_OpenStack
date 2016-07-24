@@ -78,7 +78,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
   $scope.text_fontSize[1]=0.08*parseInt($scope.canvas_height)
   $scope.text_fontSize[2]=0.05*parseInt($scope.canvas_height)
   $scope.addMore=0
-
+  $scope.imageArray=[]
   $scope.addLogo=0
   $scope.zoomValue=0
   $scope.dummy="I am dummy";
@@ -166,6 +166,14 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
                     }).then(function successCallback(response) {
     
                 console.log(response)
+                array_sr=response.data
+                console.log(array_sr[1])
+                for(i=0;i<10;i++)
+                {
+                  $scope.imageArray[i]=array_sr
+                }
+
+
                     }, function errorCallback(response) {
     
                 });
