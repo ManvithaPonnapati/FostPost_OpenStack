@@ -144,6 +144,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     selectors[l][0]=20;
     selectors[l][1]=20;
   }
+
   $scope.changeItem=function(navbar_item)
   {
 
@@ -281,6 +282,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     $scope.background_g = $scope.colors_Array[index][1]
     $scope.background_b = $scope.colors_Array[index][2]
   }
+
   $scope.get_image_data = function(data){
     return 'data:image/jpeg;base64,' + data;
   }
@@ -307,6 +309,13 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     var images_dragY=[0]
     var c=document.getElementById('adcanvas');
     var processingInstance1=new Processing(c,sketchProc);
+    $scope.changeImage=function(index)
+  {
+    console.log("I am here")
+    $scope.image_sources[0]=[DJANGO_STATIC_URL+"images_uploaded/uploaded_"+index];
+    processingInstance1.exit()
+    processingInstance1=new Processing(c,sketchProc)
+  }
     function sketchProc(processing) {
             var online=new processing.PImage;
             var online1=new processing.PImage;
@@ -1122,5 +1131,5 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
 
       
     }
-  
+
 });
