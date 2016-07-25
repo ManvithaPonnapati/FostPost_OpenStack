@@ -18,7 +18,14 @@ var dottedy11=0
 var dottedy21=0
 var layout3_extra=0
 var HandlesArray=[];
-
+var facebook=1;
+var google=0;
+var instagram=0;
+var custom=0;
+var google336x280=0
+var google728x90=0
+var google300x600=0
+var google320x100=0
 HandlesArray[0]=1;
 
 sessionStorage.layout=0
@@ -1374,6 +1381,7 @@ function Google336x280()
     copySession=dummy.src;
      sessionStorage.imageWidth=(parseInt(dummy.width)/parseInt(dummy.height))*parseInt(sessionStorage.imageHeight)
     }
+  
   
   
    
