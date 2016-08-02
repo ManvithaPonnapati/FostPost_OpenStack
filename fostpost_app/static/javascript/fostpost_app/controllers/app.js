@@ -1366,7 +1366,10 @@ $scope.upload = function (file) {
                 url: '/api/drag_upload/',
                 data: urls,
                     }).then(function successCallback(response) {
-                   console.log(response)
+                    console.log(response.data)
+                    $scope.image_sources[0]="/static/images_uploaded/"+response.data
+                    processingInstance1.exit()
+                    processingInstance1=new Processing(c,sketchProc)
                    
                     }, function errorCallback(response) {
     

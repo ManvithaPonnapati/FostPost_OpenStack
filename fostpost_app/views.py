@@ -66,8 +66,8 @@ def drag_upload(request):
 	img_temp = NamedTemporaryFile(delete=True)
 	img_temp.write(image_data)
 	img_temp.flush()
-	im.file.save("up"+str(1), File(img_temp))
-	return HttpResponse("1")
+	im.file.save("up"+str(1)+".jpg", File(img_temp))
+	return HttpResponse("up"+str(1)+".jpg")
 
 
 def decode_base64(data):
