@@ -25,7 +25,8 @@ from colorthief import ColorThief
 from django.conf import settings
 from django.conf.urls.static import static
 from colorthief import ColorThief
-
+import base64
+from base64 import b64decode
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
 
@@ -54,6 +55,32 @@ def unsplash_images(request):
 		im=Photo(email="rp493@cornell.edu")
 		im.file.save("uploaded_"+str(i), File(img_temp))
 	return HttpResponse(json.dumps(y))
+
+@csrf_exempt
+def drag_upload(request):
+	x = request.body
+	image_base64 = x.split('base64,', 1 )
+	image_base64[1] = image_base64[1].encode('utf-8').strip()
+	image_data = b64decode(image_base64[1])
+	im=Photo(email="rp493@cornell.edu")
+	img_temp = NamedTemporaryFile(delete=True)
+	img_temp.write(image_data)
+	img_temp.flush()
+	im.file.save("up"+str(1), File(img_temp))
+	return HttpResponse("1")
+
+
+def decode_base64(data):
+    """Decode base64, padding being optional.
+
+    :param data: Base64 data as an ASCII byte string
+    :returns: The decoded byte string.
+
+    """
+    missing_padding = len(data) % 4
+    if missing_padding != 0:
+        data += b'='* (4 - missing_padding)
+    return base64.decodestring(data)
 
 @csrf_exempt
 def get_colors(request):

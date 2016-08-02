@@ -1,11 +1,13 @@
-var app = angular.module('angularjs-starter', ['ngResource','ngSanitize']);
+var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload']);
  app.config(function($interpolateProvider) {
         $interpolateProvider.startSymbol('{[');
         $interpolateProvider.endSymbol(']}');
     });
 
-app.controller('createCtrl', function($scope,$http,$sce,$window) {
+app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   console.log("Inside create");
+  $scope.image = null;
+  $scope.imageFileName = '';
   var doww=1200;
   var dowh=628;
   var facebook=1;
@@ -326,6 +328,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window) {
     
     var images_dragX=[0]
     var images_dragY=[0]
+
     var c=document.getElementById('adcanvas');
     var processingInstance1=new Processing(c,sketchProc);
     $scope.changeImage=function(index)
@@ -1355,4 +1358,20 @@ $scope.download_canvas=function()
 {
   downloadnow=1
 }
+  //Adding drop and drag capabilities for uploading image onto the canvas
+$scope.upload = function (file) {
+       Upload.base64DataUrl(file).then(function(urls){
+            $http({
+                method: 'POST',
+                url: '/api/drag_upload/',
+                data: urls,
+                    }).then(function successCallback(response) {
+                   console.log(response)
+                   
+                    }, function errorCallback(response) {
+    
+                });
+       });
+    };
 });
+
