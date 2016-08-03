@@ -27,6 +27,11 @@ from django.conf.urls.static import static
 from colorthief import ColorThief
 import base64
 from base64 import b64decode
+import numpy as np
+import cv2
+from matplotlib import pyplot as plt
+
+
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
 
@@ -65,9 +70,26 @@ def drag_upload(request):
 	im=Photo(email="rp493@cornell.edu")
 	img_temp = NamedTemporaryFile(delete=True)
 	img_temp.write(image_data)
+	
+
 	img_temp.flush()
 	im.file.save("up"+str(1)+".jpg", File(img_temp))
-	return HttpResponse("up"+str(1)+".jpg")
+	img = cv2.imread('/CraftCloud/FostPost/fostpost_app/static/images_uploaded/up1.jpg',0)
+	height, width = img.shape[:2]
+	# Initiate STAR detector
+	orb = cv2.ORB(nfeatures=6000,scaleFactor=1.2)
+
+	# find the keypoints with ORB
+	kp = orb.detect(img,None)
+
+	# compute the descriptors with ORB
+	kp, des = orb.compute(img, kp)
+	x=[]
+	y=[]
+	for keyPoint in kp:
+	    x.append(keyPoint.pt[0])
+	    y.append(keyPoint.pt[1])
+	return HttpResponse(json.dumps({'x':x,'y':y,'aw':width,'ah':height}))
 
 
 def decode_base64(data):

@@ -8,6 +8,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   console.log("Inside create");
   $scope.image = null;
   $scope.imageFileName = '';
+  $scope.x_point=[]
+  $scope.y_point=[]
+  $scope.aw=0
+  $scope.ah=0
   var doww=1200;
   var dowh=628;
   var facebook=1;
@@ -434,7 +438,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
           processing.image(online,imx,imy,imw,imh)
           }
     
-     
+      for(i=0;i<($scope.x_point.length);i++)
+      {
+        processing.stroke(123,0,222)
+        processing.point($scope.x_point[i],$scope.y_point[i])
+      }
       if($scope.layout==7)
       {
         $scope.addMore=0
@@ -461,7 +469,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
       $scope.texty=ry;
       $scope.text2x=subrx;
       $scope.text2y=subry;
-      
+
       
         if(processing.mouseX>parseInt(im1x) && processing.mouseX<parseInt(im1x)+parseInt(im1w) && processing.mouseY>parseInt(im1y) && processing.mouseY<parseInt(im1y)+parseInt(im1h))
         {
@@ -725,6 +733,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         $scope.zoomValue=0;
         $scope.layout=0
     }
+
+
+
+
       }
 //      processing.keyPressed=function()
 //      {
@@ -1366,8 +1378,12 @@ $scope.upload = function (file) {
                 url: '/api/drag_upload/',
                 data: urls,
                     }).then(function successCallback(response) {
-                    console.log(response.data)
-                    $scope.image_sources[0]="/static/images_uploaded/"+response.data
+                    console.log(response.data.x)
+                    $scope.x_point=response.data.x
+                    $scope.y_point=response.data.y
+                    $scope.aw=response.data.aw
+                    $scope.ah=response.data.ah
+                    $scope.image_sources[0]="/static/images_uploaded/"+"up1.jpg"
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
                    
