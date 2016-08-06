@@ -274,8 +274,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
     if(ad_type==4)
     {
 
-        $scope.canvas_width=$scope.parentWidth;
-        $scope.canvas_height=(220/440)*$scope.canvas_width; 
+        $scope.canvas_width=0.75*$scope.parentWidth;
+        $scope.canvas_height=$scope.canvas_width; 
         
 
     }
@@ -289,7 +289,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
     if(ad_type==6)
     {
 
-        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_width=0.65*$scope.parentWidth;
         $scope.canvas_height=(400/400)*$scope.canvas_width;  
 
     }
