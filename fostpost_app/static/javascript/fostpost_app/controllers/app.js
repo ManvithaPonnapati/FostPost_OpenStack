@@ -117,7 +117,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.background_g=221;
   $scope.background_b=236;
   $scope.online="{% static 'images/placeholdergoog_360.jpg' %}"
-  $scope.text_array=['','','']
+  $scope.text_array=['Drag your own image onto the canvas','','']
   $scope.text_x=[20,20,20]
   $scope.text_y=[100,140,180]
   $scope.text_font=["Arial"]
@@ -134,7 +134,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.canvas_height=(628/1200)*$scope.canvas_width;
   $scope.image_sizesW[0]=$scope.canvas_width;
   $scope.image_sizesH[0]=$scope.canvas_height;
-  $scope.MainText=" "
+  $scope.MainText="Drag your own image onto the canvas"
   $scope.SmallText=" "
   $scope.BodyText=" "
   $scope.font_imageArray=["/static/svg/font1.svg","/static/svg/font2.svg","/static/svg/font3.svg","/static/svg/font4.svg","/static/svg/font5.svg","/static/svg/font6.svg","/static/svg/font7.svg"]
@@ -168,6 +168,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.changeLayout =function(index)
   {
     $scope.layout=index
+    processingInstance1.exit();
+    processingInstance1=new Processing(c,sketchProc)
+
   }
   $scope.changeItem=function(navbar_item)
   {
