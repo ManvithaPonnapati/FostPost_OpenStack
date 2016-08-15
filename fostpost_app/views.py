@@ -73,7 +73,7 @@ def drag_upload(request):
 	
 
 	img_temp.flush()
-	im.file.save("up"+str(1)+".jpg", File(img_temp))
+	im.file.save("up1.jpg", File(img_temp))
 	# img = cv2.imread('/CraftCloud/FostPost/fostpost_app/static/images_uploaded/up1.jpg',0)
 	# height, width = img.shape[:2]
 	# # Initiate STAR detector
