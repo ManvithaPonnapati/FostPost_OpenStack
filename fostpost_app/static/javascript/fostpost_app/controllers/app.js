@@ -1381,12 +1381,9 @@ $scope.upload = function (file) {
                 url: '/api/drag_upload/',
                 data: urls,
                     }).then(function successCallback(response) {
-                    console.log(response.data.x)
-                    $scope.x_point=response.data.x
-                    $scope.y_point=response.data.y
-                    $scope.aw=response.data.aw
-                    $scope.ah=response.data.ah
-                    $scope.image_sources[0]="/static/images_uploaded/"+"up1.jpg"
+                    console.log(response.data.file_string)
+                    $scope.image_sources[0]=DJANGO_STATIC_URL+"images_uploaded/up1.jpg"
+                    console.log($scope.image_sources[0])
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
                    

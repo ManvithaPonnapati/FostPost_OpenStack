@@ -69,27 +69,12 @@ def drag_upload(request):
 	image_data = b64decode(image_base64[1])
 	im=Photo(email="rp493@cornell.edu")
 	img_temp = NamedTemporaryFile(delete=True)
+	temp_file_name = img_temp.name
 	img_temp.write(image_data)
-	
-
 	img_temp.flush()
-	im.file.save("up1.jpg", File(img_temp))
-	# img = cv2.imread('/CraftCloud/FostPost/fostpost_app/static/images_uploaded/up1.jpg',0)
-	# height, width = img.shape[:2]
-	# # Initiate STAR detector
-	# orb = cv2.ORB(nfeatures=6000,scaleFactor=1.2)
-
-	# # find the keypoints with ORB
-	# kp = orb.detect(img,None)
-
-	# # compute the descriptors with ORB
-	# kp, des = orb.compute(img, kp)
-	# x=[]
-	# y=[]
-	# for keyPoint in kp:
-	#     x.append(keyPoint.pt[0])
-	#     y.append(keyPoint.pt[1])
-	return HttpResponse(json.dumps({'x':[],'y':[],'aw':0,'ah':0}))
+	file_string = "up1.jpg"
+	im.file.save(file_string, File(img_temp))
+	return HttpResponse(json.dumps({'file_string':file_string}))
 
 
 def decode_base64(data):
