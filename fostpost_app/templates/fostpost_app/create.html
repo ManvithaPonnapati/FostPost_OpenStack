@@ -197,12 +197,12 @@ canvas
               <li> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Layouts</p></a></li>
               <li>  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Images</p></a></li>
               <li>  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Fonts</p></a></li>
-              <li>  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /> <p> Logo</p></a></li>
+              <li>  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" ngf-select="upload_logo($file)" /> <p> Logo</p></a></li>
               <li>  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/textcolor.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Colors</p></a></li>
               <li>  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:65%" align="middle" /><p> Save </p></a></li>
             </ul>
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
-              <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ngf-select="upload($file)">Uploaded</div></li>
+              <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" >Images</div><div style="float:right;width:49%;margin-left:49%;" >Uploaded</div></li>
               <li ng-click="changeLayout(1)"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
               <li ng-click="changeLayout(2)"><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
               <li ng-click="changeLayout(3)"><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
@@ -215,9 +215,11 @@ canvas
             </ul>
 
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2">
-              <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()">Uploaded</div></li>
+              <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()" ngf-select="upload($file)" >Uploaded</div></li>
              
-              <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" ><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" ng-show = "(unsplash==1)"  ><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" ng-show="(unsplash==0)" ng-style="{ 'width' : upload_width[$index],'height':upload_height[$index]}"><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
+              
             </ul>
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==3">
             

@@ -16,6 +16,7 @@ from fostpost_app.models import Photo
 import urllib
 import urllib2
 import json
+from PIL import Image
 import requests
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
@@ -63,6 +64,24 @@ def unsplash_images(request):
 
 @csrf_exempt
 def drag_upload(request):
+	json_body = json.loads(request.body)
+	x = json_body["urls"]
+	y = json_body["increment"]
+	image_base64 = x.split('base64,', 1 )
+	image_base64[1] = image_base64[1].encode('utf-8').strip()
+	image_data = b64decode(image_base64[1])
+	im=Photo(email="rp493@cornell.edu")
+	img_temp = NamedTemporaryFile(delete=True)
+	temp_file_name = img_temp.name
+	img_temp.write(image_data)
+	img_temp.flush()
+	file_string = "up"+str(y)+".jpg"
+	imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string)
+	im.file.save(file_string, File(img_temp))
+	return HttpResponse(json.dumps({'file_string':file_string,'w':imgx.size[0],'h':imgx.size[1]}))
+
+@csrf_exempt
+def upload_logo(request):
 	x = request.body
 	image_base64 = x.split('base64,', 1 )
 	image_base64[1] = image_base64[1].encode('utf-8').strip()
@@ -72,8 +91,10 @@ def drag_upload(request):
 	temp_file_name = img_temp.name
 	img_temp.write(image_data)
 	img_temp.flush()
-	file_string = "up1.jpg"
+
+	file_string = "logo_image.png"
 	im.file.save(file_string, File(img_temp))
+	#imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string,0)
 	return HttpResponse(json.dumps({'file_string':file_string}))
 
 

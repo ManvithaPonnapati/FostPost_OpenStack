@@ -6,6 +6,18 @@ var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFile
 
 app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   console.log("Inside create");
+  $scope.unsplash = 0
+  $scope.craftcloud_item = function ()
+  {
+    
+      $scope.unsplash = 1
+    
+  }
+  $scope.uploaded_item = function ()
+  {
+    $scope.unsplash = 0
+  }
+  $scope.array_image_incrementer = 1
   $scope.image = null;
   $scope.imageFileName = '';
   $scope.x_point=[]
@@ -103,7 +115,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.dummy="I am dummy";
   $window.dummy = $scope.dummy; 
   $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
-  $scope.logo_source=[];
+  $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
+  $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];
   $scope.image_positionsX=[0];
   $scope.image_positionsY=[0];
   $scope.image_sizesW=[1200];
@@ -146,6 +159,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.googleSizes={"Large Rectangle": "336x280", "Medium Rectangle": "300x250", "Leaderboard": "728x90","Half Page":"300x600","Large Mobile Banner":"320x100"};
   console.log($scope.googleSizes)
   var copySession=$scope.image_sources[0]
+  $scope.unsplash_width=[100]
+  $scope.unsplash_height=[100]
+  $scope.upload_width = [240,240,240,240,240,240,240,240,240]
+  $scope.upload_height = [100]
   for(i=0;i<TextArray.length;i++)
   {
     $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
@@ -340,10 +357,21 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
     var processingInstance1=new Processing(c,sketchProc);
     $scope.changeImage=function(index)
   {
+
+    if($scope.unsplash == 1)
+    {
     console.log("I am here")
     $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index;
     processingInstance1.exit()
     processingInstance1=new Processing(c,sketchProc)
+  }
+  else
+  {
+    console.log("I am here")
+    $scope.image_sources[0]="/static/images_uploaded/up"+index+".jpg";
+    processingInstance1.exit()
+    processingInstance1=new Processing(c,sketchProc)
+  }
   }
     function sketchProc(processing) {
             var online=new processing.PImage;
@@ -390,6 +418,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         processing.size($scope.canvas_width,$scope.canvas_height)
         processing.background($scope.background_r,$scope.background_g,$scope.background_b)
         online=processing.requestImage($scope.image_sources[0])
+        online1=processing.requestImage($scope.logo_source[0])
         delButton=processing.requestImage(DJANGO_STATIC_URL+"images/deletetextbox.png")
         logoResize=processing.requestImage(DJANGO_STATIC_URL+"svg/logosize.svg")
         sizearrow=processing.requestImage(DJANGO_STATIC_URL+"images/sizearrow.png")
@@ -1181,9 +1210,6 @@ function downloadcanvas()
     downloadnow=1;
     var imag1=new Image()
     var srimage1=new Image()
-    srimage1.src=$scope.image_sources[0]
-    imag1.src = jic.compress(srimage1,80,'jpg').src; 
-    $scope.image_sources[0]=imag1.src
     ProcessDown.exit();
     ProcessDown=new Processing(CanvasDown,SketchDown)
 }
@@ -1197,8 +1223,8 @@ function SketchDown(processing)
   var rt=(doww/parseInt($scope.canvas_width))
   var rt1=(dowh/parseInt($scope.canvas_height))
     console.log(rt,rt1)
-  var img1=processing.loadImage($scope.image_sources[0])
-  var log1=processing.loadImage(sessionStorage.source1)
+  var img1=processing.requestImage($scope.image_sources[0])
+  var log1=processing.requestImage($scope.logo_source[0])
   var im1x=parseInt(rt*$scope.image_positionsX[0])
   var im1y=parseInt(rt*$scope.image_positionsY[0])
   var im1w=parseInt(rt*$scope.image_sizesW[0])
@@ -1373,17 +1399,45 @@ $scope.download_canvas=function()
 {
   downloadnow=1
 }
+$scope.upload_logo = function (file) {
+  Upload.base64DataUrl(file).then(function(urls){
+            $http({
+                method: 'POST',
+                url: '/api/upload_logo/',
+                data: urls,
+                    }).then(function successCallback(response) {
+
+                   
+                    $scope.logo_source[0]=DJANGO_STATIC_URL+"images_uploaded/logo_image.png"
+                    processingInstance1.exit()
+                    processingInstance1=new Processing(c,sketchProc)
+                    $scope.unsplash = 1
+                   
+                    }, function errorCallback(response) {
+    
+                });
+       });
+  }
   //Adding drop and drag capabilities for uploading image onto the canvas
 $scope.upload = function (file) {
        Upload.base64DataUrl(file).then(function(urls){
             $http({
                 method: 'POST',
                 url: '/api/drag_upload/',
-                data: urls,
+                data: {"urls":urls, "increment":$scope.array_image_incrementer},
                     }).then(function successCallback(response) {
                     console.log(response.data.file_string)
-                    $scope.image_sources[0]=DJANGO_STATIC_URL+"images_uploaded/up1.jpg"
-                    console.log($scope.image_sources[0])
+
+                    $scope.image_sources.push(DJANGO_STATIC_URL+"images_uploaded/"+response.data.file_string)
+                    $scope.upload_height.push(240*parseInt(response.data.height)/parseInt(response.data.width))
+                    $scope.uploaded_images=$scope.image_sources
+                    $scope.array_image_incrementer = $scope.array_image_incrementer+1
+                    if($scope.array_image_incrementer == 2)
+                    {
+                      $scope.image_sources[0]=$scope.image_sources[1]
+                      $scope.upload_height[0]=$scope.upload_height[1]
+                      $scope.upload_width[0]=$scope.upload_width[1]
+                    }
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
                    
