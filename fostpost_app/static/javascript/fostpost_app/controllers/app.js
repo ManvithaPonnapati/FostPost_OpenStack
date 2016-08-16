@@ -15,6 +15,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   }
   $scope.uploaded_item = function ()
   {
+
     $scope.unsplash = 0
   }
   $scope.fontfamily = "Helvetica"
@@ -196,6 +197,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
     $scope.selected_navbar_item=navbar_item
     $scope.change_subItems(navbar_item)
     console.log($scope.selected_navbar_item)
+    if(navbar_item==2)
+    {
+      $scope.unsplash = 1
+    }
   }
   $scope.change_subItems=function(navbar_item)
   {
