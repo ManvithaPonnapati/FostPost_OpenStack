@@ -17,6 +17,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   {
     $scope.unsplash = 0
   }
+  $scope.fontfamily = "Helvetica"
   $scope.array_image_incrementer = 1
   $scope.image = null;
   $scope.imageFileName = '';
@@ -534,7 +535,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         var wordlengths=[];
         for(j=0;j<words.length;j++)
         {
-          processing.textFont("Helvetica",$scope.text_fontSize[i])
+          $scope.create_font=processing.createFont($scope.fontfamily)
+          processing.textFont($scope.create_font,$scope.text_fontSize[i])
           wordlengths[j]=processing.textWidth(words[j]);
         }
         var spacelength=processing.textWidth(" ")
@@ -571,7 +573,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
        
         processing.textAlign(processing.LEFT,processing.TOP)
         processing.fill(text1r,text1g,text1b)
-        processing.textFont("fontfamily",$scope.text_fontSize[i])
+        $scope.create_font=processing.createFont($scope.fontfamily)
+        processing.textFont($scope.create_font,$scope.text_fontSize[i])
         processing.text(strings[k],selectorx,texttempy)
         stringlengths[k]=processing.textWidth(strings[k]);
         texttempy=texttempy+$scope.text_fontSize[i];
@@ -1207,9 +1210,6 @@ var ProcessDown=new Processing(CanvasDown,SketchDown)
 function downloadcanvas()
 {
   
-    downloadnow=1;
-    var imag1=new Image()
-    var srimage1=new Image()
     ProcessDown.exit();
     ProcessDown=new Processing(CanvasDown,SketchDown)
 }
@@ -1264,7 +1264,8 @@ function SketchDown(processing)
           processing.textAlign(processing.LEFT,processing.TOP)
           processing.fill(text1r,text1g,text1b)
           fs=50;
-          processing.textFont("Helvetica",32)
+          $scope.create_font=processing.createFont($scope.fontfamily)
+          processing.textFont($scope.create_font,32)
           processing.fill(text1r,text1g,text1b)
           for(i=0;i<3;i++)
               {
@@ -1274,7 +1275,8 @@ function SketchDown(processing)
                     var wordlengths=[];
                     for(j=0;j<words.length;j++)
                   {
-                     processing.textFont("Helvetica",rt*$scope.text_fontSize[i])
+                    $scope.create_font=processing.createFont($scope.fontfamily)
+                     processing.textFont($scope.create_font,rt*$scope.text_fontSize[i])
                      wordlengths[j]=processing.textWidth(words[j]);
                   }
                  var spacelength=processing.textWidth(" ")
@@ -1308,7 +1310,8 @@ function SketchDown(processing)
              
           processing.textAlign(processing.LEFT,processing.TOP)
           processing.fill(text1r,text1g,text1b)
-          processing.textFont("Helvetica",rt*$scope.text_fontSize[i])
+          $scope.create_font=processing.createFont($scope.fontfamily)
+          processing.textFont($scope.create_font,rt*$scope.text_fontSize[i])
           
           processing.text(strings[k],x_cord,y_cord)
           stringlengths[k]=processing.textWidth(strings[k]);
@@ -1398,6 +1401,39 @@ $scope.changeLayout(1)
 $scope.download_canvas=function()
 {
   downloadnow=1
+}
+$scope.changeFont = function(index)
+{
+  
+    console.log("Changing font")
+    if(index==1)
+  {
+     $scope.fontfamily="Antic-Regular";
+  
+  }
+  if(index==2)
+  {
+    $scope.fontfamily=("Asar-Regular");
+  }
+  if(index==3)
+  {
+     $scope.fontfamily=("Asap-Regular");
+  }
+  if(index==4)
+  {
+     $scope.fontfamily=("Anaheim-Regular");
+  }
+  
+  if(index==5)
+  {
+     $scope.fontfamily=("Arvo-Regular");
+  }
+  if(index==6)
+  {
+     $scope.fontfamily=("Armata-Regular");
+  }
+  console.log($scope.fontfamily)
+
 }
 $scope.upload_logo = function (file) {
   Upload.base64DataUrl(file).then(function(urls){

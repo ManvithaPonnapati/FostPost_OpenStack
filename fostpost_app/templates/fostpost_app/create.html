@@ -113,10 +113,96 @@ canvas
         <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
+
     <script src="http://code.createjs.com/createjs-2014.12.12.min.js"></script>
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js
 "></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js"></script>
+      
+
+      <script src="{% static 'javascript/mfont.js' %}"></script>
+      <script src="{% static 'javascript/flowtype.js' %}"></script>
+      <script type="text/javascript">
+        
+  WebFontConfig = {
+    google: { families: [ 'Antic::latin', 'Belleza::latin', 'Bitter::latin', 'Asar::latin', 'Asap::latin', 'Anaheim::latin', 'Allerta::latin', 'Arvo::latin', 'Armata::latin', 'Arbutus::latin', 'Contrail+One::latin', 'Baumans::latin', 'Anton::latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); 
+  
+      </script>
+      <style type="text/css">
+         
+
+@font-face{
+font-family: "Antic-Regular"; 
+src: url("js/Antic-Regular.ttf"); 
+}
+@font-face{
+font-family: "Allerta-Regular"; 
+src: url("js/Allerta-Regular.ttf"); 
+}
+@font-face{
+  font-family: "Anaheim-Regular"; 
+src: url("js/Anaheim-Regular.ttf"); 
+}
+@font-face{
+  font-family: "Arbutus-Regular"; 
+src: url("js/Arbutus-Regular.ttf"); 
+}
+@font-face{
+  font-family: "Armata-Regular"; 
+src: url("js/Armata-Regular.ttf"); 
+}
+@font-face{
+  
+font-family: "Arvo-Regular"; 
+src: url("js/Arvo-Regular.ttf");
+}
+@font-face{
+  font-family: "Asap-Regular"; 
+src: url("js/Asap-Regular.ttf"); 
+}
+@font-face{
+  font-family: "Asar-Regular"; 
+src: url("js/Asar-Regular.ttf"); 
+}
+
+@font-face{
+  font-family: "Belleza-Regular"; 
+src: url("js/Belleza-Regular.ttf"); 
+}
+@font-face{
+  font-family: "Baumans-Regular"; 
+src: url("js/Baumans-Regular.ttf"); 
+}
+@font-face{
+  font-family: "Bitter-Regular"; 
+src: url("js/Bitter-Regular.ttf"); 
+}
+@font-face{
+  font-family: "ContrailOne-Regular"; 
+src: url("js/ContrailOne-Regular.ttf"); 
+}
+
+
+
+
+#control { 
+font-family: "Anton"; 
+} 
+
+
+
+      </style>
+
  <script src="{% static 'javascript/processing.js' %}"></script>
  <script type="text/javascript">
    var DJANGO_STATIC_URL="{% static '' %}"
@@ -224,7 +310,7 @@ canvas
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==3">
             
              
-              <li ng-repeat= "i in font_imageArray track by $index" ><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)"><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
             </ul>
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
             
