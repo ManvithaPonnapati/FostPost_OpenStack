@@ -224,8 +224,12 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
                 for(i=0;i<10;i++)
                 {
                   $scope.imageArray[i]="/static/images_uploaded/uploaded_"+i
+                  $scope.unsplash_height[i] = 75;
+                  $scope.unsplash_width[i]= $scope.unsplash_height[i]*parseInt(response.data.width[i])/parseInt(response.data.height[i])
                 }
-                  console.log($scope.imageArray)
+
+
+                  console.log($scope.unsplash_width,$scope.unsplash_height)
 
                     }, function errorCallback(response) {
     
@@ -1413,7 +1417,7 @@ $scope.changeFont = function(index)
     console.log("Changing font")
     if(index==1)
   {
-     $scope.fontfamily="Antic-Regular";
+     $scope.fontfamily="Allerta-Regular";
   
   }
   if(index==2)

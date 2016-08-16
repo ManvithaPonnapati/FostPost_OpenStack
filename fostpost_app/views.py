@@ -53,14 +53,20 @@ def unsplash_images(request):
 	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query=office&client_id=b348e0941b9d614b3c439557924e2b5a2b14b896bc97f2211929d9ac9fcb8a91").read()
 	x=json.loads(x)
 	y=[]
+	w=[]
+	h=[]
 	for i in range(0,len(x)):
 		y.append(x[i]['urls']['thumb'])
 		img_temp = NamedTemporaryFile(delete=True)
 		img_temp.write(urllib2.urlopen(x[i]['urls']['thumb']).read())
 		img_temp.flush()
 		im=Photo(email="rp493@cornell.edu")
-		im.file.save("uploaded_"+str(i), File(img_temp))
-	return HttpResponse(json.dumps(y))
+		im.file.save("uploaded_"+str(i)+".jpg", File(img_temp))
+		file_string = "uploaded_"+str(i)+".jpg"
+		imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string)
+		w.append(imgx.size[0])
+		h.append(imgx.size[1])
+	return HttpResponse(json.dumps({"y":y,"width":w,"height":h}))
 
 @csrf_exempt
 def drag_upload(request):
