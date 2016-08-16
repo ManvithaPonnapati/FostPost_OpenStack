@@ -124,8 +124,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.image_sizesW=[1200];
   $scope.image_sizesH=[628];
   imageRatio=$scope.image_sizesW[0]/$scope.image_sizesH[0]
-  $scope.logo_sizeW=10;
-  $scope.logo_sizeH=10;
+  $scope.logo_sizeW=50;
+  $scope.logo_sizeH=50;
   $scope.logo_X=0
   $scope.logo_Y=100
   $scope.background_r=230;
