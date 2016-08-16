@@ -286,14 +286,14 @@ font-family: "Anton";
     <div class="sidenav row" style="margin-top:1%;background-color:transparent;position:fixed">
        <div align="left " style="width:20%;display: table-cell;">
             <ul style="position:fixed;width:10%;height:100%;float:left;background-color:#0c223f;margin-left:0px;">
-              <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li>
+             <!--  <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li> -->
               <li style="height:70px;">  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Images</p></a></li>
               <li style="height:70px;">  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Fonts</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:70%" align="middle" ngf-select="upload_logo($file)" /> <p> Logo</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/textcolor.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Colors</p></a></li>
+              <li style="height:70px;">  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/addlogo.svg' %}" style="width: 50%;height:70%" align="middle" ngf-select="upload_logo($file)" /> <p ngf-select="upload_logo($file)"> Logo</p></a></li>
+              <li style="height:70px;">  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/background.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Colors</p></a></li>
               <li style="height:70px;">  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Save </p></a></li>
             </ul>
-            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
+            <!-- <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
               
               <li ng-click="changeLayout(1)"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
               <li ng-click="changeLayout(2)"><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
@@ -305,7 +305,7 @@ font-family: "Anton";
               <li ng-click="changeLayout(8)"><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
 
             </ul>
-
+ -->
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2 && unsplash == 1">
               <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()"  >Uploaded</div></li>
              
