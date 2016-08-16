@@ -3,25 +3,199 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px"
 	 height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<symbol  id="New_Symbol" viewBox="-0.517 -13.735 1.034 27.471">
+	<g>
+		<path fill="none" stroke="#EF4136" stroke-width="0.25" stroke-miterlimit="10" d="M0.02,9.102
+			c-1.261,1.632,1.276,2.92,0.005,4.557"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.25" stroke-miterlimit="10" d="M0.005,4.544
+			C-1.257,6.176,1.276,7.462,0.01,9.102"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.25" stroke-miterlimit="10" d="M0-0.01c-1.257,1.636,1.271,2.918,0.005,4.558"
+			/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.25" stroke-miterlimit="10" d="M-0.01-4.554
+			c-1.262,1.632,1.271,2.918,0.005,4.558"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.25" stroke-miterlimit="10" d="M-0.02-9.103
+			c-1.257,1.636,1.271,2.918,0.005,4.558"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.25" stroke-miterlimit="10" d="M-0.029-13.659
+			c-1.262,1.632,1.275,2.92,0.005,4.557"/>
+	</g>
+</symbol>
+<g id="Layer_5">
+	<rect x="1" y="0.667" fill="#FFFFFF" width="39.333" height="39"/>
+</g>
 <g id="Layer_3">
 </g>
 <g id="Layer_1">
-	<rect x="25.815" y="-0.411" fill="#EF4136" width="14.185" height="40.441"/>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 39.418 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 38.3237 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 37.2295 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 36.1353 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 35.041 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 33.9468 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 32.8525 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 31.7583 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 30.6641 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 29.5698 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 28.4756 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 27.3813 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 26.2871 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 25.1929 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 24.0986 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 23.0044 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 21.9102 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 20.8159 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 19.7217 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 18.6274 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 17.5332 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 16.439 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 15.3447 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 14.2505 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 13.1562 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 12.062 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 10.9678 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 9.8735 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 8.7793 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 7.6851 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 6.5908 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 5.4966 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 4.4023 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 3.3081 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 2.2139 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 1.1196 26.3408)" overflow="visible"/>
+	</g>
+	<g>
+		
+			<use xlink:href="#New_Symbol"  width="1.034" height="27.471" x="-0.517" y="-13.735" transform="matrix(1 0 0 -1 0.0254 26.3408)" overflow="visible"/>
+	</g>
 </g>
 <g id="Layer_2">
-	<path fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" d="M26.73,6.708
-		c-0.291-0.354,0.552-1.803,1.104-1.628c0.397,0.125,0.272,1.062,0.527,1.336c0.463,0.497,1.046-0.155,1.227-0.537
-		c0.111-0.236,0.204-0.799,0.456-0.896c0.443-0.17,1.032,0.623,1.215,0.909c0.196,0.306,0.296,0.881,0.58,1.108
-		c0.689,0.55,1.045-0.389,1.239-0.882c0.17-0.432,0.253-1.177,0.787-1.33c0.788-0.227,1.347,0.593,1.654,1.169
-		c0.191,0.358,0.268,1.23,0.705,1.346c0.603,0.16,1.059-1,1.196-1.4c0.076-0.22,0.116-0.731,0.319-0.854
-		c0.254-0.153,0.765,0.051,0.946,0.224c0.339,0.323,0.65,1.193,0.716,1.663"/>
-	<path fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" d="M26.373,11.289
-		c0.223-0.645,0.523-1.605,1.16-1.97c0.683-0.391,1.107,0.512,1.313,1.004c0.092,0.219,0.113,0.701,0.306,0.864
-		c0.191,0.161,0.812,0.115,1.034,0.062c0.381-0.091,0.461-0.402,0.626-0.755c0.129-0.275,0.28-0.962,0.558-1.103
-		c0.628-0.319,0.966,0.816,1.106,1.205c0.082,0.23,0.122,0.491,0.288,0.652c0.281,0.271,1.055,0.417,1.316,0.158
-		c0.377-0.371,0.417-1.173,0.705-1.591c0.16-0.231,0.305-0.327,0.658-0.165c0.405,0.188,0.685,0.778,0.843,1.176
-		c0.094,0.233,0.058,0.705,0.251,0.861c0.929-0.507,1.162-1.354,1.598-2.22"/>
-	<circle fill="#FFFFFF" stroke="#EF4136" stroke-miterlimit="10" cx="33.621" cy="33.212" r="4.122"/>
+	<circle fill="#EF4136" cx="34.051" cy="34.071" r="4.122"/>
+	<g>
+		<path fill="none" stroke="#EF4136" stroke-width="2.0228" stroke-miterlimit="10" d="M9.116,24.326
+			c-0.185,0.619-0.431,1.236-0.762,1.665c-0.844,1.096-1.529-0.467-1.872-1.665c-0.351-1.033-0.917-2.72-1.769-1.827
+			c-0.394,0.41-0.677,1.121-0.88,1.803"/>
+		<path fill="none" stroke="#EF4136" stroke-width="2.0228" stroke-miterlimit="10" d="M14.398,24.399
+			c-0.184,0.619-0.432,1.237-0.762,1.666c-0.844,1.096-1.53-0.468-1.872-1.666c-0.351-1.032-0.917-2.719-1.769-1.827
+			c-0.393,0.41-0.676,1.121-0.879,1.803"/>
+		<path fill="none" stroke="#EF4136" stroke-width="2.0228" stroke-miterlimit="10" d="M19.677,24.425
+			c-0.185,0.618-0.432,1.235-0.763,1.665c-0.844,1.095-1.529-0.468-1.872-1.665c-0.351-1.033-0.917-2.72-1.768-1.828
+			c-0.393,0.41-0.676,1.121-0.88,1.803"/>
+		<path fill="none" stroke="#EF4136" stroke-width="2.0228" stroke-miterlimit="10" d="M24.945,24.474
+			c-0.185,0.619-0.432,1.236-0.762,1.665c-0.844,1.096-1.529-0.467-1.872-1.665c-0.351-1.033-0.917-2.72-1.769-1.828
+			c-0.394,0.41-0.677,1.122-0.88,1.803"/>
+		<path fill="none" stroke="#EF4136" stroke-width="2.0228" stroke-miterlimit="10" d="M30.218,24.521
+			c-0.185,0.62-0.432,1.237-0.763,1.666c-0.844,1.096-1.529-0.467-1.872-1.666c-0.351-1.031-0.917-2.718-1.768-1.827
+			c-0.394,0.411-0.677,1.122-0.88,1.804"/>
+		<path fill="none" stroke="#EF4136" stroke-width="2.0228" stroke-miterlimit="10" d="M35.5,24.571
+			c-0.184,0.619-0.432,1.236-0.762,1.666c-0.844,1.095-1.53-0.468-1.872-1.666c-0.352-1.032-0.918-2.719-1.769-1.828
+			c-0.393,0.411-0.677,1.122-0.88,1.804"/>
+	</g>
 </g>
 <g id="Layer_4">
 </g>

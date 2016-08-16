@@ -3,18 +3,32 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px"
 	 height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<g id="Layer_5">
+</g>
 <g id="Layer_3">
-	<rect opacity="0.5" fill="#EF4136" width="40" height="40"/>
 </g>
 <g id="Layer_1">
-	<rect fill="#EF4136" width="27.401" height="40"/>
-	<path fill="#FFFFFF" d="M38.297,34.109c0,2.416-1.958,4.374-4.374,4.374l0,0c-2.416,0-4.374-1.958-4.374-4.374l0,0
-		c0-2.415,1.958-4.373,4.374-4.373l0,0C36.339,29.736,38.297,31.694,38.297,34.109L38.297,34.109z"/>
 </g>
 <g id="Layer_2">
-	<line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="3.114" y1="16.846" x2="22.062" y2="16.846"/>
-	<line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="3.114" y1="21.832" x2="22.062" y2="21.832"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="24.141" y1="15.389" x2="24.141" y2="21.799"/>
-	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="24.136" y1="22.215" x2="24.136" y2="23.475"/>
+</g>
+<g id="Layer_4">
+</g>
+<g id="text">
+	<g>
+		<g id="Layer_3_2_">
+			<rect opacity="0.5" fill="#EF4237" enable-background="new    " width="40" height="40"/>
+		</g>
+		<g id="Layer_1_2_">
+			<rect fill="#EF4237" width="27.4" height="40"/>
+			<path fill="#1F355E" d="M38.297,34.109c0,2.416-1.958,4.373-4.374,4.373l0,0c-2.416,0-4.374-1.957-4.374-4.373l0,0
+				c0-2.416,1.958-4.373,4.374-4.373l0,0C36.339,29.736,38.297,31.693,38.297,34.109L38.297,34.109z"/>
+		</g>
+		<g id="Layer_2_3_">
+			<line fill="none" stroke="#1F355E" stroke-width="3" stroke-miterlimit="10" x1="3.114" y1="16.846" x2="22.062" y2="16.846"/>
+			<line fill="none" stroke="#1F355E" stroke-width="3" stroke-miterlimit="10" x1="3.114" y1="21.832" x2="22.062" y2="21.832"/>
+			<line fill="none" stroke="#1F355E" stroke-miterlimit="10" x1="24.141" y1="15.389" x2="24.141" y2="21.799"/>
+			<line fill="none" stroke="#1F355E" stroke-miterlimit="10" x1="24.136" y1="22.215" x2="24.136" y2="23.475"/>
+		</g>
+	</g>
 </g>
 </svg>
