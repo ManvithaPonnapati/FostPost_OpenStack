@@ -158,64 +158,57 @@ src: url('{% static 'javascript/Allerta-Regular.ttf' %}');
 }
 @font-face{
 font-family: "Allerta-Regular"; 
-src: url("js/Allerta-Regular.ttf"); 
+src: url("{% static 'javascript/Allerta-Regular.ttf' %}"); 
 }
 @font-face{
   font-family: "Anaheim-Regular"; 
-src: url("js/Anaheim-Regular.ttf"); 
+src: url("{% static 'javascript/Anaheim-Regular.ttf' %}"); 
 }
 @font-face{
   font-family: "Arbutus-Regular"; 
-src: url("js/Arbutus-Regular.ttf"); 
+src: url("{% static 'javascript/Arbutus-Regular.ttf' %}"); 
 }
 @font-face{
   font-family: "Armata-Regular"; 
-src: url("js/Armata-Regular.ttf"); 
+src: url("{% static 'javascript/Armata-Regular.ttf' %}"); 
 }
 @font-face{
   
 font-family: "Arvo-Regular"; 
-src: url("js/Arvo-Regular.ttf");
+src: url("{% static 'javascript/Arvo-Regular.ttf' %}");
 }
 @font-face{
   font-family: "Asap-Regular"; 
-src: url("js/Asap-Regular.ttf"); 
+src: url("{% static 'javascript/Asap-Regular.ttf' %}"); 
 }
 @font-face{
   font-family: "Asar-Regular"; 
-src: url("js/Asar-Regular.ttf"); 
+src: url("{% static 'javascript/Asar-Regular.ttf' %}"); 
 }
 
 @font-face{
   font-family: "Belleza-Regular"; 
-src: url("js/Belleza-Regular.ttf"); 
+src: url("{% static 'javascript/Belleza-Regular.ttf' %}"); 
 }
 @font-face{
   font-family: "Baumans-Regular"; 
-src: url("js/Baumans-Regular.ttf"); 
+src: url("{% static 'javascript/Baumans-Regular.ttf' %}"); 
 }
 @font-face{
   font-family: "Bitter-Regular"; 
-src: url("js/Bitter-Regular.ttf"); 
+src: url("{% static 'javascript/Bitter-Regular.ttf' %}"); 
 }
 @font-face{
   font-family: "ContrailOne-Regular"; 
-src: url("js/ContrailOne-Regular.ttf"); 
+src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}"); 
 }
 
-
-
-
-#control { 
-font-family: "Anton"; 
-} 
 
 
 
       </style>
 
  <script src="{% static 'javascript/processing.js' %}"></script>
- 
  <script src="{% static 'javascript/ng-file-upload-shim.js' %}"></script>
  <script src="{% static 'javascript/ng-file-upload.js' %}"></script>
  <script src="{% static 'javascript/ng-file-upload-all.js' %}"></script>
@@ -307,14 +300,14 @@ font-family: "Anton";
 
             </ul>
  -->
-            <ul style="position:fixed;width:20%;margin-left:10%;float:right;vertical-align:center;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2 && unsplash == 1">
+            <ul style="position:fixed;width:20%;margin-left:10%;float:right;vertical-align:middle;background-color:#1e345d;overflow:scroll;color:white" scroll ng-if="selected_navbar_item==2 && unsplash == 1" scrolly="get_more_images()">
               <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()"  >Uploaded</div></li>
              
               <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" ><img src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> </li>
               <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" ><img src={[i]} style="width: 100%;height:100%" align="middle"  /> </li>
               
             </ul>
-             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2 && unsplash == 0">
+             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2 && unsplash == 0">                                               
               <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()"  >Uploaded</div></li>
              
               <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" ng-style="{ 'width' : upload_width[$index],'height':upload_height[$index]}"><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
