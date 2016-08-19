@@ -199,7 +199,98 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   {
     TextHandles[i]=0;
   }
+  
+var numberoflevels=41;
+var zoomcanvasWidth=14;
+var onslider=0;
+var onplus=0;
+var onminus=0
+var counterzoom=0
+$scope.zoomcanvas_width=30
+$scope.zoomcanvas_height=100
+var zoomCanvas=document.getElementById('zoombarcanvas')
+var zoomctx=zoomCanvas.getContext('2d')
+var ZoomProcessing=new Processing(zoomCanvas,sketchZoom)
 
+function sketchZoom(processing)
+{
+  counterzoom = generatelevels(numberoflevels);
+  var completeLine=processing.loadImage(DJANGO_STATIC_URL+"svg/zoombarplusminus.svg")
+  var handle=processing.loadImage(DJANGO_STATIC_URL+"svg/zoomhandle.svg")
+  $scope.zoomcanvas_height = $scope.canvas_height
+  var mousedragY=0;
+  var sliderx=0;
+  var slidery=$scope.canvas_height/2;
+  var delta=$scope.canvas_height/20;
+  zoomCanvas.height=$scope.canvas_height;
+  zoomCanvas.width=$scope.canvas_width
+  processing.size($scope.zoomcanvas_width,$scope.zoomcanvas_height)
+  processing.background(0,1)
+  $('#zoombarcanvas').css('width',$scope.zoomcanvas_width)
+  $('#zoombarcanvas').css('height',$scope.canvas_height)
+  //$('#zoombarcanvas').css('background-color','transparent')
+  zoomcanvasWidth=$scope.zoomcanvas_width
+  var sliderh=40;
+  var sliderw=(25/71)*40;
+  var plusheight=(0.35)*$scope.canvas_height;
+  sliderx=((zoomcanvasWidth-sliderw)/2)
+  slidery=(($scope.canvas_height-sliderh)/2+20)
+  console.log(sliderx,slidery,sliderw,sliderh,$scope.canvas_height)
+  processing.draw=function()
+  {
+    processing.background(0,0)
+    processing.image(completeLine,0,0,zoomcanvasWidth,$scope.canvas_height)
+    processing.image(handle,sliderx,slidery,sliderw,sliderh)
+  }
+  processing.mousePressed=function()
+  {
+    mousedragY=slidery-processing.mouseY;
+    if(processing.mouseX>parseInt(sliderx) && processing.mouseX<parseInt(sliderx)+parseInt(sliderw) && processing.mouseY> parseInt(slidery) && processing.mouseY<parseInt(slidery)+parseInt(sliderh))
+    {
+      onslider=1;
+      $scope.zoomValue=0;
+    }
+  }
+  processing.mouseDragged=function()
+  {
+    
+    if(onslider==1)
+    {
+      console.log("On Slider")
+      slidery=mousedragY+processing.mouseY
+      for(i=0;i<numberoflevels;i++)
+      {
+        if(slidery>i*delta && slidery<(i+1)*delta)
+        $scope.zoomValue=counterzoom[i]
+        
+      }
+    }
+  }
+  processing.mouseReleased=function()
+  {
+    onslider=0;
+  }
+  processing.mouseOut=function()
+  {
+    onslider=0
+  }
+}
+function generatelevels(numberoflevels)
+{
+  var halfx=parseInt(numberoflevels/2)
+  var levels=[]
+  for(i=0;i<halfx-1;i++)
+  {
+    levels[i]=halfx-i;
+  }
+  levels[halfx-1]=0
+  for(i=halfx;i<numberoflevels;i++)
+  {
+    levels[i]=halfx-i;
+  }
+  console.log(levels)
+  return levels;
+  }
   for(l=0;l<HandlesArray.length;l++)
   {
     $scope.selectors[l][0]=20;
@@ -491,7 +582,35 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
             imw=originalW;
             imh=originalH;
           }
-          
+          if($scope.zoomValue>0 )
+    {
+      
+      var xw=originalW;
+      var xh=originalH;
+      var m=Math.abs($scope.zoomValue)
+      for(i=0;i<m;i++)
+      {
+       xw=xw*1.1
+      ////console.log(im1w)
+       xh=xh*1.1
+      }
+      imw=xw;
+      imh=xh;
+    }
+    if($scope.zoomValue<0)
+    {
+      var xw=originalW
+      var xh=originalH;
+      var m=Math.abs($scope.zoomValue)
+      for(i=0;i<m;i++)
+      {
+       xw=xw/1.1
+      ////console.log(im1w)
+       xh=xh/1.1
+      }
+      imw=xw;
+      imh=xh;
+    }
           if($scope.addMore==1)
           {
             processing.image(extra,extrax,extray,imw,imh)
