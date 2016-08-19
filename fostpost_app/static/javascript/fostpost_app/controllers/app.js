@@ -74,8 +74,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   var subrx=0
   var subry=0
   var TextHandles=[]
-  var TextArray=["Main Text","Body Text","Small Text"]
-  var selectors=[[]]
+  $scope.TextArray=["Main Text","Body Text","Small Text"]
+  $scope.selectors=[[]]
   var TextHandles=[];
   var textdragx=[];
   var textdragy=[]
@@ -114,16 +114,16 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 
 
   HandlesArray[1]=0;
-  selectors[1]=[];
-  selectors[1][0]=40
-  selectors[1][1]=40
+  $scope.selectors[1]=[];
+  $scope.selectors[1][0]=40
+  $scope.selectors[1][1]=40
   wrapWidths[1]=copywidth;
   textdragx[1]=0;
   textdragy[1]=0;
   HandlesArray[2]=0;
-  selectors[2]=[];
-  selectors[2][0]=50
-  selectors[2][1]=50
+  $scope.selectors[2]=[];
+  $scope.selectors[2][0]=50
+  $scope.selectors[2][1]=50
   wrapWidths[2]=copywidth;
   textdragx[2]=0;
   textdragy[2]=0;
@@ -182,10 +182,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   console.log($scope.googleSizes)
   var copySession=$scope.image_sources[0]
   $scope.unsplash_width=[100]
+
   $scope.unsplash_height=[100]
   $scope.upload_width = [240,240,240,240,240,240,240,240,240]
   $scope.upload_height = [100]
-  for(i=0;i<TextArray.length;i++)
+  for(i=0;i<$scope.TextArray.length;i++)
   {
     $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
     wrapWidths[i]=copywidth;
@@ -201,8 +202,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 
   for(l=0;l<HandlesArray.length;l++)
   {
-    selectors[l][0]=20;
-    selectors[l][1]=20;
+    $scope.selectors[l][0]=20;
+    $scope.selectors[l][1]=20;
   }
   $scope.changeLayout =function(index)
   {
@@ -462,9 +463,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         
       processing.size($scope.canvas_width,parseInt($scope.canvas_height))
       processing.fill(0,14,23)
-      TextArray[0]=$scope.MainText
-      TextArray[1]=$scope.BodyText
-      TextArray[2]=$scope.SmallText
+      $scope.TextArray[0]=$scope.MainText
+      $scope.TextArray[1]=$scope.BodyText
+      $scope.TextArray[2]=$scope.SmallText
       $('#adcanvas').css('width',$scope.canvas_width);
       $('#adcanvas').css('height',parseInt($scope.canvas_height));
       adcanvas.width=$scope.canvas_width;
@@ -546,7 +547,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         }
       var totalarea=0;
       
-      for(h=0;h<TextArray.length;h++)
+      for(h=0;h<$scope.TextArray.length;h++)
       {
 
         if(wrapWidths[h]>0.95*parseInt($scope.canvas_width))
@@ -556,11 +557,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         }
       }
      
-      for(i=0;i<TextArray.length;i++)
+      for(i=0;i<$scope.TextArray.length;i++)
       {
-        var selectory=selectors[i][1];
-        var selectorx=selectors[i][0];
-        var words=TextArray[i].split(" ");
+        var selectory=$scope.selectors[i][1];
+        var selectorx=$scope.selectors[i][0];
+        var words=$scope.TextArray[i].split(" ");
         var wordlengths=[];
         for(j=0;j<words.length;j++)
         {
@@ -627,7 +628,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         processing.image(delButton,selectorx+selectorw,copyy-20,20,20)
              }
        selectory=selectory+addtoy;
-       selectors[i]=[selectorx,copyy,selectorw,addtoy]
+       $scope.selectors[i]=[selectorx,copyy,selectorw,addtoy]
        
       }
         
@@ -655,17 +656,17 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
               wrapWidths[0]=0.75*parseInt($scope.canvas_width)
              
               
-              var textlen=processing.textWidth(TextArray[0])
+              var textlen=processing.textWidth($scope.TextArray[0])
              
               var numberlines=Math.ceil(textlen/wrapWidths[0])
-        selectors[0][0]=parseInt($scope.canvas_height)*0.025;
-        selectors[0][1]=0.65*parseInt($scope.canvas_height)+parseInt($scope.canvas_height)*0.025;
-        if(TextArray.length>1){
-        for(i=1;i<TextArray.length;i++){
+        $scope.selectors[0][0]=parseInt($scope.canvas_height)*0.025;
+        $scope.selectors[0][1]=0.65*parseInt($scope.canvas_height)+parseInt($scope.canvas_height)*0.025;
+        if($scope.TextArray.length>1){
+        for(i=1;i<$scope.TextArray.length;i++){
           
             wrapWidths[i]=0.75*parseInt($scope.canvas_width);
-            selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[0][1]+numberlines*$scope.text_fontSize[0]
+            $scope.selectors[i][0]=$scope.selectors[0][0]
+            $scope.selectors[i][1]=$scope.selectors[0][1]+numberlines*$scope.text_fontSize[0]
             }
         }
         
@@ -692,24 +693,24 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
       
               wrapWidths[0]=0.8*parseInt($scope.canvas_width)
              
-              var tlen=processing.textWidth(TextArray[0])
-              var textlen=processing.textWidth(TextArray[0])
+              var tlen=processing.textWidth($scope.TextArray[0])
+              var textlen=processing.textWidth($scope.TextArray[0])
              //  //console.log(textlen,wrapWidths[0])
               var numberlines=Math.ceil(textlen/wrapWidths[0])
               if(textlen<wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-textlen)/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-textlen)/2
         }
         if(textlen>wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
         }
-        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
-        ////console.log(selectors[0][0])
-        if(TextArray.length>1){
-        for(i=1;i<TextArray.length;i++){
+        $scope.selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
+        ////console.log($scope.selectors[0][0])
+        if($scope.TextArray.length>1){
+        for(i=1;i<$scope.TextArray.length;i++){
             
             wrapWidths[i]=0.9*parseInt($scope.canvas_width);
-            selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
+            $scope.selectors[i][0]=$scope.selectors[0][0]
+            $scope.selectors[i][1]=$scope.selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
             }
         }
         
@@ -748,24 +749,24 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
           $scope.addMore=0
         wrapWidths[0]=0.9*parseInt($scope.canvas_width)
              
-              var tlen=processing.textWidth(TextArray[0])
-              var textlen=processing.textWidth(TextArray[0])
+              var tlen=processing.textWidth($scope.TextArray[0])
+              var textlen=processing.textWidth($scope.TextArray[0])
              //  //console.log(textlen,wrapWidths[0])
               var numberlines=Math.ceil(textlen/wrapWidths[0])
               if(textlen<wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-textlen)/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-textlen)/2
         }
         if(textlen>wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
         }
-        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
-        ////console.log(selectors[0][0])
-        if(TextArray.length>1){
-        for(i=1;i<TextArray.length;i++){
+        $scope.selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
+        ////console.log($scope.selectors[0][0])
+        if($scope.TextArray.length>1){
+        for(i=1;i<$scope.TextArray.length;i++){
             
             wrapWidths[i]=0.9*parseInt($scope.canvas_width);
-            selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
+            $scope.selectors[i][0]=$scope.selectors[0][0]
+            $scope.selectors[i][1]=$scope.selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
             }
         }
         
@@ -807,16 +808,16 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 //        
 //        
 //        if(processing.keyCode==processing.BACKSPACE){
-//          TextArray[selectedLineofText-1].substring(0, TextArray[i].length-1);
+//          $scope.TextArray[selectedLineofText-1].substring(0, $scope.TextArray[i].length-1);
 //          }
 //         else if(processing.keyCode==processing.SHIFT || processing.keyCode==processing.CONTROL ||processing.keyCode==processing.ALT|| processing.keyCode==processing.TAB ||processing.keyCode==processing.ENTER)
 //          {
-//            TextArray[selectedLineofText-1]=TextArray[selectedLineofText-1]+''
+//            $scope.TextArray[selectedLineofText-1]=$scope.TextArray[selectedLineofText-1]+''
 //          }
 //          else
 //          {
-//        TextArray[selectedLineofText-1]=TextArray[selectedLineofText-1]+String.fromCharCode(processing.key);
-//        inputBox.value=TextArray[selectedLineofText-1]
+//        $scope.TextArray[selectedLineofText-1]=$scope.TextArray[selectedLineofText-1]+String.fromCharCode(processing.key);
+//        inputBox.value=$scope.TextArray[selectedLineofText-1]
 //        
 //      }
 //      }
@@ -863,10 +864,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         {
           
           HandlesArray[i]=0;
-          var sx=selectors[i][0];
-          var sy=selectors[i][1];
-          var sw=selectors[i][2];
-          var sh=selectors[i][3];
+          var sx=$scope.selectors[i][0];
+          var sy=$scope.selectors[i][1];
+          var sw=$scope.selectors[i][2];
+          var sh=$scope.selectors[i][3];
           
           
           if(processing.mouseX>sx && processing.mouseX<sx+sw && processing.mouseY>sy && processing.mouseY<sy+sh)
@@ -928,7 +929,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
             TextHandles[0]=0;
             delText=1;
             //console.log("Delete")
-            TextArray[selectedLineofText-1]="";
+            $scope.TextArray[selectedLineofText-1]="";
             
           }
           
@@ -1038,12 +1039,12 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         }
         if(TextHandles[0]==1&&layout3_extra==0 ){
            dragged=1;
-          selectors[selectedLineofText-1][0]=textdragx[selectedLineofText-1]+processing.mouseX;
-          selectors[selectedLineofText-1][1]=textdragy[selectedLineofText-1]+processing.mouseY;
-          dottedx1=selectors[selectedLineofText-1][0]
-          dottedx2=selectors[selectedLineofText-1][0]
-          dottedy11=selectors[selectedLineofText-1][1]
-          dottedy21=selectors[selectedLineofText-1][1]
+          $scope.selectors[selectedLineofText-1][0]=textdragx[selectedLineofText-1]+processing.mouseX;
+          $scope.selectors[selectedLineofText-1][1]=textdragy[selectedLineofText-1]+processing.mouseY;
+          dottedx1=$scope.selectors[selectedLineofText-1][0]
+          dottedx2=$scope.selectors[selectedLineofText-1][0]
+          dottedy11=$scope.selectors[selectedLineofText-1][1]
+          dottedy21=$scope.selectors[selectedLineofText-1][1]
           dottedy1=0
           dottedy2=parseInt($scope.canvas_height)
           dottedx11=0
@@ -1159,7 +1160,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
           subdragx=0;
           subdragy=0;
           ontherect=0;
-          for(i=0;i<TextArray.length;i++)
+          for(i=0;i<$scope.TextArray.length;i++)
           {
             TextHandles[i]=0
             HandlesArray[i]=0
@@ -1236,19 +1237,22 @@ CanvasDown.id="CanvasDown"
 var ContextDown=CanvasDown.getContext('2d')
 var downloadnow=0;
 var ProcessDown=new Processing(CanvasDown,SketchDown)
-function downloadcanvas()
+$scope.download_canvas=function()
 {
-  
-    ProcessDown.exit();
+  downloadnow=1
+  ProcessDown.exit();
     ProcessDown=new Processing(CanvasDown,SketchDown)
 }
+
 function SketchDown(processing)
 { 
+  console.log($scope.image_sources[0])
   processing.hint(processing.ENABLE_NATIVE_FONTS)
   processing.hint(processing.ENABLE_OPENGL_4X_SMOOTH)
-  var TextArray_download=TextArray
-  var selectors_download=selectors
+  var TextArray_download=$scope.TextArray
+  var selectors_download=$scope.selectors
   var wraps_download=wrapWidths
+  console.log(selectors_download,TextArray_download)
   var rt=(doww/parseInt($scope.canvas_width))
   var rt1=(dowh/parseInt($scope.canvas_height))
     console.log(rt,rt1)
@@ -1427,10 +1431,7 @@ today = mm+''+dd+''+yyyy;
 }
 
 $scope.changeLayout(1)
-$scope.download_canvas=function()
-{
-  downloadnow=1
-}
+
 $scope.changeFont = function(index)
 {
   
