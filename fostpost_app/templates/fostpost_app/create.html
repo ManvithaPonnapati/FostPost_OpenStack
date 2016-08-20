@@ -313,7 +313,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
             </ul>
  -->
-            <ul style="position:fixed;width:20%;margin-left:10%;float:right;vertical-align:middle;background-color:#1e345d;overflow:scroll;color:white" scroll ng-if="selected_navbar_item==2 && unsplash == 1" scrolly="get_more_images()">
+            <ul style="position:fixed;width:20%;margin-left:10%;float:right;vertical-align:middle;background-color:#1e345d;overflow:scroll;color:white" id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
               <li style="height:30px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()"  >Uploaded</div></li>
              
               <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" ><img src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> </li>

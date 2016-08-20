@@ -1,24 +1,15 @@
 var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload','ngMaterial','mdColorPicker']);
 //myApp.directive('myDirective', function() {});
-app.directive('scrolly', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var raw = element[0];
-            console.log('loading directive');
-                
-            element.bind('scroll', function () {
-                console.log('in scroll');
-                console.log(raw.scrollTop + raw.offsetHeight);
-                console.log(raw.scrollHeight);
-                if (raw.scrollTop + raw.offsetHeight > raw.scrollHeight) {
-                    scope.$apply(attrs.scrolly);
-                }
-            });
-        }
-    };
-});
-
+app.directive("scroll", function ($window) {
+   return {
+      scope: {
+         scrollEvent: '&'
+      },
+      link : function(scope, element, attrs) {
+        $("#"+attrs.id).scroll(function($e) { scope.scrollEvent != null ?  scope.scrollEvent()($e) : null })
+      }
+   }
+})
  app.config(function($interpolateProvider) {
         $interpolateProvider.startSymbol('{[');
         $interpolateProvider.endSymbol(']}');
@@ -46,6 +37,29 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 
     $scope.unsplash = 0
   }
+  $scope.scrollevent = function($e){
+   console.log("I am the super cool scroll")
+   $http({
+                method: 'GET',
+                url: '/api/unsplash_images/'
+                    }).then(function successCallback(response) {
+    
+                console.log(response)
+                array_sr=response.data
+                console.log(array_sr[1])
+                for(i=0;i<10;i++)
+                {
+                  $scope.imageArray.push("/static/images_uploaded/uploaded_"+i)
+                
+                }
+
+
+                 // console.log($scope.unsplash_width,$scope.unsplash_height)
+
+                    }, function errorCallback(response) {
+    
+                });
+}
    $scope.$watch('scopeVariable.color',function(){
         $scope.background_r = hexToRgb($scope.scopeVariable.color).r
   $scope.background_b =hexToRgb($scope.scopeVariable.color).b
