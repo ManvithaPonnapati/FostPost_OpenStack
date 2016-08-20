@@ -334,12 +334,12 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
             
               <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ng-click="changeColor($index)" ></li>
-              <li><div md-color-picker ng-model="valueObj"></div></li>
+              <li><div md-color-picker="scopeVariable.options" ng-model="scopeVariable.color"></div></li>
             </ul>
         </div>
         
           <div style="width:75%;background-color:transparent;margin-left:50%" id="canvasParent" align="right">
-                <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : canvas_color }" ngf-drop="upload($file)" class="drop-box"
+                <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box"
   ngf-drag-over-class="'dragover'" ngf-multiple="true" 
   ngf-pattern="'image/*'">I am the cool canvas</canvas>
 
