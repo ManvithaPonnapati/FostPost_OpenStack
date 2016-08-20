@@ -1,4 +1,4 @@
-var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload']);
+var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload','ngMaterial','mdColorPicker']);
 //myApp.directive('myDirective', function() {});
 app.directive('scrolly', function () {
     return {
@@ -26,6 +26,7 @@ app.directive('scrolly', function () {
 
 app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   console.log("Inside create");
+  
   $scope.unsplash = 0
   $scope.craftcloud_item = function ()
   {
