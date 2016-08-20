@@ -46,6 +46,12 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 
     $scope.unsplash = 0
   }
+   $scope.$watch('scopeVariable.color',function(){
+        $scope.background_r = hexToRgb($scope.scopeVariable.color).r
+  $scope.background_b =hexToRgb($scope.scopeVariable.color).b
+  $scope.background_g = hexToRgb($scope.scopeVariable.color).g
+    });
+  $scope.scopeVariable.color = "#FFFFFF"
   $scope.fontfamily = "Helvetica"
   $scope.array_image_incrementer = 1
   $scope.image = null;
@@ -453,15 +459,23 @@ function generatelevels(numberoflevels)
   }
   $scope.changeColor=function(index)
   {
+    console.log(hexToRgb($scope.scopeVariable.color))
     $scope.background_r = $scope.colors_Array[index][0]
     $scope.background_g = $scope.colors_Array[index][1]
     $scope.background_b = $scope.colors_Array[index][2]
   }
-
+  
   $scope.get_image_data = function(data){
     return 'data:image/jpeg;base64,' + data;
   }
-
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
     $scope.toDataUrl=function(url, callback) {
             var xhr = new XMLHttpRequest();
               xhr.responseType = 'blob';
