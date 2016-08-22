@@ -15,13 +15,15 @@ from six.moves import xrange  # pylint: disable=redefined-builtin
 import tensorflow as tf
 from utils import *
 from abstractWordPredictor import AbstractWordPredictor
+import pickle
 
 class SkipGramWordPredictor(AbstractWordPredictor):
     """
     This class implements the Skip Gram model for word prediction based on 
     word embedding in Tensor Flow.
     """
-
+    __reverse_dictionary=None
+    __sim=None
     def generateNGrams(self):
         """
         This methos generates nGrams from words.
@@ -54,7 +56,7 @@ class SkipGramWordPredictor(AbstractWordPredictor):
             if word in self.__dictionary:
                 index = self.__dictionary[word]
             else:
-                index = 0  # dictionary['UNK']
+                index = self.__dictionary['UNK']
                 unk_count += 1
             self.__data.append(index)
         count[0][1] = unk_count
@@ -136,6 +138,7 @@ class SkipGramWordPredictor(AbstractWordPredictor):
         num_sampled = 64    # Number of negative examples to sample.
         graph = tf.Graph()
 
+
         with graph.as_default():
 
             # Input data.
@@ -144,6 +147,7 @@ class SkipGramWordPredictor(AbstractWordPredictor):
             valid_dataset = tf.constant(valid_examples, dtype=tf.int32)
 
             # Ops and variables pinned to the CPU because of missing GPU implementation
+            saver = None
             with tf.device('/cpu:0'):
                 # Look up embeddings for inputs.
                 embeddings = tf.Variable(
@@ -155,6 +159,7 @@ class SkipGramWordPredictor(AbstractWordPredictor):
                     tf.truncated_normal([self.__vocabulary_size, embedding_size],
                             stddev=1.0 / math.sqrt(embedding_size)))
                 nce_biases = tf.Variable(tf.zeros([self.__vocabulary_size]))
+                #saver = tf.train.Saver()
 
             # Compute the average NCE loss for the batch.
             # tf.nce_loss automatically draws a new sample of the negative labels each
@@ -180,6 +185,8 @@ class SkipGramWordPredictor(AbstractWordPredictor):
 
         # Step 5: Begin training.
         num_steps = 100001
+        # Initialize the saver for saving the session
+        #saver = tf.train.Saver()
         with tf.Session(graph=graph) as session:
             # We must initialize all variables before we use them.
             init.run()
@@ -207,27 +214,28 @@ class SkipGramWordPredictor(AbstractWordPredictor):
                 # Note that this is expensive (~20% slowdown if computed every 500 steps)
                 nearest = None
                 if step % 10000 == 0:
+                    #print ('Updating similarity')
                     self.__sim = similarity.eval()
-                    """
-                    for i in xrange(valid_size):
-                        valid_word = self.__reverse_dictionary[valid_examples[i]]
-                        top_k = 5 # number of nearest neighbors
-                        nearest = (-self.__sim[i, :]).argsort()[1:top_k+1]
-                        #print "Type of nearest: ", type(nearest)
-                        log_str = "Nearest to %s:" % valid_word
-                        for k in xrange(top_k):
-                            close_word = self.__reverse_dictionary[nearest[k]]
-                            log_str = "%s %s," % (log_str, close_word)
-                        print(log_str)
-                    """
+                    #print ("Similarity: ", self.__sim)
+                    #saver.save(session, "tmp/learntModel.ckpt")
             final_embeddings = normalized_embeddings.eval()
+            #print ("Final Embeddings: ", final_embeddings)
 
 
+        # Store the models learnt.
+        pickle.dump(self.__sim, open('sim.pkl','wb+'))
+        pickle.dump(self.__reverse_dictionary, open('revDict.pkl','wb+'))
         # Set the model to trained.
         self.setModelToTrained()
 
 
-    def guessNextWord(self, history):
+    def guessNextWord(self, history,sim=None,revDict=None):
+        if (sim != None):
+            self.__sim = sim
+            print ('self.__sim: ',self.__sim)
+        if revDict != None:
+            self.__reverse_dictionary = revDict
+
         self.__words= history.split()
         self.generateNGrams()
         del self.__words
@@ -236,7 +244,7 @@ class SkipGramWordPredictor(AbstractWordPredictor):
         if lastWord in self.__reverse_dictionary.values():
             top_k=1    # We want only one prediction for next word
             nearest=(-self.__sim[1, :]).argsort()[1:top_k+1]
-            log_str="Nearest to {}:".format(lastWord)
+            log_str="Next word for - {} - is :".format(lastWord)
             for k in xrange(top_k):
                 close_word = self.__reverse_dictionary[nearest[k]]
                 log_str="{} {}".format(log_str, close_word)
@@ -247,9 +255,20 @@ class SkipGramWordPredictor(AbstractWordPredictor):
 
 
 if __name__ == "__main__":
-    fileDetails = ('text8.zip', 'http://mattmahoney.net/dc/',31344016)
-    filename = maybe_download(*fileDetails)
+    # Check if models are already learnt.
     wordPredictor = SkipGramWordPredictor()
-    wordPredictor.train(filename)
-    wordPredictor.guessNextWord('next word is')
+    sim=None
+    revDict=None
+    if os.path.exists('sim.pkl') and os.path.exists('revDict.pkl'):
+        print ('Models are already learnt, loading the models')
+        sim = pickle.load(open('sim.pkl','rb+'))
+        print ('sim: ',sim)
+        revDict=pickle.load(open('revDict.pkl', 'rb+'))
+    else:
+        print ('Models not learnt. Learning now')
+        fileDetails = ('text8.zip', 'http://mattmahoney.net/dc/',31344016)
+        filename = maybe_download(*fileDetails)
+        wordPredictor.train(filename)
+
+    wordPredictor.guessNextWord('next word is',sim,revDict)
 

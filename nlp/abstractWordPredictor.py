@@ -25,7 +25,7 @@ class AbstractWordPredictor(IWordPredictor):
         # Set the model to trained.
         self.setModelToTrained()
    
-    def guessNextWord(self, history):
+    def guessNextWord(self, history, sim=None, revDict=None):
         """
         This is an abstract method to guess next word based on for the given 
         history word/sentence. In this abstract method, it only validates if 

@@ -14,7 +14,7 @@ class IWordPredictor():
         """
         raise NotImplementedError
    
-    def guessNextWord(self, history):
+    def guessNextWord(self, history, sim=None, revDict=None):
         """
         This method guesses the next word based on the trained model for the 
         given history word or sentence. 
