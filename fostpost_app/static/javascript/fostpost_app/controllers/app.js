@@ -39,31 +39,11 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   }
   $scope.scrollevent = function($e){
    console.log("I am the super cool scroll")
-   $http({
-                method: 'GET',
-                url: '/api/unsplash_images/'
-                    }).then(function successCallback(response) {
-    
-                console.log(response)
-                array_sr=response.data
-                console.log(array_sr[1])
-                for(i=0;i<10;i++)
-                {
-                  $scope.imageArray.push("/static/images_uploaded/uploaded_"+i)
-                
-                }
-
-
-                 // console.log($scope.unsplash_width,$scope.unsplash_height)
-
-                    }, function errorCallback(response) {
-    
-                });
-}
+   }
    $scope.$watch('scopeVariable.color',function(){
         $scope.background_r = hexToRgb($scope.scopeVariable.color).r
-  $scope.background_b =hexToRgb($scope.scopeVariable.color).b
-  $scope.background_g = hexToRgb($scope.scopeVariable.color).g
+        $scope.background_b =hexToRgb($scope.scopeVariable.color).b
+        $scope.background_g = hexToRgb($scope.scopeVariable.color).g
     });
   $scope.scopeVariable.color = "#FFFFFF"
   $scope.fontfamily = "Helvetica"
@@ -112,7 +92,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   var wrapWidths=[0,0,0];
   var addLogo=0;
   
-  
+  $scope.unsplash_query = "car"
 
   var delText=0;
   var delLogo=0;
@@ -342,6 +322,22 @@ function generatelevels(numberoflevels)
       $scope.unsplash = 1
     }
   }
+  $scope.inputChange = function()
+  {
+    $scope.imageArray=[]
+    $http({
+                method: 'POST',
+                url: '/api/unsplash_images/',
+                body: $scope.unsplash_query,
+                    }).then(function successCallback(response) {
+                      console.log(response)
+                   
+                    
+                    }, function errorCallback(response) {
+    
+                });
+    
+  }
   $scope.change_subItems=function(navbar_item)
   {
       if(navbar_item==1)
@@ -353,29 +349,7 @@ function generatelevels(numberoflevels)
       if(navbar_item==2)
       {
          console.log("I am going to display images")
-         $http({
-                method: 'GET',
-                url: '/api/unsplash_images/'
-                    }).then(function successCallback(response) {
-    
-                console.log(response)
-                array_sr=response.data
-                console.log(array_sr[1])
-                for(i=0;i<10;i++)
-                {
-                  $scope.imageArray[i]="/static/images_uploaded/uploaded_"+i
-                  $scope.unsplash_height[i] = 75;
-                  $scope.unsplash_width[i]= $scope.unsplash_height[i]*parseInt(response.data.width[i])/parseInt(response.data.height[i])
-                }
-
-
-                  console.log($scope.unsplash_width,$scope.unsplash_height)
-
-                    }, function errorCallback(response) {
-    
-                });
-         
-          
+      
       }
       if(navbar_item==3)
       {
