@@ -141,4 +141,8 @@ def authenticate_email(request):
 
 
 
+def getnextword(request):
+
+	#hkjhkh 
+	return "words"
 
