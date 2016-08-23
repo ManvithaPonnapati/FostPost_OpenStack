@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^api/get_colors/', views.get_colors, name='get_colors'),
     url(r'^api/drag_upload/', views.drag_upload, name='drag_upload'),
     url(r'^api/upload_logo/', views.upload_logo, name='upload_logo'),
+    url(r'^api/get_the_next_word/', views.get_the_next_word, name='get_the_next_word'),
 )
