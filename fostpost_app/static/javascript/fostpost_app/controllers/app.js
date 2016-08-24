@@ -64,6 +64,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.aw=0
   $scope.ah=0
   var doww=1200;
+  $scope.test = "SFDF"
   var dowh=628;
   var facebook=1;
   var google=0;
@@ -153,6 +154,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.zoomValue=0
   $scope.dummy="I am dummy";
   $window.dummy = $scope.dummy; 
+  $scope.fontArray=["Antic-Regular","Asar-Regular","Asap-Regular","Anaheim-Regular","Arvo-Regular","Armata-Regular"]
   $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
   $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
   $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];

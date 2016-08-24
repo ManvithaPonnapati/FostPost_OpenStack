@@ -222,7 +222,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==3">
             
              
-              <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)"><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
+              <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  </li>
             </ul>
             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
             
