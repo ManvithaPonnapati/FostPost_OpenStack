@@ -1,4 +1,4 @@
-var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload','ngMaterial','mdColorPicker']);
+var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload','ngMaterial','mdColorPicker','ngRoute']);
 //myApp.directive('myDirective', function() {});
 app.directive("scroll", function ($window) {
    return {
@@ -15,7 +15,7 @@ app.directive("scroll", function ($window) {
         $interpolateProvider.endSymbol(']}');
     });
 
-app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
+app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routeParams,$location) {
   console.log("Inside create");
   $scope.scopeVariable={}
   $scope.scopeVariable.options = {
@@ -46,7 +46,16 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         $scope.background_g = hexToRgb($scope.scopeVariable.color).g
     });
   $scope.scopeVariable.color = "#FFFFFF"
-  $scope.fontfamily = "Helvetica"
+   $scope.getParameter = function(name, url){
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+  $scope.fontfamily = $scope.getParameter('font')
   $scope.array_image_incrementer = 1
   $scope.image = null;
   $scope.imageFileName = '';
@@ -1618,8 +1627,10 @@ $scope.upload_logo = function (file) {
   {
     console.log("SCROLL EVENT DETECTED")
   }
+ 
+    
   //Adding drop and drag capabilities for uploading image onto the canvas
-$scope.upload = function (file) {
+  $scope.upload = function (file) {
        Upload.base64DataUrl(file).then(function(urls){
             $http({
                 method: 'POST',
