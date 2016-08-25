@@ -50,7 +50,7 @@ def create(request):
 @csrf_exempt
 def unsplash_images(request):
 	image_array=[]
-	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query=office&client_id=b348e0941b9d614b3c439557924e2b5a2b14b896bc97f2211929d9ac9fcb8a91").read()
+	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query="+(request.body)+"&client_id=2ff3b761282b8e07b0cde8e610b6ee37e3ead5f8786369b788b35bf596fc24eb").read()
 	x=json.loads(x)
 	y=[]
 	w=[]
@@ -58,6 +58,7 @@ def unsplash_images(request):
 	for i in range(0,len(x)):
 		y.append(x[i]['urls']['thumb'])
 		img_temp = NamedTemporaryFile(delete=True)
+		temp_file_name = img_temp.name
 		img_temp.write(urllib2.urlopen(x[i]['urls']['thumb']).read())
 		img_temp.flush()
 		im=Photo(email="rp493@cornell.edu")
@@ -140,4 +141,8 @@ def authenticate_email(request):
 
 
 
+def get_the_next_word(request):
+
+	#hkjhkh 
+	return "words"
 

@@ -1,4 +1,4 @@
-var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload','ngMaterial','mdColorPicker']);
+var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload','ngMaterial','mdColorPicker','ngRoute']);
 //myApp.directive('myDirective', function() {});
 app.directive("scroll", function ($window) {
    return {
@@ -15,7 +15,7 @@ app.directive("scroll", function ($window) {
         $interpolateProvider.endSymbol(']}');
     });
 
-app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
+app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routeParams,$location) {
   console.log("Inside create");
   $scope.scopeVariable={}
   $scope.scopeVariable.options = {
@@ -39,34 +39,23 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   }
   $scope.scrollevent = function($e){
    console.log("I am the super cool scroll")
-   $http({
-                method: 'GET',
-                url: '/api/unsplash_images/'
-                    }).then(function successCallback(response) {
-    
-                console.log(response)
-                array_sr=response.data
-                console.log(array_sr[1])
-                for(i=0;i<10;i++)
-                {
-                  $scope.imageArray.push("/static/images_uploaded/uploaded_"+i)
-                
-                }
-
-
-                 // console.log($scope.unsplash_width,$scope.unsplash_height)
-
-                    }, function errorCallback(response) {
-    
-                });
-}
+   }
    $scope.$watch('scopeVariable.color',function(){
         $scope.background_r = hexToRgb($scope.scopeVariable.color).r
-  $scope.background_b =hexToRgb($scope.scopeVariable.color).b
-  $scope.background_g = hexToRgb($scope.scopeVariable.color).g
+        $scope.background_b =hexToRgb($scope.scopeVariable.color).b
+        $scope.background_g = hexToRgb($scope.scopeVariable.color).g
     });
   $scope.scopeVariable.color = "#FFFFFF"
-  $scope.fontfamily = "Helvetica"
+   $scope.getParameter = function(name, url){
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+  $scope.fontfamily = $scope.getParameter('font')
   $scope.array_image_incrementer = 1
   $scope.image = null;
   $scope.imageFileName = '';
@@ -75,6 +64,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.aw=0
   $scope.ah=0
   var doww=1200;
+  $scope.test = "SFDF"
   var dowh=628;
   var facebook=1;
   var google=0;
@@ -112,7 +102,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   var wrapWidths=[0,0,0];
   var addLogo=0;
   
-  
+  $scope.unsplash_query = "car"
 
   var delText=0;
   var delLogo=0;
@@ -164,6 +154,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.zoomValue=0
   $scope.dummy="I am dummy";
   $window.dummy = $scope.dummy; 
+  $scope.fontArray=["Antic-Regular","Asar-Regular","Asap-Regular","Anaheim-Regular","Arvo-Regular","Armata-Regular"]
   $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
   $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
   $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];
@@ -342,6 +333,22 @@ function generatelevels(numberoflevels)
       $scope.unsplash = 1
     }
   }
+  $scope.inputChange = function()
+  {
+    $scope.imageArray=[]
+    $http({
+                method: 'POST',
+                url: '/api/unsplash_images/',
+                body: $scope.unsplash_query,
+                    }).then(function successCallback(response) {
+                      console.log(response)
+                   
+                    
+                    }, function errorCallback(response) {
+    
+                });
+    
+  }
   $scope.change_subItems=function(navbar_item)
   {
       if(navbar_item==1)
@@ -353,29 +360,7 @@ function generatelevels(numberoflevels)
       if(navbar_item==2)
       {
          console.log("I am going to display images")
-         $http({
-                method: 'GET',
-                url: '/api/unsplash_images/'
-                    }).then(function successCallback(response) {
-    
-                console.log(response)
-                array_sr=response.data
-                console.log(array_sr[1])
-                for(i=0;i<10;i++)
-                {
-                  $scope.imageArray[i]="/static/images_uploaded/uploaded_"+i
-                  $scope.unsplash_height[i] = 75;
-                  $scope.unsplash_width[i]= $scope.unsplash_height[i]*parseInt(response.data.width[i])/parseInt(response.data.height[i])
-                }
-
-
-                  console.log($scope.unsplash_width,$scope.unsplash_height)
-
-                    }, function errorCallback(response) {
-    
-                });
-         
-          
+      
       }
       if(navbar_item==3)
       {
@@ -1644,8 +1629,10 @@ $scope.upload_logo = function (file) {
   {
     console.log("SCROLL EVENT DETECTED")
   }
+ 
+    
   //Adding drop and drag capabilities for uploading image onto the canvas
-$scope.upload = function (file) {
+  $scope.upload = function (file) {
        Upload.base64DataUrl(file).then(function(urls){
             $http({
                 method: 'POST',
