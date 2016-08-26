@@ -93,31 +93,44 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
       </style>
 
- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js">
+ </script>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js">
+ </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js">
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js">
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js">
+  </script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css">
-    <script src="http://code.createjs.com/createjs-2014.12.12.min.js"></script>
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js
-"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js"></script>
-      
-
-      <script src="{% static 'javascript/mfont.js' %}"></script>
-      <script src="{% static 'javascript/flowtype.js' %}"></script>
+    <script src="http://code.createjs.com/createjs-2014.12.12.min.js">
+    </script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js">
+</script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js">
+      </script>
+    <script src="{% static 'javascript/mfont.js' %}">
+    </script>
+    <script src="{% static 'javascript/flowtype.js' %}">
+    </script>
   <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-<script src="{% static 'javascript/tinycolor.js' %}"></script>
-<script src="{% static 'javascript/mdColorPicker.min.js' %}"></script>
-
-
- <script src="{% static 'javascript/processing.js' %}"></script>
- <script src="{% static 'javascript/ng-file-upload-shim.js' %}"></script>
- <script src="{% static 'javascript/ng-file-upload.js' %}"></script>
- <script src="{% static 'javascript/ng-file-upload-all.js' %}"></script>
-     <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js">
+  </script>
+<script src="{% static 'javascript/tinycolor.js' %}">
+</script>
+<script src="{% static 'javascript/mdColorPicker.min.js' %}">
+</script>
+ <script src="{% static 'javascript/processing.js' %}">
+ </script>
+ <script src="{% static 'javascript/ng-file-upload-shim.js' %}">
+ </script>
+ <script src="{% static 'javascript/ng-file-upload.js' %}">
+ </script>
+ <script src="{% static 'javascript/ng-file-upload-all.js' %}">
+ </script>
+ <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}">
+ </script>
 
  
      
@@ -128,16 +141,14 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
     <!--Header Row-->
 
-    <div class="header row" style="width:100%;height:85px;background-color: #0E1B2A;margin:auto" >
-        <div align="left " style="width: 10%; display: table-cell;">
-            <img src="{% static 'images/fostpostword.png' %}" style="height:70px;width: auto;margin-top: 12px;">
+    <div class="header row header-style col-md-12">
+        <div align="left header-logo col-md-2">
+            <img src="{% static 'images/fostpostword.png' %}" class="header-logo-img">
         </div>
-          <div style="margin-top: -57px;width:90%" align="right">
+          <div class="header-nav col-md-offset-10 col-md-2">
                 <div  style="display: table-cell;padding: 20px;">
-                    <span  style="color: #EF3E36;font-size: 17px;text-align: center; cursor: pointer">Features</span>
-                </div>
-                <div   style="display: table-cell;padding: 20px;">
-                    <span style="color: #EF3E36;font-size: 17px;text-align: center;cursor: pointer">Pricing</span>
+                    <span style="color: #EF3E36;font-size: 17px;text-align: center;cursor: pointer">Pricing
+                    </span>
                 </div>
                 <div  style="display: table-cell;padding: 20px;">
                     <span style="color: #EF3E36;font-size: 17px;text-align: center; cursor: pointer">Logout</span>
@@ -145,8 +156,8 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
           </div>
     </div>
 
-    <div class="row" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
-       <div class="col-sm-2" ng-click="change_canvas_size(1)">
+    <div class="row btn-group" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
+       <div class="col-sm-2 btn-group" ng-click="change_canvas_size(1)">
 
             <select >
               <option value="1200x628" selected> Facebook </option>
