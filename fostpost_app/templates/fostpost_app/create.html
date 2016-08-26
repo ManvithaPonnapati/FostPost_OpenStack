@@ -103,7 +103,10 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
   </script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js">
   </script>
+
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css">
+
+
     <script src="http://code.createjs.com/createjs-2014.12.12.min.js">
     </script>
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js">
@@ -156,12 +159,13 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
           </div>
     </div>
 
-    <div class="row btn-group" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
-       <div class="col-sm-2 btn-group" ng-click="change_canvas_size(1)">
-
-            <select >
-              <option value="1200x628" selected> Facebook </option>
-              <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}</option>
+    <div class="row btn-group btn-default" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
+       <div class="col-sm-2 btn-default" ng-click="change_canvas_size(1)">
+            <select class="btn-canvas">
+              <option value="1200x628" selected> Facebook 
+              </option>
+              <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}
+              </option>
             </select>
        </div>
         <div class="col-sm-2" ng-click="change_canvas_size(2)">
