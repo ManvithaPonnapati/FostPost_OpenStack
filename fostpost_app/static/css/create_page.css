@@ -28,20 +28,42 @@
 }
 
 /* SC horizontal button tabs for canvases */
+
+.row-canvas{
+  width:100%;
+  height:auto;
+  background-color:#eae5ea;
+  margin:auto;
+}
+
 .btn-default {
   height:40px;
   border-color:#ef4223;
 }
 .btn{
   font-size: 10px;
+  color:red;
 }
 
 .btn-canvas {
   font-family: 'muli', 'helvetica', arial;
-    color: #ef4223;
-    font-weight: 100;
-    background:#F7F8FD;
-    font-size:100%;
+  display:inline-block;
+  color: #061b2b;
+  font-weight: 200;
+  background:#F7F8FD;
+  font-size:100%;
+  width: 100%;
+  height:40px;
+  border:1px solid transparent;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-canvas-download{
+font-family: 'muli', 'helvetica', arial;
+background:#ef4223;
+color:white;
+font-weight: 800;
 }
 
 

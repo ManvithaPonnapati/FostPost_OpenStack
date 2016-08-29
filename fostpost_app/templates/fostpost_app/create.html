@@ -7,10 +7,13 @@
   <title>FostPost</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="{% static 'css/create_page.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+      
         <link rel="stylesheet" href="{% static 'javascript/mdColorPicker.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+            <!--SC 8.26.16 this is JS for Bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
  
       <script type="text/javascript">
@@ -93,50 +96,49 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
       </style>
 
- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js">
- </script>
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js">
- </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js">
-  </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js">
-  </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js">
-  </script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js">
+</script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js">
+</script>
 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css">
 
 
-    <script src="http://code.createjs.com/createjs-2014.12.12.min.js">
-    </script>
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js">
+<script src="http://code.createjs.com/createjs-2014.12.12.min.js">
 </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js">
-      </script>
-    <script src="{% static 'javascript/mfont.js' %}">
-    </script>
-    <script src="{% static 'javascript/flowtype.js' %}">
-    </script>
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js">
-  </script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js">
+</script>
+<script src="{% static 'javascript/mfont.js' %}">
+</script>
+<script src="{% static 'javascript/flowtype.js' %}">
+</script>
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js">
+</script>
 <script src="{% static 'javascript/tinycolor.js' %}">
 </script>
 <script src="{% static 'javascript/mdColorPicker.min.js' %}">
 </script>
- <script src="{% static 'javascript/processing.js' %}">
- </script>
- <script src="{% static 'javascript/ng-file-upload-shim.js' %}">
- </script>
- <script src="{% static 'javascript/ng-file-upload.js' %}">
- </script>
- <script src="{% static 'javascript/ng-file-upload-all.js' %}">
- </script>
- <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}">
- </script>
+<script src="{% static 'javascript/processing.js' %}">
+</script>
+<script src="{% static 'javascript/ng-file-upload-shim.js' %}">
+</script>
+<script src="{% static 'javascript/ng-file-upload.js' %}">
+</script>
+<script src="{% static 'javascript/ng-file-upload-all.js' %}">
+</script>
+<script src="{% static 'javascript/fostpost_app/controllers/app.js' %}">
+</script>
 
- 
-     
+
   </head>
   
   <body ng-app="angularjs-starter" style="margin-top: -8px;background-color:#F5F7FA;width:100%;margin-right:0">
@@ -158,6 +160,82 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
                 </div>
           </div>
     </div>
+
+
+<!-- ROW for canvas tabs without Angular Dirs -->
+  <div class="row row-canvas"> 
+        <div class = "col-md-12 nopad col-xs-8 nopad"  id="tabs">
+          <div class= "btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn-canvas dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Facebook
+              </button>
+          <ul class="dropdown-menu">
+            <li onclick="fb1200x628()" id="fb1200x628" ><a href="#">Conversions 1200x628</a></li>
+            <li onclick="fb1200x900()" id="fb1200x900"><a href="#">Page Post Engagement 1200x900</a></li>
+            <li onclick="fb600x600()" id="fb600x600"><a href="#">Carousel 600x600</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="googleTab">Google Display
+            </button>
+            <ul class="dropdown-menu">
+            <li onclick="Google336x280()"><a href="#"  id="Google336x280">Large Rectangle 336x280</a></li>
+            <li onclick="Google300x250()" id="Google300x250"><a href="#">Medium Rectangle 300x250</a></li>
+            <li onclick="Google728x90()" id="Google728x90"><a href="#">Leaderboard 728x90</a></li>
+            <li onclick="Google300x600()" id="Google300x600"><a href="#">Half Page 300x600</a></li>
+            <li onclick="Google320x100()" id="Google320x100"><a href="#">Large Mobile Banner 320x100</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" id="twittertab" onclick="Twitter420x220()">Twitter 
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" id="pintab" onclick="Pinterest230x800()">Pinterest 
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" id="instatab" onclick="Instagram1080x1080()">Instagram 
+              </button>
+            </div>
+              <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" id="linkedintab" onclick="LinkedIn698x400()">LinkedIn
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="customtab">Custom Canvas
+              </button>
+              <ul class="dropdown-menu">
+                <div class="row">
+                  <div class="col-s-12">
+                    <input type="text" class="form-control" id="custom-canvas-width" placeholder="Width(px)">
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="col-s-12">
+                      <input type="text" class="form-control" id="custom-canvas-height" placeholder="Height(px)">
+                    </div>
+                  </div>
+              </ul>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-canvas btn-canvas-download" onclick="LinkedIn698x400()">DOWNLOAD
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- END ROW for canvas tabs without Angular Dirs -->
+
+
+
+
+
+
+
 
     <div class="row btn-group btn-default" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
        <div class="col-sm-2 btn-default" ng-click="change_canvas_size(1)">
