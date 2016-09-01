@@ -307,24 +307,20 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
       
 
       <!-- navbar drawer Images -->
-    <ul class="drawer-overall data-toggle"id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
-      <ul class="nav nav-tabs list-inline" role="tablist">
-        <li ng-click="craftcloud_item()" role="presentation" class="active">
-          <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
-          </a>
-        </li>
-        <li ng-click="uploaded_item()"role="presentation">
-          <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded</a>
-        </li>
-      </ul>
-
-            <!-- ROW for image search query field -->
-            <div class="row">
-
-            <!-- END ROW for image search query field -->
-            </div>
-
-  <!-- navbar drawer images  --> 
+    <div>
+      <ul class="drawer-overall data-toggle"id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
+        <ul class="nav nav-tabs list-inline" role="tablist">
+          <li ng-click="craftcloud_item()" role="presentation" class="active">
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
+            </a>
+          </li>
+          <li ng-click="uploaded_item()"role="presentation">
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded</a>
+            <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
+          </li>
+        </ul>
+         <!-- navbar drawer images  --> 
+              <li>
                 <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
               </li>
                 <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" >
@@ -333,22 +329,6 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
                 <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" >
                   <img src={[i]} style="width: 100%;height:100%" align="middle"  /> 
                 </li>
-                
-    </ul>
-
-
-
-               <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2 && unsplash == 0">                              
-                <li style="height:60px">
-                  <div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images
-                  </div>
-                  <div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()"  >Uploaded
-                  </div>
-                  <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
-                </li>
-               
-
-
 
                <!-- navbar drawer Add Logo  --> 
                 <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" ng-style="{ 'width' : upload_width[$index],'height':upload_height[$index]}">
@@ -375,6 +355,18 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
                 </li>
               </ul>
           </div>
+
+      
+
+            <!-- ROW for image search query field -->
+            <div class="row">
+
+            <!-- END ROW for image search query field -->
+            </div>
+
+             
+    </ul>
+
 
 
 
