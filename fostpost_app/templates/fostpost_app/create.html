@@ -167,26 +167,44 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
         <div class = "col-md-12 nopad col-xs-8 nopad"  id="tabs">
           <div class= "btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
-              <button type="button" class="btn-canvas dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Facebook
+              <button type="button" class="btn-canvas dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Facebook
               </button>
-          <ul class="dropdown-menu">
-            <li onclick="fb1200x628()" id="fb1200x628" ><a href="#">Conversions 1200x628</a></li>
-            <li onclick="fb1200x900()" id="fb1200x900"><a href="#">Page Post Engagement 1200x900</a></li>
-            <li onclick="fb600x600()" id="fb600x600"><a href="#">Carousel 600x600</a></li>
-            <li role="separator" class="divider"></li>
-          </ul>
+              <ul class="dropdown-menu">
+                <li onclick="fb1200x628()" id="fb1200x628" >
+                  <a href="#">Conversions 1200x628</a>
+                </li>
+                <li onclick="fb1200x900()" id="fb1200x900">
+                  <a href="#">Page Post Engagement 1200x900</a>
+                </li>
+                <li onclick="fb600x600()" id="fb600x600">
+                  <a href="#">Carousel 600x600</a>
+                </li>
+                <li role="separator" class="divider"> 
+                </li>
+              </ul>
               </button>
             </div>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="googleTab">Google Display
-            </button>
+              </button>
             <ul class="dropdown-menu">
-            <li onclick="Google336x280()"><a href="#"  id="Google336x280">Large Rectangle 336x280</a></li>
-            <li onclick="Google300x250()" id="Google300x250"><a href="#">Medium Rectangle 300x250</a></li>
-            <li onclick="Google728x90()" id="Google728x90"><a href="#">Leaderboard 728x90</a></li>
-            <li onclick="Google300x600()" id="Google300x600"><a href="#">Half Page 300x600</a></li>
-            <li onclick="Google320x100()" id="Google320x100"><a href="#">Large Mobile Banner 320x100</a></li>
-            <li role="separator" class="divider"></li>
+            <li onclick="Google336x280()">
+              <a href="#"  id="Google336x280">Large Rectangle 336x280</a>
+            </li>
+            <li onclick="Google300x250()" id="Google300x250">
+              <a href="#">Medium Rectangle 300x250</a>
+            </li>
+            <li onclick="Google728x90()" id="Google728x90">
+              <a href="#">Leaderboard 728x90</a>
+            </li>
+            <li onclick="Google300x600()" id="Google300x600">
+              <a href="#">Half Page 300x600</a>
+            </li>
+            <li onclick="Google320x100()" id="Google320x100">
+              <a href="#">Large Mobile Banner 320x100</a>
+            </li>
+            <li role="separator" class="divider">
+            </li>
           </ul>
             </div>
             <div class="btn-group" role="group">
@@ -275,135 +293,133 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
         Download
        </div>
     </div>
-    <div class="sidenav row" style="margin-top:1%;background-color:transparent;position:fixed">
-       <div align="left " style="width:20%;display: table-cell;">
-            <ul style="position:fixed;width:10%;height:100%;float:left;background-color:#0c223f;margin-left:0px;">
-             <!--  <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li> -->
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Images</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Fonts</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/addlogo.svg' %}" style="width: 50%;height:70%" align="middle" ngf-select="upload_logo($file)" /> <p ngf-select="upload_logo($file)"> Logo</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/background.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Colors</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Save </p></a></li>
-            </ul>
-            <!-- <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
-              
-              <li ng-click="changeLayout(1)"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(2)"><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(3)"><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(4)"><img  src="{% static 'svg/layout_4.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(5)"><img  src="{% static 'svg/layout_5.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(6)"><img  src="{% static 'svg/layout_6.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(7)"><img  src="{% static 'svg/layout_7.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(8)"><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+    
 
-            </ul>
-
-<!-- start of row for pullout drawer, zoom, and canvas -->
+<!-- 1 start of row for navbar, pullout drawer, zoom, and canvas -->
 <div class="row">
+
+
+  <div class="sidenav col-md-1 col-md-offset-0">
+      <ul class="nav-toolbar">
+       <!--  <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li> -->
+        <li style="height:70px;">  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Images</p></a></li>
+        <li style="height:70px;">  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Fonts</p></a></li>
+        <li style="height:70px;">  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/addlogo.svg' %}" style="width: 50%;height:70%" align="middle" ngf-select="upload_logo($file)" /> <p ngf-select="upload_logo($file)"> Logo</p></a></li>
+        <li style="height:70px;">  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/background.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Colors</p></a></li>
+        <li style="height:70px;">  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Save </p></a></li>
+      </ul>
+      <!-- <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
+        
+        <li ng-click="changeLayout(1)"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+        <li ng-click="changeLayout(2)"><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+        <li ng-click="changeLayout(3)"><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+        <li ng-click="changeLayout(4)"><img  src="{% static 'svg/layout_4.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+        <li ng-click="changeLayout(5)"><img  src="{% static 'svg/layout_5.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+        <li ng-click="changeLayout(6)"><img  src="{% static 'svg/layout_6.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+        <li ng-click="changeLayout(7)"><img  src="{% static 'svg/layout_7.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+        <li ng-click="changeLayout(8)"><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+
+      </ul>
+-->
+<!-- End Toolbar -->
+    </div>
+
+
+
 
 
   <!-- Set width for pullout draw -->
   <div class="col-md-3">
       
 
-      <!-- navbar drawer Images -->
-    <div>
-      <ul class="drawer-overall data-toggle"id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
+      <!-- navbar drawer tabs for Images/upload -->
+      <div class="row">
         <ul class="nav nav-tabs list-inline" role="tablist">
           <li ng-click="craftcloud_item()" role="presentation" class="active">
             <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
             </a>
           </li>
           <li ng-click="uploaded_item()"role="presentation">
-            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded</a>
-            <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded
+            </a>
+          </li>
+          <!-- text field input for image search -->
+            <div class="row">
+              <div class="col-md-6">
+                <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
+              </div>
+            </div>
+          </ul>
+      </div>
+
+
+  <!-- start of content for pullout drawer  -->     
+      <div class="row">
+        <!--<div class= "drawer-overall">--> 
+          <ul class="drawer-overall data-toggle"id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
+          </ul>
+
+   <!-- navbar drawer images  --> 
+         <ul>
+          <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" >
+            <img src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> 
+          </li>
+          <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" >
+            <img src={[i]} style="width: 100%;height:100%" align="middle"  /> 
           </li>
         </ul>
-         <!-- navbar drawer images  --> 
 
-                <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" >
-                  <img src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> 
-                </li>
-                <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" >
-                  <img src={[i]} style="width: 100%;height:100%" align="middle"  /> 
-                </li>
+   <!-- navbar drawer Add Logo  --> 
+         <ul>
+          <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" ng-style="{ 'width' : upload_width[$index],'height':upload_height[$index]}">
+            <img src={[i]} style="width: 100%;height:100%" align="middle" /> 
+          </li>
+         </ul>
 
-               <!-- navbar drawer Add Logo  --> 
-                <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" ng-style="{ 'width' : upload_width[$index],'height':upload_height[$index]}">
-                  <img src={[i]} style="width: 100%;height:100%" align="middle" /> 
-                </li>
-                
-              </ul>
+          <!-- navbar drawer font  -->
+          <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==3">
+          
+            <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  
+            </li>
+          </ul>
 
-              <!-- navbar drawer font  -->
-              <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==3">
-              
-                <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  
-                </li>
-              </ul>
+            <!-- navbar drawer colors-->
+          <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
+            <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ng-click="changeColor($index)" >
+            </li>
+            <li>
+              <div md-color-picker="scopeVariable.options" ng-model="scopeVariable.color">
+              </div>
+            </li>
+          </ul>
+             <!-- </div>>--> 
+   <!-- END of pullout drawer content row  -->  
+      </div>
 
-                <!-- navbar drawer colors-->
-              <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
-              
-                <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ng-click="changeColor($index)" >
-                </li>
-                <li>
-                  <div md-color-picker="scopeVariable.options" ng-model="scopeVariable.color">
-                  </div>
-                </li>
-              </ul>
-          </div>
-
-      
-
-            <!-- ROW for image search query field -->
-            <div class="row">
-
-            <!-- END ROW for image search query field -->
-            </div>
-
-             
-    </ul>
-
-
-
-
-
-  <!-- End width for pullout draw -->
+  <!-- End Col for pullout draw -->
   </div>
   
-                
-
 
 
           <!-- CANVAS - MANU start -->
             <div style="width:75%;background-color:transparent;margin-left:50%" id="canvasParent" align="right">
-                  <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box"
+              <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box"
     ngf-drag-over-class="'dragover'" ngf-multiple="true" 
     ngf-pattern="'image/*'">I am the cool canvas
-  </canvas>
+              </canvas>
 
                   <!--<canvas id="zoomcanvas">I am the cool canvas</canvas>-->
                   <input type="text" ng-model="MainText" id="maintext_line">
                   <input type="text" ng-model="BodyText" id="bodytext_line">
                    <input type="text" ng-model="SmallText" id="smalltext_line">
-                  <div >
-            <canvas id="zoombarcanvas"  ng-style="{ 'width' : zoomcanvas_width,'height':zoomcanvas_height }">
-            </canvas>
+                <div >
+                  <canvas id="zoombarcanvas"  ng-style="{ 'width' : zoomcanvas_width,'height':zoomcanvas_height }">
+                  </canvas>
+                </div>         
             </div>
-                 
-            </div>
-
-          
-      </div>
-
-
-
-  </div>
-
-<!-- end of row for pullout drawer, zoom, and canvas -->  
+  
+<!-- 1 end of row for pullout drawer, zoom, and canvas -->  
 </div>
-
 
 
 

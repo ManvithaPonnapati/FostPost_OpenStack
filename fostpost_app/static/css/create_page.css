@@ -65,6 +65,11 @@ background:#ef4223;
 color:white;
 font-weight: 800;
 }
+/*----toolbar----*/
+.nav-toolbar{
+  background-color:#0c223f;
+  height:100%;
+}
 
 /*----pullout drawer----*/
 .drawer-overall{
@@ -78,7 +83,6 @@ font-weight: 800;
 }
 
 .nav-tabs{
-  width:49%;
   margin-left:0%;
   float:left
 }
