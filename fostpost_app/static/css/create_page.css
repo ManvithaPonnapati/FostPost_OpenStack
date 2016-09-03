@@ -27,6 +27,18 @@
   text-align:right;
 }
 
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 4px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    }
+
 /* SC horizontal button tabs for canvases */
 
 .row-canvas-tabs{
