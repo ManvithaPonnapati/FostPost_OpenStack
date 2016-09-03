@@ -29,7 +29,7 @@
 
 /* SC horizontal button tabs for canvases */
 
-.row-canvas{
+.row-canvas-tabs{
   width:100%;
   height:auto;
   background-color:#eae5ea;
@@ -89,6 +89,30 @@ font-weight: 800;
 
 .nav{
   list-style: none;
+}
+
+.drawer-images{
+  background-color:#1e345d;
+  overflow:scroll;
+  color:white;
+}
+
+.drawer-font{
+  background-color:#1e345d;
+  overflow:scroll;
+  color:white;
+}
+
+
+.drawer-colors{
+  background-color:#1e345d;
+  overflow:scroll;
+  color:white;
+}
+
+/*----CANVAS----*/
+.canvas-style{
+  background-color:transparent;
 }
 
 body

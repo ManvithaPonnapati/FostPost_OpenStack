@@ -163,7 +163,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
 
 <!-- ROW for canvas tabs without Angular Dirs -->
-  <div class="row row-canvas"> 
+  <div class="row row-canvas-tabs"> 
         <div class = "col-md-12 nopad col-xs-8 nopad"  id="tabs">
           <div class= "btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
@@ -251,48 +251,6 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
 
 
-
-
-
-
-    <div class="row btn-group btn-default" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
-       <div class="col-sm-2 btn-default" ng-click="change_canvas_size(1)">
-            <select class="btn-canvas">
-              <option value="1200x628" selected> Facebook 
-              </option>
-              <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}
-              </option>
-            </select>
-       </div>
-        <div class="col-sm-2" ng-click="change_canvas_size(2)">
-            <select >
-              <option value="300x600" selected> Google </option>
-              <option ng-repeat="(key, value) in googleSizes" value="{[value]}" > {[key]} {[value]}</option>
-            </select>
-       </div>
-        <div class="col-sm-2"  ng-click="change_canvas_size(3)">
-        Twitter 
-       </div>
-        <div class="col-sm-2" ng-click="change_canvas_size(4)">
-        Instagram
-       </div>
-        <div class="col-sm-2" ng-click="change_canvas_size(5)">
-        Pinterest
-       </div>
-       <div class="col-sm-2"  ng-click="change_canvas_size(6)">
-        LinkedIn
-       </div>
-        <div class="col-sm-2"  ng-click="change_canvas_size(7)">
-        Custom
-       </div>
-        <div class="col-sm-2"  ng-click="download_canvas()" style="
-  background-color: #ef4223;
-  color:white;
-  font-weight: 500;
-">
-        Download
-       </div>
-    </div>
     
 
 <!-- 1 start of row for navbar, pullout drawer, zoom, and canvas -->
@@ -326,14 +284,11 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
 
 
-
-
   <!-- Set width for pullout draw -->
-  <div class="col-md-3">
-      
+  <div class="col-md-3"> 
 
       <!-- navbar drawer tabs for Images/upload -->
-      <div class="row">
+
         <ul class="nav nav-tabs list-inline" role="tablist">
           <li ng-click="craftcloud_item()" role="presentation" class="active">
             <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
@@ -345,15 +300,16 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
           </li>
           <!-- text field input for image search -->
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-1">
                 <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
               </div>
             </div>
           </ul>
-      </div>
 
 
-  <!-- start of content for pullout drawer  -->     
+
+
+<!-- start of content for pullout drawer  -->     
       <div class="row">
         <!--<div class= "drawer-overall">--> 
           <ul class="drawer-overall data-toggle"id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
@@ -377,14 +333,14 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
          </ul>
 
           <!-- navbar drawer font  -->
-          <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==3">
+          <ul class="drawer-font" ng-if="selected_navbar_item==3">
           
             <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  
             </li>
           </ul>
 
             <!-- navbar drawer colors-->
-          <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
+          <ul class="drawer-colors" ng-if="selected_navbar_item==5">
             <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ng-click="changeColor($index)" >
             </li>
             <li>
@@ -401,25 +357,52 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
   
 
 
-          <!-- CANVAS - MANU start -->
-            <div style="width:75%;background-color:transparent;margin-left:50%" id="canvasParent" align="right">
-              <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box"
-    ngf-drag-over-class="'dragover'" ngf-multiple="true" 
-    ngf-pattern="'image/*'">I am the cool canvas
-              </canvas>
 
-                  <!--<canvas id="zoomcanvas">I am the cool canvas</canvas>-->
-                  <input type="text" ng-model="MainText" id="maintext_line">
-                  <input type="text" ng-model="BodyText" id="bodytext_line">
-                   <input type="text" ng-model="SmallText" id="smalltext_line">
-                <div >
-                  <canvas id="zoombarcanvas"  ng-style="{ 'width' : zoomcanvas_width,'height':zoomcanvas_height }">
-                  </canvas>
-                </div>         
-            </div>
-  
+
+
+            <!-- CANVAS - MANU start -->
+  <div class="col-md-7 canvas-style" id="canvasParent" align="right">
+    <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="'image/*'">I am the cool canvas
+    </canvas>
+
+
+   <!-- CANVAS - text entry fields -->
+     <div class="row">
+      <ul class="list-inline">
+        <!--<canvas id="zoomcanvas">I am the cool canvas</canvas>-->
+        <input type="text" ng-model="MainText" id="maintext_line">
+        <input type="text" ng-model="BodyText" id="bodytext_line">
+       <input type="text" ng-model="SmallText" id="smalltext_line">
+     </ul>
+    </div>
+    <div >
+      <canvas id="zoombarcanvas"  ng-style="{ 'width' :zoomcanvas_width,'height':zoomcanvas_height }">
+      </canvas>
+    </div>         
+  </div>
+
+
 <!-- 1 end of row for pullout drawer, zoom, and canvas -->  
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+  
+  
+
 
 
 
