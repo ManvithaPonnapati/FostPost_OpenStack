@@ -6,12 +6,13 @@
     <meta charset="utf-8">
   <title>FostPost</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="{% static 'css/create_page.css' %}">
+
       
         <link rel="stylesheet" href="{% static 'javascript/mdColorPicker.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+          <link rel="stylesheet" href="{% static 'css/create_page.css' %}">
             <!--SC 8.26.16 this is JS for Bootstrap -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -152,10 +153,6 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
         </div>
           <div class="header-nav col-md-offset-10 col-md-2">
                 <div  style="display: table-cell;padding: 20px;">
-                    <span style="color: #EF3E36;font-size: 17px;text-align: center;cursor: pointer">Pricing
-                    </span>
-                </div>
-                <div  style="display: table-cell;padding: 20px;">
                     <span style="color: #EF3E36;font-size: 17px;text-align: center; cursor: pointer">Logout</span>
                 </div>
           </div>
@@ -185,7 +182,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
               </button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="googleTab">Google Display
+              <button type="button" class="btn btn-default dropdown-toggle btn-canvas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="googleTab">Google Display
               </button>
             <ul class="dropdown-menu">
             <li onclick="Google336x280()">
@@ -208,23 +205,23 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
           </ul>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default" id="twittertab" onclick="Twitter420x220()">Twitter 
+              <button type="button" class="btn btn-default btn-canvas" id="twittertab" onclick="Twitter420x220()">Twitter 
               </button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default" id="pintab" onclick="Pinterest230x800()">Pinterest 
+              <button type="button" class="btn btn-default btn-canvas" id="pintab" onclick="Pinterest230x800()">Pinterest 
               </button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default" id="instatab" onclick="Instagram1080x1080()">Instagram 
+              <button type="button" class="btn btn-default btn-canvas" id="instatab" onclick="Instagram1080x1080()">Instagram 
               </button>
             </div>
               <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default" id="linkedintab" onclick="LinkedIn698x400()">LinkedIn
+              <button type="button" class="btn btn-default btn-canvas" id="linkedintab" onclick="LinkedIn698x400()">LinkedIn
               </button>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="customtab">Custom Canvas
+              <button type="button" class="btn btn-default dropdown-toggle btn-canvas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="customtab">Custom Canvas
               </button>
               <ul class="dropdown-menu">
                 <div class="row">
@@ -258,11 +255,41 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
       <div class="sidenav col-md-1 col-md-offset-0">
           <ul class="nav-toolbar">
            <!--  <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li> -->
-            <li style="height:70px;">  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Images</p></a></li>
-            <li style="height:70px;">  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Fonts</p></a></li>
-            <li style="height:70px;">  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/addlogo.svg' %}" style="width: 50%;height:70%" align="middle" ngf-select="upload_logo($file)" /> <p ngf-select="upload_logo($file)"> Logo</p></a></li>
-            <li style="height:70px;">  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/background.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Colors</p></a></li>
-            <li style="height:70px;">  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Save </p></a></li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(2)">
+                <img  src="{% static 'svg/image.svg' %}"  align="middle" />
+                <p> Images
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(3)">
+                <img  src="{% static 'svg/font.svg' %}" align="middle" />
+                <p> Fonts
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(4)">
+                <img  src="{% static 'svg/addlogo.svg' %}" align="middle" ngf-select="upload_logo($file)" /> 
+                <p ngf-select="upload_logo($file)"> Logo
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(5)">
+                <img  src="{% static 'svg/background.svg' %}" align="middle" />
+                <p> Colors
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(6)">
+                <img  src="{% static 'svg/save.svg' %}" align="middle" />
+                <p> Save 
+                </p>
+              </a>
+            </li>
           </ul>
           <!-- <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
             
@@ -283,9 +310,17 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
 
   <!-- Set width for pullout draw -->
-  <div class="col-md-3"> 
+  <div class="col-md-3 drawer-overall"> 
 
+
+
+<!-- start of content for pullout drawer  -->     
+      <div class="row">
+        <!--<div class= "drawer-overall">--> 
+          <ul class="drawer-overall data-toggle"id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
+          </ul>
       <!-- navbar drawer tabs for Images/upload -->
+      <div>
         <ul class="nav nav-tabs list-inline" role="tablist">
           <li ng-click="craftcloud_item()" role="presentation" class="active">
             <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
@@ -295,20 +330,11 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
             <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded
             </a>
           </li>
+
           <!-- text field input for image search -->
-            <div class="row">
-              <div class="col-md-1">
-                <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
-              </div>
-            </div>
+            <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
           </ul>
-
-<!-- start of content for pullout drawer  -->     
-      <div class="row">
-        <!--<div class= "drawer-overall">--> 
-          <ul class="drawer-overall data-toggle"id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
-          </ul>
-
+        </div>
    <!-- navbar drawer images  --> 
          <ul>
           <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" >
@@ -364,21 +390,22 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
        <!-- CANVAS - text entry fields -->
       <div class="input-group">
-        <span class="input-group-addon" id="maintext_line">Main Text
+ 
+        <span class="input-group-addon" id="maintext_line">Large Text
         </span>
-        <input type="text" class="form-control" placeholder="Enter Large Text" aria-describedby="basic-addon1">
+        <input type="text" class="form-control text-field" placeholder="Enter Large Text" aria-describedby="basic-addon1">
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="bodytext_line">Body Text
+        <span class="input-group-addon" id="bodytext_line">Medium Text
         </span>
-        <input type="text" class="form-control" placeholder="Enter Body Text" aria-describedby="basic-addon1">
+        <input type="text" class="form-control text-field" placeholder="Enter Medium Text" aria-describedby="basic-addon1">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="smalltext_line">Small Text
         </span>
-        <input type="text" class="form-control" placeholder="Enter Small Text" aria-describedby="basic-addon1">
+        <input type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
       </div>
-      
+
    <!-- END CANVAS - Col -->
     </div>
 

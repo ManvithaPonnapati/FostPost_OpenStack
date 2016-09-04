@@ -27,17 +27,6 @@
   text-align:right;
 }
 
-.input-group-addon {
-    padding: 6px 12px;
-    font-size: 4px;
-    font-weight: normal;
-    line-height: 1;
-    color: #555;
-    text-align: center;
-    background-color: red;
-    border: 1px solid red;
-    border-radius: 4px;
-    }
 
 /* SC horizontal button tabs for canvases */
 
@@ -57,6 +46,8 @@
   color:red;
 }
 
+
+
 .btn-canvas {
   font-family: 'muli', 'helvetica', arial;
   display:inline-block;
@@ -66,7 +57,7 @@
   font-size:100%;
   width: 100%;
   height:40px;
-  border:1px solid transparent;
+  border:1px solid #ef4223;
   text-align: center;
   vertical-align: middle;
 }
@@ -85,9 +76,6 @@ font-weight: 800;
 
 /*----pullout drawer----*/
 .drawer-overall{
-  position:fixed;
-  margin-left:10%;
-  float:right;
   vertical-align:middle;
   background-color:#1e345d;
   overflow:scroll;
@@ -96,9 +84,48 @@ font-weight: 800;
 
 .nav-tabs{
   margin-left:0%;
-  float:left
+  float:left;
+  background-color: transparent;
 }
 
+li:active > a:hover{
+  color:yellow;
+}
+
+li:hover{
+  color:red;
+  background-color: transparent;
+}
+
+.li a:hover{
+  color:yellow;
+}
+
+a:hover{
+  background-color: green;
+}
+.nav-tabs > li.active > a{
+  background-color: red;
+}
+
+.nav-tabs > li.active > a:hover{
+background-color: blue;
+}
+
+/*----hover tab ----*/
+.nav-tabs > li.active > a:focus{
+  background-color: transparent;
+  color:white;
+  font-weight: 800;
+}
+
+
+
+.nav-tabs > li.active > a{
+  background-color: transparent;
+  color:yellow;
+  font-weight:600;
+}
 .nav{
   list-style: none;
 }
@@ -125,6 +152,25 @@ font-weight: 800;
 /*----CANVAS----*/
 .canvas-style{
   background-color:transparent;
+}
+
+/* Text input styling */
+.input-group-addon {
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: 100;
+  font-family:'muli', 'helvetica', arial;
+  line-height: 1;
+  color: white;
+  text-align: left;
+  background-color: #0c223f;
+  border: 1px solid #ef4223;
+  border-radius: 4px;
+  }
+
+.text-field{
+  background-color: #002c5c;
+  color:white;
 }
 
 body
@@ -177,8 +223,7 @@ html, body {
     min-height: 100%;
     background-color: #231B34;
 }
-.row .col-sm-2
-{
+.row .col-sm-2 {
     width: 12.5%;
     text-align: center;
     font-size: 20px;
@@ -189,7 +234,6 @@ html, body {
     color:#ef4223;
 }
 select {
-  
     width: 100%;
     height: auto;
     text-align: center;
@@ -200,18 +244,18 @@ select {
    -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
-  
 } 
-ul
-{
+
+ul {
   list-style: none;
   margin: 0; padding: 0;
   height:100%;
 }
+
 li{
   margin: 0px;
   padding:0px;
-  border: 1px solid #c6c4c4;
+  border: 1px solid #91a0e2;
   text-align: center;
   height:10%;
   color: #ef4223;
@@ -219,19 +263,20 @@ li{
   font-family: 'avenir next', 'helvetica', 'arial';
   font-size: 1.50rem;
   font-weight: 100;
-
 }
+
 li img{
   padding:5px;
 }
+
 li a{
   color:white;
-  color: #ef4223;
-
+  font-weight: 200;
+  font-family: 'muli', 'helvetica', arial;
 }
-canvas
-{
-  background-color: #FFF;
+
+canvas {
+  background-color: transparent;
   width:50%;
   height:50%;
 }
