@@ -8,73 +8,42 @@
 <g id="Layer_3">
 </g>
 <g id="Layer_1">
+	<g>
+		<rect y="-0.007" fill="none" stroke="#F2E3E3" stroke-miterlimit="10" width="40" height="40.007"/>
+	</g>
+	<circle fill="#EF4136" cx="31.902" cy="8.212" r="2.544"/>
+	<polyline fill="#F2E3E3" points="-0.059,40 5.564,24.942 9.418,29.699 16.107,18.796 22.52,33.244 28.096,25.701 33.82,35.598 
+		37.086,31.141 40.08,40 	"/>
+	<g>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M28.476,13.741c0,0,8.99-1.27,6.369-11.05"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M30.025,14.438c0,0,8.354-3.552,3.289-12.323"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M31.701,14.711c0,0,7.148-5.594-0.012-12.754"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M33.389,14.542c0,0,5.458-7.254-3.312-12.316"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M34.976,13.94c0,0,3.394-8.417-6.388-11.039"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M36.354,12.949c0,0,1.099-9.009-9.028-9.009"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M37.427,11.635c0,0-1.27-8.987-11.052-6.366"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M38.125,10.088c0,0-3.553-8.353-12.322-3.29"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M38.398,8.414c0,0-5.594-7.148-12.754,0.012"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M38.228,6.724c0,0-7.254-5.456-12.316,3.314"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M37.626,5.137c0,0-8.418-3.394-11.039,6.388"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M36.634,3.76c0,0-9.008-1.1-9.008,9.027"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M35.32,2.687c0,0-8.986,1.27-6.363,11.051"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M33.773,1.989c0,0-8.352,3.553-3.288,12.322"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M32.097,1.717c0,0-7.146,5.593,0.014,12.752"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M30.41,1.887c0,0-5.455,7.253,3.313,12.315"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M28.823,2.488c0,0-3.392,8.418,6.388,11.038"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M27.447,3.479c0,0-1.098,9.01,9.025,9.009"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M26.373,4.793c0,0,1.273,8.986,11.052,6.366"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M25.675,6.341c0,0,3.556,8.35,12.322,3.288"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M25.404,8.017c0,0,5.594,7.145,12.752-0.015"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M25.575,9.704c0,0,7.253,5.453,12.313-3.313"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M26.177,11.29c0,0,8.416,3.39,11.035-6.388"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M27.167,12.667c0,0,9.008,1.096,9.007-9.027"/>
+		<path fill="none" stroke="#EF4136" stroke-width="0.1" stroke-miterlimit="10" d="M28.48,13.741c0,0,8.986-1.274,6.365-11.051"/>
+	</g>
 </g>
 <g id="Layer_2">
 </g>
 <g id="Layer_4">
-</g>
-<g id="text">
-	<g>
-		<g id="Layer_1_4_">
-			<g>
-				<rect x="-0.08" fill="none" stroke="#EF4237" stroke-width="0.2913" stroke-miterlimit="10" width="40" height="40"/>
-			</g>
-			<circle fill="#EF4237" cx="30.522" cy="9.691" r="3.278"/>
-			<polyline fill="#EF4237" points="-0.139,39.977 5.484,24.918 9.338,29.676 16.027,18.772 22.439,33.221 28.016,25.678 
-				33.74,35.574 37.006,31.117 40,39.977 			"/>
-			<g>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M26.107,16.816
-					c0,0,11.585-1.637,8.207-14.239"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M28.104,17.715
-					c0,0,10.764-4.577,4.238-15.88"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M30.264,18.066
-					c0,0,9.211-7.208-0.016-16.435"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M32.439,17.847
-					c0,0,7.033-9.348-4.268-15.871"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M34.484,17.073
-					c0,0,4.373-10.846-8.232-14.225"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M36.261,15.796
-					c0,0,1.414-11.609-11.636-11.609"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M37.641,14.102
-					c0,0-1.637-11.58-14.24-8.202"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M38.541,12.109
-					c0,0-4.578-10.763-15.879-4.238"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M38.893,9.951c0,0-7.207-9.21-16.434,0.016
-					"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M38.674,7.775c0,0-9.348-7.032-15.871,4.27
-					"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M37.898,5.729
-					c0,0-10.846-4.373-14.225,8.232"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M36.619,3.954
-					c0,0-11.607-1.417-11.607,11.633"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M34.927,2.57c0,0-11.579,1.637-8.2,14.241"
-					/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M32.934,1.673
-					c0,0-10.762,4.578-4.238,15.877"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M30.772,1.322
-					c0,0-9.208,7.208,0.019,16.432"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M28.6,1.541c0,0-7.029,9.348,4.268,15.87"
-					/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M26.553,2.316
-					c0,0-4.369,10.847,8.231,14.224"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M24.781,3.593
-					c0,0-1.416,11.61,11.631,11.608"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M23.398,5.286c0,0,1.64,11.58,14.24,8.204"
-					/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M22.498,7.282
-					c0,0,4.581,10.759,15.879,4.235"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M22.148,9.438c0,0,7.21,9.208,16.433-0.019
-					"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M22.367,11.614
-					c0,0,9.348,7.027,15.869-4.27"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M23.145,13.658
-					c0,0,10.845,4.368,14.22-8.231"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M24.422,15.432
-					c0,0,11.607,1.413,11.605-11.631"/>
-				<path fill="none" stroke="#EF4237" stroke-width="0.1289" stroke-miterlimit="10" d="M26.113,16.816
-					c0,0,11.579-1.642,8.201-14.24"/>
-			</g>
-		</g>
-	</g>
 </g>
 </svg>

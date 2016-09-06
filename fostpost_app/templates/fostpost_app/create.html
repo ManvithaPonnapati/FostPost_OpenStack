@@ -147,33 +147,33 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
     <!--Header Row-->
 
-    <div class="header row header-style col-md-12">
-        <div align="left header-logo col-md-2">
+    <div class="header row header-style col-sm-12">
+        <div align="left header-logo col-sm-2">
             <img src="{% static 'images/fostpostword.png' %}" class="header-logo-img">
         </div>
-          <div class="header-nav col-md-offset-10 col-md-2">
+          <div class="header-nav col-sm-offset-10 col-sm-2">
                 <div  style="display: table-cell;padding: 20px;">
                     <span style="color: #EF3E36;font-size: 17px;text-align: center; cursor: pointer">Logout</span>
                 </div>
           </div>
     </div>
 
-
+<div class="container-fluid">
 <!-- ROW for canvas tabs without Angular Dirs -->
   <div class="row row-canvas-tabs"> 
-        <div class = "col-md-12 nopad col-xs-8 nopad"  id="tabs">
+        <div class = "col-sm-12 nopad col-xs-8 nopad"  id="tabs">
           <div class= "btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
+            <div class="btn-group " role="group">
               <button type="button" class="btn-canvas dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Facebook
               </button>
               <ul class="dropdown-menu">
-                <li onclick="fb1200x628()" id="fb1200x628" >
+                <li class="dropdown" onclick="fb1200x628()" id="fb1200x628" >
                   <a href="#">Conversions 1200x628</a>
                 </li>
-                <li onclick="fb1200x900()" id="fb1200x900">
+                <li class="dropdown" onclick="fb1200x900()" id="fb1200x900">
                   <a href="#">Page Post Engagement 1200x900</a>
                 </li>
-                <li onclick="fb600x600()" id="fb600x600">
+                <li class="dropdown" onclick="fb600x600()" id="fb600x600">
                   <a href="#">Carousel 600x600</a>
                 </li>
                 <li role="separator" class="divider"> 
@@ -184,20 +184,20 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-default dropdown-toggle btn-canvas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="googleTab">Google Display
               </button>
-            <ul class="dropdown-menu">
-            <li onclick="Google336x280()">
+            <ul class="dropdown-menu" id="canvas-dropdown">
+            <li class="dropdown" onclick="Google336x280()">
               <a href="#"  id="Google336x280">Large Rectangle 336x280</a>
             </li>
-            <li onclick="Google300x250()" id="Google300x250">
+            <li class="dropdown" onclick="Google300x250()" id="Google300x250">
               <a href="#">Medium Rectangle 300x250</a>
             </li>
-            <li onclick="Google728x90()" id="Google728x90">
+            <li class="dropdown" onclick="Google728x90()" id="Google728x90">
               <a href="#">Leaderboard 728x90</a>
             </li>
-            <li onclick="Google300x600()" id="Google300x600">
+            <li class="dropdown" onclick="Google300x600()" id="Google300x600">
               <a href="#">Half Page 300x600</a>
             </li>
-            <li onclick="Google320x100()" id="Google320x100">
+            <li class="dropdown" onclick="Google320x100()" id="Google320x100">
               <a href="#">Large Mobile Banner 320x100</a>
             </li>
             <li role="separator" class="divider">
@@ -225,12 +225,12 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
               </button>
               <ul class="dropdown-menu">
                 <div class="row">
-                  <div class="col-s-12">
+                  <div class="col-sm-12">
                     <input type="text" class="form-control" id="custom-canvas-width" placeholder="Width(px)">
                   </div>
                 </div>
                   <div class="row">
-                    <div class="col-s-12">
+                    <div class="col-sm-12">
                       <input type="text" class="form-control" id="custom-canvas-height" placeholder="Height(px)">
                     </div>
                   </div>
@@ -252,7 +252,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
     <!-- 1 start of row for navbar, pullout drawer, zoom, and canvas -->
     <div class="row">
-      <div class="sidenav col-md-1 col-md-offset-0">
+      <div class="sidenav col-sm-1">
           <ul class="nav-toolbar">
            <!--  <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li> -->
             <li style="height:70px;">  
@@ -310,7 +310,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
 
   <!-- Set width for pullout draw -->
-  <div class="col-md-3 drawer-overall"> 
+  <div class="col-sm-3 drawer-overall"> 
 
 
 
@@ -322,17 +322,20 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
       <!-- navbar drawer tabs for Images/upload -->
       <div>
         <ul class="nav nav-tabs list-inline" role="tablist">
-          <li ng-click="craftcloud_item()" role="presentation" class="active">
+          <li ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
             <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
             </a>
           </li>
-          <li ng-click="uploaded_item()"role="presentation">
+          <li ng-click="uploaded_item()"role="presentation" id="tab-right">
             <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded
             </a>
           </li>
-
-          <!-- text field input for image search -->
-            <input ng-model="unsplash_query" ng-change ="inputChange()" type="text">
+            <!-- text field input for image search -->
+            <div class="input-group">
+              <span class="input-group-addon" id="smalltext_line">Search
+              </span>
+                <input type="text" ng-model="unsplash_query" ng-change ="inputChange()" type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
+            </div>
           </ul>
         </div>
    <!-- navbar drawer images  --> 
@@ -376,31 +379,31 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
   </div>
   
      <!-- ZOOMBAR -->
-     <div class="col-md-1">
+     <div class="col-sm-1">
       <canvas id="zoombarcanvas"  ng-style="{ 'width' :zoomcanvas_width,'height':zoomcanvas_height }">
       </canvas>
     </div>
 
     <!-- CANVAS - MANU start -->
-    <div class="col-md-7 canvas-style" id="canvasParent" align="right">
+    <div class="col-sm-7 canvas-style" id="canvasParent" align="right">
       <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="'image/*'">I am the cool canvas
       </canvas>
 
 
 
        <!-- CANVAS - text entry fields -->
-      <div class="input-group">
+      <div class="input-group" id="text-input-group">
  
         <span class="input-group-addon" id="maintext_line">Large Text
         </span>
         <input type="text" class="form-control text-field" placeholder="Enter Large Text" aria-describedby="basic-addon1">
       </div>
-      <div class="input-group">
+      <div class="input-group" id="text-input-group">
         <span class="input-group-addon" id="bodytext_line">Medium Text
         </span>
         <input type="text" class="form-control text-field" placeholder="Enter Medium Text" aria-describedby="basic-addon1">
       </div>
-      <div class="input-group">
+      <div class="input-group" id="text-input-group">
         <span class="input-group-addon" id="smalltext_line">Small Text
         </span>
         <input type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
@@ -417,7 +420,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
 </div>
 
-
+</div>
   
   
 
