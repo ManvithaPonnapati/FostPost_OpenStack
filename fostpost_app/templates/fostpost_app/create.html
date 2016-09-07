@@ -163,7 +163,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
   <div class="row row-canvas-tabs"> 
         <div class = "col-sm-12 nopad col-xs-8 nopad"  id="tabs">
           <div class= "btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group " role="group" ng-click="change_canvas_size(1)">
+            <div class="btn-group " role="group" ng-click="change_canvas_size(1)" style="text-align:center">
                <select >
               <option value="1200x628" selected> Facebook </option>
               <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}</option>
@@ -282,7 +282,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
 
   <!-- Set width for pullout draw -->
-  <div class="col-sm-3 drawer-overall" style="background-color:red"> 
+  <div class="col-sm-3 drawer-overall" > 
 
 
 
@@ -317,7 +317,28 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
             <img src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> 
           </li>
           </ul>
+
           <ul ng-if="selected_navbar_item==2 && unsplash == 1">
+          <li>
+
+        <div class="nav nav-tabs list-inline" role="tablist" >
+          <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
+            </a>
+          </div>
+          <div ng-click="uploaded_item()"role="presentation" id="tab-right">
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded
+            </a>
+          </div>
+            <!-- text field input for image search -->
+            <div class="input-group">
+              <span class="input-group-addon" id="smalltext_line">Search
+              </span>
+                <input type="text" ng-model="unsplash_query" ng-change ="inputChange()" type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
+            </div>
+          </div>
+       
+         </li>
           <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" >
             <img src={[i]} style="width: 100%;height:100%" align="middle"  /> 
           </li>
