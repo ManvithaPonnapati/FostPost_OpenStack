@@ -504,7 +504,7 @@ function hexToRgb(hex) {
     if($scope.unsplash == 1)
     {
     console.log("I am here")
-    $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index;
+    $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index+".jpg";
     processingInstance1.exit()
     processingInstance1=new Processing(c,sketchProc)
   }
@@ -1614,7 +1614,7 @@ $scope.upload_logo = function (file) {
                     }).then(function successCallback(response) {
 
                    
-                    $scope.logo_source[0]=DJANGO_STATIC_URL+"images_uploaded/logo_image.png"
+                    $scope.logo_source[0]="/assets/images_uploaded/logo_image.png"
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
                     $scope.unsplash = 1
