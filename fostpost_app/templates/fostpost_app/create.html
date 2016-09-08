@@ -146,17 +146,16 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
   <div ng-controller="createCtrl" id="wrapper">
 
     <!--Header Row-->
-
-    <div class="header row header-style col-sm-12">
-        <div align="left header-logo col-sm-2">
+    <div class="row">
+        <div class="header-style">
+          <div class=" col-sm-2">
             <img src="{% static 'images/fostpostword.png' %}" class="header-logo-img">
-        </div>
-          <div class="header-nav col-sm-offset-10 col-sm-2">
-                <div  style="display: table-cell;padding: 20px;">
-                    <span style="color: #EF3E36;font-size: 17px;text-align: center; cursor: pointer">Logout</span>
-                </div>
           </div>
-    </div>
+          <div class="header-logout col-sm-offset-8 col-sm-2">
+                Logout
+          </div>
+        </div>
+      </div>
 
 <div class="container-fluid">
 <!-- ROW for canvas tabs without Angular Dirs -->
@@ -297,11 +296,11 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
         <div class="nav nav-tabs list-inline" role="tablist" >
           <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
-            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Image Search
             </a>
           </div>
           <div ng-click="uploaded_item()"role="presentation" id="tab-right">
-            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Uploaded Images
             </a>
           </div>
             <!-- text field input for image search -->
@@ -320,14 +319,14 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
           <ul ng-if="selected_navbar_item==2 && unsplash == 1">
           <li>
-
+        <!-- tabs for image search and upload -->
         <div class="nav nav-tabs list-inline" role="tablist" >
           <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
-            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">S Images
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Images
             </a>
           </div>
           <div ng-click="uploaded_item()"role="presentation" id="tab-right">
-            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">S Uploaded
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Uploaded
             </a>
           </div>
             <!-- text field input for image search -->
@@ -345,12 +344,12 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
         </ul>
          
 
-   <!-- navbar drawer Add Logo  --> 
+  
          
           <!-- navbar drawer font  -->
           <ul class="drawer-font" ng-if="selected_navbar_item==3">
           
-            <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  
+            <li id="li-font" ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  
             </li>
           </ul>
 
