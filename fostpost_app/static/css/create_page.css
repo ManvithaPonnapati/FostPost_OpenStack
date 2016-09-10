@@ -454,3 +454,8 @@ canvas {
 {
   position:fixed;width:20%;margin-left:10%;float:right;vertical-align:middle;background-color:#1e345d;overflow:scroll;color:white
 }
+.container-fluid
+{
+  margin-top: 5px;
+}
+
