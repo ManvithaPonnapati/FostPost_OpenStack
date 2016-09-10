@@ -435,7 +435,10 @@ li a{
   font-weight: 200;
   font-family: 'muli', 'helvetica', arial;
 }
-
+a img
+{
+  margin-top:5px;
+}
 canvas {
   background-color: transparent;
   width:50%;
@@ -457,5 +460,9 @@ canvas {
 .container-fluid
 {
   margin-top: 5px;
+}
+.sidenav_svg
+{
+  color:#ef4223;
 }
 
