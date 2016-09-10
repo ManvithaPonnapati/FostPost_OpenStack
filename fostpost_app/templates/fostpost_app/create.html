@@ -6,11 +6,15 @@
     <meta charset="utf-8">
   <title>FostPost</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="{% static 'css/create_page.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+
+      
         <link rel="stylesheet" href="{% static 'javascript/mdColorPicker.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+          <link rel="stylesheet" href="{% static 'css/create_page.css' %}">
+            <!--SC 8.26.16 this is JS for Bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
  
       <script type="text/javascript">
@@ -93,166 +97,328 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
       </style>
 
- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js">
+</script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js">
+</script>
+
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css">
-    <script src="http://code.createjs.com/createjs-2014.12.12.min.js"></script>
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js
-"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js"></script>
-      
-
-      <script src="{% static 'javascript/mfont.js' %}"></script>
-      <script src="{% static 'javascript/flowtype.js' %}"></script>
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-<script src="{% static 'javascript/tinycolor.js' %}"></script>
-<script src="{% static 'javascript/mdColorPicker.min.js' %}"></script>
 
 
- <script src="{% static 'javascript/processing.js' %}"></script>
- <script src="{% static 'javascript/ng-file-upload-shim.js' %}"></script>
- <script src="{% static 'javascript/ng-file-upload.js' %}"></script>
- <script src="{% static 'javascript/ng-file-upload-all.js' %}"></script>
-     <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}"></script>
+<script src="http://code.createjs.com/createjs-2014.12.12.min.js">
+</script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js">
+</script>
+<script src="{% static 'javascript/mfont.js' %}">
+</script>
+<script src="{% static 'javascript/flowtype.js' %}">
+</script>
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js">
+</script>
+<script src="{% static 'javascript/tinycolor.js' %}">
+</script>
+<script src="{% static 'javascript/mdColorPicker.min.js' %}">
+</script>
+<script src="{% static 'javascript/processing.js' %}">
+</script>
+<script src="{% static 'javascript/ng-file-upload-shim.js' %}">
+</script>
+<script src="{% static 'javascript/ng-file-upload.js' %}">
+</script>
+<script src="{% static 'javascript/ng-file-upload-all.js' %}">
+</script>
+<script src="{% static 'javascript/fostpost_app/controllers/app.js' %}">
+</script>
 
- 
-     
+
   </head>
   
   <body ng-app="angularjs-starter" style="margin-top: -8px;background-color:#F5F7FA;width:100%;margin-right:0">
   <div ng-controller="createCtrl" id="wrapper">
 
     <!--Header Row-->
-
-    <div class="header row" style="width:100%;height:85px;background-color: #0E1B2A;margin:auto" >
-        <div align="left " style="width: 10%; display: table-cell;">
-            <img src="{% static 'images/fostpostword.png' %}" style="height:70px;width: auto;margin-top: 12px;">
-        </div>
-          <div style="margin-top: -57px;width:90%" align="right">
-                <div  style="display: table-cell;padding: 20px;">
-                    <span  style="color: #EF3E36;font-size: 17px;text-align: center; cursor: pointer">Features</span>
-                </div>
-                <div   style="display: table-cell;padding: 20px;">
-                    <span style="color: #EF3E36;font-size: 17px;text-align: center;cursor: pointer">Pricing</span>
-                </div>
-                <div  style="display: table-cell;padding: 20px;">
-                    <span style="color: #EF3E36;font-size: 17px;text-align: center; cursor: pointer">Logout</span>
-                </div>
+    <div class="row">
+        <div class="header-style">
+          <div class=" col-sm-2">
+            <img src="{% static 'images/fostpostword.png' %}" class="header-logo-img">
           </div>
-    </div>
+          <div class="header-logout col-sm-offset-8 col-sm-2">
+                Logout
+          </div>
+        </div>
+      </div>
 
-    <div class="row" style="width:100%;height:auto;background-color:#eae5ea;margin:auto;"> 
-       <div class="col-sm-2" ng-click="change_canvas_size(1)">
-
-            <select >
+<div class="container-fluid">
+<!-- ROW for canvas tabs without Angular Dirs -->
+  <div class="row row-canvas-tabs"> 
+        <div class = "col-sm-12 nopad col-xs-8 nopad"  id="tabs">
+          <div class= "btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group " role="group" ng-click="change_canvas_size(1)" style="text-align:center">
+               <select >
               <option value="1200x628" selected> Facebook </option>
               <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
-       </div>
-        <div class="col-sm-2" ng-click="change_canvas_size(2)">
-            <select >
+            </div>
+            <div class="btn-group" role="group" ng-click="change_canvas_size(2)">
+             <select >
               <option value="300x600" selected> Google </option>
               <option ng-repeat="(key, value) in googleSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
-       </div>
-        <div class="col-sm-2"  ng-click="change_canvas_size(3)">
-        Twitter 
-       </div>
-        <div class="col-sm-2" ng-click="change_canvas_size(4)">
-        Instagram
-       </div>
-        <div class="col-sm-2" ng-click="change_canvas_size(5)">
-        Pinterest
-       </div>
-       <div class="col-sm-2"  ng-click="change_canvas_size(6)">
-        LinkedIn
-       </div>
-        <div class="col-sm-2"  ng-click="change_canvas_size(7)">
-        Custom
-       </div>
-        <div class="col-sm-2"  ng-click="download_canvas()" style="
-  background-color: #ef4223;
-  color:white;
-  font-weight: 500;
-">
-        Download
-       </div>
-    </div>
-    <div class="sidenav row" style="margin-top:1%;background-color:transparent;position:fixed">
-       <div align="left " style="width:20%;display: table-cell;">
-            <ul style="position:fixed;width:10%;height:100%;float:left;background-color:#0c223f;margin-left:0px;">
-             <!--  <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li> -->
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(2)"><img  src="{% static 'svg/image.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Images</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(3)"><img  src="{% static 'svg/font.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Fonts</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(4)"><img  src="{% static 'svg/addlogo.svg' %}" style="width: 50%;height:70%" align="middle" ngf-select="upload_logo($file)" /> <p ngf-select="upload_logo($file)"> Logo</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(5)"><img  src="{% static 'svg/background.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Colors</p></a></li>
-              <li style="height:70px;">  <a href="#" ng-click="changeItem(6)"><img  src="{% static 'svg/save.svg' %}" style="width: 50%;height:70%" align="middle" /><p> Save </p></a></li>
-            </ul>
-            <!-- <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
-              
-              <li ng-click="changeLayout(1)"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(2)"><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(3)"><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(4)"><img  src="{% static 'svg/layout_4.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(5)"><img  src="{% static 'svg/layout_5.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(6)"><img  src="{% static 'svg/layout_6.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(7)"><img  src="{% static 'svg/layout_7.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-              <li ng-click="changeLayout(8)"><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
-
-            </ul>
- -->
-            <ul style="position:fixed;width:20%;margin-left:10%;float:right;vertical-align:middle;background-color:#1e345d;overflow:scroll;color:white" id="firstul"  ng-if="selected_navbar_item==2 && unsplash == 1" scroll scroll-event="scrollevent">
-              <li style="height:60px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()"  >Uploaded</div>
-              <input ng-model="unsplash_query" ng-change ="inputChange()" type="text"></li>
-              
-              <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" ><img src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> </li>
-              <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" ><img src={[i]} style="width: 100%;height:100%" align="middle"  /> </li>
-              
-            </ul>
-             <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==2 && unsplash == 0">                                               
-              <li style="height:60px"><div style="width:49%;margin-left:0%;float:left" ng-click="craftcloud_item()">Images</div><div style="float:right;width:49%;margin-left:49%;" ng-click="uploaded_item()"  >Uploaded</div><input ng-model="unsplash_query" ng-change ="inputChange()" type="text"></li>
-             
-              <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" ng-style="{ 'width' : upload_width[$index],'height':upload_height[$index]}"><img src={[i]} style="width: 100%;height:100%" align="middle" /> </li>
-              
-            </ul>
-            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==3">
-            
-             
-              <li ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  </li>
-            </ul>
-            <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==5">
-            
-              <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ng-click="changeColor($index)" ></li>
-              <li><div md-color-picker="scopeVariable.options" ng-model="scopeVariable.color"></div></li>
-            </ul>
+          </ul>
+            </div>
+            <div class="btn-group" role="group" ng-click="change_canvas_size(3)">
+              <button type="button" class="btn btn-default btn-canvas" id="twittertab" >Twitter 
+              </button>
+            </div>
+            <div class="btn-group" role="group" ng-click="change_canvas_size(4)">
+              <button type="button" class="btn btn-default btn-canvas" id="pintab" >Pinterest 
+              </button>
+            </div>
+            <div class="btn-group" role="group" ng-click="change_canvas_size(5)">
+              <button type="button" class="btn btn-default btn-canvas" id="instatab" >Instagram 
+              </button>
+            </div>
+              <div class="btn-group" role="group" ng-click="change_canvas_size(6)">
+              <button type="button" class="btn btn-default btn-canvas" id="linkedintab" >LinkedIn
+              </button>
+            </div>
+            <div class="btn-group" role="group" ng-click="change_canvas_size(7)">
+              <button type="button" class="btn btn-default dropdown-toggle btn-canvas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="customtab">Custom Canvas
+              </button>
+              <ul class="dropdown-menu">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="custom-canvas-width" placeholder="Width(px)" ng-model="custom_width">
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" id="custom-canvas-height" placeholder="Height(px)" ng-model="custom_height">
+                    </div>
+                  </div>
+              </ul>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-canvas btn-canvas-download" onclick="LinkedIn698x400()">DOWNLOAD
+              </button>
+            </div>
+          </div>
         </div>
-        
-          <div style="width:75%;background-color:transparent;margin-left:50%" id="canvasParent" align="right">
-                <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box"
-  ngf-drag-over-class="'dragover'" ngf-multiple="true" 
-  ngf-pattern="'image/*'">I am the cool canvas</canvas>
+      </div>
+<!-- END ROW for canvas tabs without Angular Dirs -->
 
-                <!--<canvas id="zoomcanvas">I am the cool canvas</canvas>-->
-                <input type="text" ng-model="MainText" id="maintext_line">
-                <input type="text" ng-model="BodyText" id="bodytext_line">
-                 <input type="text" ng-model="SmallText" id="smalltext_line">
-                <div >
-          <canvas id="zoombarcanvas"  ng-style="{ 'width' : zoomcanvas_width,'height':zoomcanvas_height }"></canvas>
-          </div>
-               
-          </div>
 
-        
+
+
+    
+
+    <!-- 1 start of row for navbar, pullout drawer, zoom, and canvas -->
+    <div class="row">
+      <div class="sidenav col-sm-1">
+          <ul class="nav-toolbar">
+           <!--  <li style="height:70px;"> <a href="#"  ng-click="changeItem(1)"><img  src="{% static 'svg/layout.svg' %}" style="width: 50%;height:70%" align="middle" /> <p> Layouts</p></a></li> -->
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(2)">
+                <img  src="{% static 'svg/image.svg' %}"  align="middle" />
+                <p> Images
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(3)">
+                <img  src="{% static 'svg/font.svg' %}" align="middle" />
+                <p> Fonts
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(4)">
+                <img  src="{% static 'svg/addlogo.svg' %}" align="middle" ngf-select="upload_logo($file)" /> 
+                <p ngf-select="upload_logo($file)"> Logo
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(5)">
+                <img  src="{% static 'svg/background.svg' %}" align="middle" />
+                <p> Colors
+                </p>
+              </a>
+            </li>
+            <li style="height:70px;">  
+              <a href="#" ng-click="changeItem(6)">
+                <img  src="{% static 'svg/save.svg' %}" align="middle" />
+                <p> Save 
+                </p>
+              </a>
+            </li>
+          </ul>
+          <!-- <ul style="position:fixed;width:20%;margin-left:10%;float:right;background-color:#1e345d;overflow:scroll;color:white" ng-if="selected_navbar_item==1">
+            
+            <li ng-click="changeLayout(1)"><img  src="{% static 'svg/layout_1.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+            <li ng-click="changeLayout(2)"><img  src="{% static 'svg/layout_2.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+            <li ng-click="changeLayout(3)"><img  src="{% static 'svg/layout_3.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+            <li ng-click="changeLayout(4)"><img  src="{% static 'svg/layout_4.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+            <li ng-click="changeLayout(5)"><img  src="{% static 'svg/layout_5.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+            <li ng-click="changeLayout(6)"><img  src="{% static 'svg/layout_6.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+            <li ng-click="changeLayout(7)"><img  src="{% static 'svg/layout_7.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+            <li ng-click="changeLayout(8)"><img  src="{% static 'svg/layout_8.svg' %}" style="width: 100%;height:100%" align="middle" /> </li>
+
+          </ul>
+    -->
+    <!-- End Toolbar -->
+        </div>
+
+
+
+  <!-- Set width for pullout draw -->
+  <div class="col-sm-3 drawer-overall" > 
+
+
+
+<!-- start of content for pullout drawer  -->     
+      <div class="row">
+      
+      <!-- navbar drawer tabs for Images/upload -->
+     
+   <!-- navbar drawer images  --> 
+         <ul ng-if="selected_navbar_item==2 && unsplash == 0">
+         <li>
+
+        <div class="nav nav-tabs list-inline" role="tablist" >
+          <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Image Search
+            </a>
+          </div>
+          <div ng-click="uploaded_item()"role="presentation" id="tab-right">
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Uploaded Images
+            </a>
+          </div>
+            <!-- text field input for image search -->
+            <div class="input-group">
+              <span class="input-group-addon" id="smalltext_line">Search
+              </span>
+                <input type="text" ng-model="unsplash_query" ng-change ="inputChange()" type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
+            </div>
+          </div>
+       
+         </li>
+          <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" >
+            <img ng-src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> 
+          </li>
+          </ul>
+
+          <ul ng-if="selected_navbar_item==2 && unsplash == 1">
+          <li>
+        <!-- tabs for image search and upload -->
+        <div class="nav nav-tabs list-inline" role="tablist" >
+          <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Images
+            </a>
+          </div>
+          <div ng-click="uploaded_item()"role="presentation" id="tab-right">
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Uploaded
+            </a>
+          </div>
+            <!-- text field input for image search -->
+            <div class="input-group">
+              <span class="input-group-addon" id="smalltext_line">Search
+              </span>
+                <input type="text" ng-model="unsplash_query" ng-change ="inputChange()" type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
+            </div>
+          </div>
+       
+         </li>
+          <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" >
+            <img src={[i]} style="width: 100%;height:100%" align="middle"  /> 
+          </li>
+        </ul>
+         
+
+  
+         
+          <!-- navbar drawer font  -->
+          <ul class="drawer-font" ng-if="selected_navbar_item==3">
+          
+            <li id="li-font" ng-repeat= "i in font_imageArray track by $index" ng-click="changeFont($index)" style="color:white" ng-style="{ 'font-family' : fontArray[$index] }"> {[ MainText ]}  
+            </li>
+          </ul>
+
+            <!-- navbar drawer colors-->
+          <ul class="drawer-colors" ng-if="selected_navbar_item==5">
+            <li ng-repeat= "i in colors_Array track by $index" ng-style="{'background-color':'rgb(' + i+')'}" ng-click="changeColor($index)" >
+            </li>
+            <li>
+              <div md-color-picker="scopeVariable.options" ng-model="scopeVariable.color">
+              </div>
+            </li>
+          </ul>
+             <!-- </div>>--> 
+   <!-- END of pullout drawer content row  -->  
+      </div>
+
+  <!-- End Col for pullout content draw -->
+  </div>
+  
+     <!-- ZOOMBAR -->
+     <div class="col-sm-1">
+      <canvas id="zoombarcanvas"  ng-style="{ 'width' :zoomcanvas_width,'height':zoomcanvas_height }">
+      </canvas>
     </div>
 
+    <!-- CANVAS - MANU start -->
+    <div class="col-sm-7 canvas-style" id="canvasParent" align="right">
+      <canvas id="adcanvas" ng-click="addOnClick($event)" ng-style="{ 'width' : canvas_width,'height':canvas_height,'background' : scopeVariable.color }" ngf-drop="upload($file)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="'image/*'">I am the cool canvas
+      </canvas>
 
+
+
+       <!-- CANVAS - text entry fields -->
+      <div class="input-group" id="text-input-group">
+ 
+        <span class="input-group-addon" id="maintext_line">Large Text
+        </span>
+        <input type="text" class="form-control text-field" ng-model="MainText" placeholder="Enter Large Text" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group" id="text-input-group">
+        <span class="input-group-addon" id="bodytext_line">Medium Text
+        </span>
+        <input type="text" class="form-control text-field"  ng-model="BodyText" placeholder="Enter Medium Text" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group" id="text-input-group">
+        <span class="input-group-addon" id="smalltext_line">Small Text
+        </span>
+        <input type="text" class="form-control text-field" ng-model="SmallText" placeholder="Enter Small Text" aria-describedby="basic-addon1">
+      </div>
+
+   <!-- END CANVAS - Col -->
+    </div>
+
+      
+   
+
+  <!-- END of row for pullout drawer, zoom, and canvas -->  
+  </div>
 
 </div>
 
+</div>
+  
+  
+
+
+
+
+            
     
   </body>
 

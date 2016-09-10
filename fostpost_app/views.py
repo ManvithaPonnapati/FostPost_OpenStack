@@ -50,23 +50,23 @@ def create(request):
 @csrf_exempt
 def unsplash_images(request):
 	image_array=[]
-	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query="+(request.body)+"&client_id=2ff3b761282b8e07b0cde8e610b6ee37e3ead5f8786369b788b35bf596fc24eb").read()
+	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query="+(request.body)+"&client_id=1f783afb6d0a3a793da48335a7bda1a2a2923b5cf43c69bdfd0f86281db4331c").read()
 	x=json.loads(x)
 	y=[]
 	w=[]
 	h=[]
 	for i in range(0,len(x)):
 		y.append(x[i]['urls']['thumb'])
-		img_temp = NamedTemporaryFile(delete=True)
-		temp_file_name = img_temp.name
-		img_temp.write(urllib2.urlopen(x[i]['urls']['thumb']).read())
-		img_temp.flush()
-		im=Photo(email="rp493@cornell.edu")
-		im.file.save("uploaded_"+str(i)+".jpg", File(img_temp))
-		file_string = "uploaded_"+str(i)+".jpg"
-		imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string)
-		w.append(imgx.size[0])
-		h.append(imgx.size[1])
+		# img_temp = NamedTemporaryFile(delete=True)
+		# temp_file_name = img_temp.name
+		# img_temp.write(urllib2.urlopen(x[i]['urls']['thumb']).read())
+		# img_temp.flush()
+		# im=Photo(email="rp493@cornell.edu")
+		# im.file.save("uploaded_"+str(i)+".jpg", File(img_temp))
+		# file_string = "uploaded_"+str(i)+".jpg"
+		# imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string)
+		# w.append(imgx.size[0])
+		# h.append(imgx.size[1])
 	return HttpResponse(json.dumps({"y":y,"width":w,"height":h}))
 
 @csrf_exempt
@@ -74,10 +74,11 @@ def drag_upload(request):
 	json_body = json.loads(request.body)
 	x = json_body["urls"]
 	y = json_body["increment"]
+	user = json_body["user"]
 	image_base64 = x.split('base64,', 1 )
 	image_base64[1] = image_base64[1].encode('utf-8').strip()
 	image_data = b64decode(image_base64[1])
-	im=Photo(email="rp493@cornell.edu")
+	im=Photo(email=user)
 	img_temp = NamedTemporaryFile(delete=True)
 	temp_file_name = img_temp.name
 	img_temp.write(image_data)

@@ -10,7 +10,6 @@ class CraftCloud_UserSerializer(serializers.Serializer):
     def create(self, validated_data):
         return CraftCloud_User.objects.create(**validated_data)
 
-
 class asset_image_serializer(serializers.Serializer):
     image_url=serializers.CharField(required=False,max_length=50)
     email=serializers.CharField(required=True,max_length=30)

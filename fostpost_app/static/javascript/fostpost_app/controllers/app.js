@@ -55,6 +55,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
+  $scope.current_user = $scope.getParameter('user')      
   $scope.fontfamily = $scope.getParameter('font')
   $scope.array_image_incrementer = 1
   $scope.image = null;
@@ -335,18 +336,7 @@ function generatelevels(numberoflevels)
   }
   $scope.inputChange = function()
   {
-    $scope.imageArray=[]
-    $http({
-                method: 'POST',
-                url: '/api/unsplash_images/',
-                body: $scope.unsplash_query,
-                    }).then(function successCallback(response) {
-                      console.log(response)
-                   
-                    
-                    }, function errorCallback(response) {
-    
-                });
+   
     
   }
   $scope.change_subItems=function(navbar_item)
@@ -360,6 +350,20 @@ function generatelevels(numberoflevels)
       if(navbar_item==2)
       {
          console.log("I am going to display images")
+         console.log($scope.unsplash_query)
+          $scope.imageArray=[]
+          $http({
+                method: 'POST',
+                url: '/api/unsplash_images/',
+                body: $scope.unsplash_query,
+                    }).then(function successCallback(response) {
+                      console.log(response.data.y)
+                      $scope.imageArray =  response.data.y
+                      console.log("I got a response back")
+                    
+                    }, function errorCallback(response) {
+    
+                });
       
       }
       if(navbar_item==3)
@@ -504,7 +508,7 @@ function hexToRgb(hex) {
     if($scope.unsplash == 1)
     {
     console.log("I am here")
-    $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index;
+    $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index+".jpg";
     processingInstance1.exit()
     processingInstance1=new Processing(c,sketchProc)
   }
@@ -1614,7 +1618,7 @@ $scope.upload_logo = function (file) {
                     }).then(function successCallback(response) {
 
                    
-                    $scope.logo_source[0]=DJANGO_STATIC_URL+"images_uploaded/logo_image.png"
+                    $scope.logo_source[0]="/assets/images_uploaded/logo_image.png"
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
                     $scope.unsplash = 1
@@ -1637,7 +1641,7 @@ $scope.upload_logo = function (file) {
             $http({
                 method: 'POST',
                 url: '/api/drag_upload/',
-                data: {"urls":urls, "increment":$scope.array_image_incrementer},
+                data: {"urls":urls, "increment":$scope.array_image_incrementer,"user":$scope.current_user},
                     }).then(function successCallback(response) {
                     console.log(response.data.file_string)
 
