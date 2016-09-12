@@ -287,6 +287,7 @@ li{
 /*----CANVAS----*/
 .canvas-style{
   background-color:transparent;
+  text-align: left;
 }
 
 /* Text input styling */
@@ -301,12 +302,13 @@ li{
   background-color: #0c223f;
   border: 1px solid #ef4223;
   border-radius: 4px;
-  width:10%;
+  width:20%;
   z-index: 200;
   }
 
 #text-input-group{
   padding-top: 2%;
+  width:90%;
 }
 
 .text-field{

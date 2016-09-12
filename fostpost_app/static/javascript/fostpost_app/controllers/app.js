@@ -184,7 +184,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.text_padding=5
   $scope.selected_item=1
   $scope.html_test=$sce.trustAsHtml("<img  src='{% static 'svg/layout.svg' %}' style='width: 50%;height:65%' align='middle' />")
-  $scope.parentWidth=(document.getElementById("canvasParent")).clientWidth;
+  $scope.parentWidth=0.8*(document.getElementById("canvasParent")).clientWidth;
   $scope.parentHeight=(document.getElementById("canvasParent")).clientHeight;
   $scope.colors_Array=[]
   console.log($scope.parentWidth)
