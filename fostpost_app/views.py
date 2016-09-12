@@ -83,10 +83,9 @@ def drag_upload(request):
 	temp_file_name = img_temp.name
 	img_temp.write(image_data)
 	img_temp.flush()
-	file_string = "up"+str(y)+".jpg"
-	imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string)
+	file_string = "/media/up1.jpg"
 	im.file.save(file_string, File(img_temp))
-	return HttpResponse(json.dumps({'file_string':file_string,'w':imgx.size[0],'h':imgx.size[1]}))
+	return HttpResponse(json.dumps({'file_string':file_string}))
 
 @csrf_exempt
 def upload_logo(request):

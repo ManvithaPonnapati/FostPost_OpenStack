@@ -13,7 +13,7 @@ class OverwriteStorage(FileSystemStorage):
     def get_available_name(self, name):
         return name
 class Photo(models.Model):
-    file = models.ImageField('Label', upload_to='/CraftCloud/FostPost/fostpost_app'+settings.STATIC_URL+'images_uploaded/',storage=OverwriteStorage())
+    file = models.ImageField('Label', upload_to='/CraftCloud/FostPost/fostpost_app/media/',storage=OverwriteStorage())
     email = models.CharField(max_length=40)
 
 

@@ -64,6 +64,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.y_point=[]
   $scope.aw=0
   $scope.ah=0
+
   var doww=1200;
   $scope.test = "SFDF"
   var dowh=628;
@@ -150,14 +151,16 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.text_fontSize[1]=0.08*parseInt($scope.canvas_height)
   $scope.text_fontSize[2]=0.05*parseInt($scope.canvas_height)
   $scope.addMore=0
-  $scope.imageArray=[]
+  
   $scope.addLogo=0
   $scope.zoomValue=0
   $scope.dummy="I am dummy";
   $window.dummy = $scope.dummy; 
   $scope.fontArray=["Antic-Regular","Asar-Regular","Asap-Regular","Anaheim-Regular","Arvo-Regular","Armata-Regular"]
-  $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
-  $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
+  $scope.image_selected_source = DJANGO_STATIC_URL+"images/placeholderbackground.jpg"
+  $scope.uploaded_images =[]
+  // $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
+  // $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
   $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];
   $scope.image_positionsX=[0];
   $scope.image_positionsY=[0];
@@ -200,7 +203,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   console.log($scope.facebookSizes)
   $scope.googleSizes={"Large Rectangle": "336x280", "Medium Rectangle": "300x250", "Leaderboard": "728x90","Half Page":"300x600","Large Mobile Banner":"320x100"};
   console.log($scope.googleSizes)
-  var copySession=$scope.image_sources[0]
+  var copySession=$scope.image_selected_source
   $scope.unsplash_width=[100]
 
   $scope.unsplash_height=[100]
@@ -385,7 +388,7 @@ function generatelevels(numberoflevels)
          $http({
                 method: 'POST',
                 url: '/api/get_colors/',
-                data: $scope.image_sources[0],
+                data: $scope.image_selected_source,
                     }).then(function successCallback(response) {
                    console.log(response)
                     $scope.colors_Array=(response.data)
@@ -508,14 +511,14 @@ function hexToRgb(hex) {
     if($scope.unsplash == 1)
     {
     console.log("I am here")
-    $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index+".jpg";
+    $scope.image_selected_source="/static/images_uploaded/uploaded_"+index+".jpg";
     processingInstance1.exit()
     processingInstance1=new Processing(c,sketchProc)
   }
   else
   {
     console.log("I am here")
-    $scope.image_sources[0]="/static/images_uploaded/up"+index+".jpg";
+    $scope.image_selected_source="/static/images_uploaded/up"+index+".jpg";
     processingInstance1.exit()
     processingInstance1=new Processing(c,sketchProc)
   }
@@ -564,7 +567,7 @@ function hexToRgb(hex) {
 
         processing.size($scope.canvas_width,$scope.canvas_height)
         processing.background($scope.background_r,$scope.background_g,$scope.background_b)
-        online=processing.requestImage($scope.image_sources[0])
+        online=processing.requestImage($scope.image_selected_source)
         online1=processing.requestImage($scope.logo_source[0])
         delButton=processing.requestImage(DJANGO_STATIC_URL+"images/deletetextbox.png")
         logoResize=processing.requestImage(DJANGO_STATIC_URL+"svg/logosize.svg")
@@ -1136,7 +1139,7 @@ function hexToRgb(hex) {
           
           
         var oldWrapWidths=wrapWidths
-        console.log(TextHandles)
+        
         if(TextHandles[1]==1&&layout3_extra==0)
         {
            lerpFlag=0
@@ -1390,7 +1393,7 @@ $scope.download_canvas=function()
 
 function SketchDown(processing)
 { 
-  console.log($scope.image_sources[0])
+  console.log($scope.image_selected_source)
   processing.hint(processing.ENABLE_NATIVE_FONTS)
   processing.hint(processing.ENABLE_OPENGL_4X_SMOOTH)
   var TextArray_download=$scope.TextArray
@@ -1400,7 +1403,7 @@ function SketchDown(processing)
   var rt=(doww/parseInt($scope.canvas_width))
   var rt1=(dowh/parseInt($scope.canvas_height))
     console.log(rt,rt1)
-  var img1=processing.requestImage($scope.image_sources[0])
+  var img1=processing.requestImage($scope.image_selected_source)
   var log1=processing.requestImage($scope.logo_source[0])
   var im1x=parseInt(rt*$scope.image_positionsX[0])
   var im1y=parseInt(rt*$scope.image_positionsY[0])
@@ -1643,18 +1646,10 @@ $scope.upload_logo = function (file) {
                 url: '/api/drag_upload/',
                 data: {"urls":urls, "increment":$scope.array_image_incrementer,"user":$scope.current_user},
                     }).then(function successCallback(response) {
+                    console.log("I am trying to upload the images dropped")
                     console.log(response.data.file_string)
-
-                    $scope.image_sources.push(DJANGO_STATIC_URL+"images_uploaded/"+response.data.file_string)
-                    $scope.upload_height.push(240*parseInt(response.data.height)/parseInt(response.data.width))
-                    $scope.uploaded_images=$scope.image_sources
-                    $scope.array_image_incrementer = $scope.array_image_incrementer+1
-                    if($scope.array_image_incrementer == 2)
-                    {
-                      $scope.image_sources[0]=$scope.image_sources[1]
-                      $scope.upload_height[0]=$scope.upload_height[1]
-                      $scope.upload_width[0]=$scope.upload_width[1]
-                    }
+                    
+                    $scope.uploaded_images.push(response.data.file_string)
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
                    

@@ -35,7 +35,7 @@
       </script>
       <script type="text/javascript">
    var DJANGO_STATIC_URL="{% static '' %}"
-   console.log(DJANGO_STATIC_URL)
+
  </script>
  
       <style type="text/css">
@@ -287,12 +287,12 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
       <!-- navbar drawer tabs for Images/upload -->
      
    <!-- navbar drawer images  --> 
-         <ul ng-if="selected_navbar_item==2 && unsplash == 0">
+         <ul ng-if="selected_navbar_item==2 && unsplash == 1">
          <li>
 
         <div class="nav nav-tabs list-inline" role="tablist" >
           <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
-            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Image Search
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Image {{ MEDIA_URL }} Search 
             </a>
           </div>
           <div ng-click="uploaded_item()"role="presentation" id="tab-right">
@@ -308,12 +308,12 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
           </div>
        
          </li>
-          <li ng-repeat= "i in imageArray track by $index" ng-click="changeImage($index)" style="height:100px" >
-            <img ng-src={[i]} style="width: 100%;height:100%" align="middle" ng-style="{ 'width' : unsplash_width[$index],'height':unsplash_height[$index]}" /> 
+          <li ng-repeat= "i in uploaded_images track by $index">
+            <img ng-src={[i]} style="width: 100%;height:100%" align="middle" /> 
           </li>
           </ul>
 
-          <ul ng-if="selected_navbar_item==2 && unsplash == 1">
+          <ul ng-if="selected_navbar_item==2 && unsplash == 0">
           <li>
         <!-- tabs for image search and upload -->
         <div class="nav nav-tabs list-inline" role="tablist" >
@@ -334,9 +334,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
           </div>
        
          </li>
-          <li ng-repeat= "i in uploaded_images track by $index" ng-click="changeImage($index)" style="height:100px" >
-            <img src={[i]} style="width: 100%;height:100%" align="middle"  /> 
-          </li>
+          
         </ul>
          
 
