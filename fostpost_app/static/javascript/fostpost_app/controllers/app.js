@@ -105,7 +105,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   var addLogo=0;
   
   $scope.unsplash_query = "car"
-
+   $scope.uploaded_images =[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"]
   var delText=0;
   var delLogo=0;
   var delLogoX=0;
@@ -158,7 +158,7 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $window.dummy = $scope.dummy; 
   $scope.fontArray=["Antic-Regular","Asar-Regular","Asap-Regular","Anaheim-Regular","Arvo-Regular","Armata-Regular"]
   $scope.image_selected_source = DJANGO_STATIC_URL+"images/placeholderbackground.jpg"
-  $scope.uploaded_images =[]
+
   // $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
   // $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
   $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];
@@ -1637,6 +1637,31 @@ $scope.upload_logo = function (file) {
     console.log("SCROLL EVENT DETECTED")
   }
  
+ // at the bottom of your controller
+$scope.init = function () {
+  $http({
+                method: 'POST',
+                url: '/api/get_all_uploaded_images/',
+                data: {"user":$scope.getParameter('user')},
+                    }).then(function successCallback(response) {
+                      console.log("Getting response back")
+                      $scope.uploaded_images = []
+                      for(i=0;i<(response.data).length;i++)
+                      {
+                        image_string=(response.data[i].file.replace("/CraftCloud/FostPost/fostpost_app",""))
+                        $scope.uploaded_images.push(image_string)
+                        console.log($scope.uploaded_images)
+                      }
+
+                   
+                    }, function errorCallback(response) {
+    
+                });
+   // check if there is query in url
+   // and fire search in case its value is not empty
+};
+// and fire it after definition
+
     
   //Adding drop and drag capabilities for uploading image onto the canvas
   $scope.upload = function (file) {
@@ -1648,15 +1673,16 @@ $scope.upload_logo = function (file) {
                     }).then(function successCallback(response) {
                     console.log("I am trying to upload the images dropped")
                     console.log(response.data.file_string)
-                    $scope.uploaded_images.push(response.data.file_string)
+                    
                     $scope.image_selected_source = response.data.file_string
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
-                   
+                    $scope.init()
                     }, function errorCallback(response) {
     
                 });
        });
     };
+    $scope.init();
 });
 

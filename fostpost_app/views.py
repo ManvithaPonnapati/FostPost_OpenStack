@@ -95,10 +95,10 @@ def drag_upload(request):
 
 @csrf_exempt
 def get_all_uploaded_images(request):
-	x = request.body
-	all_images = Photo.objects.all()
-	return HttpResponse(all_images.values('file'))
-
+	json_body = json.loads(request.body)
+	user = json_body["user"]
+	all_images = Photo.objects.filter(email=user).values('file')
+	return HttpResponse(json.dumps(list(all_images)))
 
 
 @csrf_exempt
