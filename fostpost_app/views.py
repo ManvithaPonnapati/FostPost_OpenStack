@@ -28,6 +28,7 @@ from django.conf.urls.static import static
 from colorthief import ColorThief
 import base64
 from base64 import b64decode
+import os
 #import numpy as np
 #import cv2
 #from matplotlib import pyplot as plt
@@ -83,9 +84,22 @@ def drag_upload(request):
 	temp_file_name = img_temp.name
 	img_temp.write(image_data)
 	img_temp.flush()
-	file_string = "/media/up1.jpg"
+	user = user.replace("@","")
+	(dirName, fileName) = os.path.split(temp_file_name)
+	fileBaseName = os.path.splitext(fileName)[0]
+	file_name_append=str(user)+"_"+str(fileBaseName)
+	file_string = "/media/"+file_name_append+".jpg"
 	im.file.save(file_string, File(img_temp))
 	return HttpResponse(json.dumps({'file_string':file_string}))
+
+
+@csrf_exempt
+def get_all_uploaded_images(request):
+	x = request.body
+	all_images = Photo.objects.all()
+	return HttpResponse(all_images.values('file'))
+
+
 
 @csrf_exempt
 def upload_logo(request):

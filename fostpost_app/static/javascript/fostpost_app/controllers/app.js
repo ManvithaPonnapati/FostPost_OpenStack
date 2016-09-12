@@ -1648,8 +1648,8 @@ $scope.upload_logo = function (file) {
                     }).then(function successCallback(response) {
                     console.log("I am trying to upload the images dropped")
                     console.log(response.data.file_string)
-                    
                     $scope.uploaded_images.push(response.data.file_string)
+                    $scope.image_selected_source = response.data.file_string
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
                    

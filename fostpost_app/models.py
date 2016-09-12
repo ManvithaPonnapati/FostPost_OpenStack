@@ -15,7 +15,7 @@ class OverwriteStorage(FileSystemStorage):
 class Photo(models.Model):
     file = models.ImageField('Label', upload_to='/CraftCloud/FostPost/fostpost_app/media/',storage=OverwriteStorage())
     email = models.CharField(max_length=40)
-
+    
 
 class CraftCloud_User(models.Model):
     email = models.CharField(max_length=30)
