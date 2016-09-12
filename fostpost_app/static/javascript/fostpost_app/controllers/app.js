@@ -1682,6 +1682,20 @@ $scope.init = function () {
       processingInstance1=new Processing(c,sketchProc)
 
     }
+  $scope.save_creative = function()
+  {
+        $http({
+                method: 'POST',
+                url: '/api/save_creative/',
+                data: {"email":$scope.current_user, "image_url":$scope.image_selected_source,"logo_url":$scope.logo_source,"image_x":$scope.image_positionsX,"image_y":$scope.image_positionsY,"logo_x":0,"logo_y":10,"strings":$scope.text_array,"strings_x":$scope.text_x,"strings_y":$scope.text_y},
+                    }).then(function successCallback(response) {
+                    console.log("Successfully Saved to the database")
+                    
+                    }, function errorCallback(response) {
+    
+                }); 
+
+                 }
   //Adding drop and drag capabilities for uploading image onto the canvas
   $scope.upload = function (file) {
        Upload.base64DataUrl(file).then(function(urls){

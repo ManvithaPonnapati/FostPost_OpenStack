@@ -13,6 +13,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from fostpost_app.models import Photo
+from fostpost_app.models import creative
 import urllib
 import urllib2
 import json
@@ -100,6 +101,21 @@ def get_all_uploaded_images(request):
 	all_images = Photo.objects.filter(email=user).values('file')
 	return HttpResponse(json.dumps(list(all_images)))
 
+@csrf_exempt
+def save_creative(request):
+	json_body = json.loads(request.body)
+	email = str(json_body["email"])
+	image_string = str(json_body["image_url"])
+	logo_url = str(json_body["logo_url"])
+	image_x = str(json_body["image_x"])
+	image_y=str(json_body["image_y"])
+	logo_x=json_body["logo_x"]
+	logo_y=json_body["logo_y"]
+	strings=str(json_body["strings"])
+	strings_x=str(json_body["strings_x"])
+	strings_y=str(json_body["strings_y"])
+	new_creative = creative(email=email,image_url=image_string,logo_url=logo_url,image_x=image_x,image_y=image_y,logo_x=logo_x,logo_y=logo_y,strings=strings,strings_x=strings_x,strings_y=strings_y)
+	return "Success Saved"
 
 @csrf_exempt
 def upload_logo(request):
