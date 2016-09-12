@@ -1636,7 +1636,7 @@ $scope.upload_logo = function (file) {
   {
     console.log("SCROLL EVENT DETECTED")
   }
- 
+ $scope.uploaded_aspects = [100]
  // at the bottom of your controller
 $scope.init = function () {
   $http({
@@ -1646,10 +1646,12 @@ $scope.init = function () {
                     }).then(function successCallback(response) {
                       console.log("Getting response back")
                       $scope.uploaded_images = []
+                      $scope.uploaded_objects = []
                       for(i=0;i<(response.data).length;i++)
                       {
                         image_string=(response.data[i].file.replace("/CraftCloud/FostPost/fostpost_app",""))
                         $scope.uploaded_images.push(image_string)
+                        $scope.uploaded_aspects.push($scope.getImageMeta(image_string)+'px')
                         console.log($scope.uploaded_images)
                       }
 
@@ -1661,8 +1663,25 @@ $scope.init = function () {
    // and fire search in case its value is not empty
 };
 // and fire it after definition
+  $scope.getImageMeta = function(url)
+  {
 
-    
+    var img = new Image();
+    img.addEventListener("load", function(){
+       return this.naturalHeight/this.naturalWidth*100; 
+        
+    });
+    img.src = url;
+
+  }
+    $scope.selected_upload_image = function(index)
+    {
+      
+      $scope.image_selected_source = index;
+      processingInstance1.exit()
+      processingInstance1=new Processing(c,sketchProc)
+
+    }
   //Adding drop and drag capabilities for uploading image onto the canvas
   $scope.upload = function (file) {
        Upload.base64DataUrl(file).then(function(urls){

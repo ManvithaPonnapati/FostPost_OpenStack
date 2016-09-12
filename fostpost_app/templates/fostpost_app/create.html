@@ -308,9 +308,9 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
           </div>
        
          </li>
-          <li ng-repeat= "i in uploaded_images track by $index">
+          <li ng-repeat= "i in uploaded_images track by $index" ng-style="{'width': '100%','height':' uploaded_aspects[i]'}" ng-click="selected_upload_image(i)">
 
-            <img ng-src={[i]} style="width: 100%;height:100%" align="middle" /> 
+            <img ng-src={[i]} style="width:100%;height:100%;"  align="middle" /> 
            
           </li>
           </ul>
