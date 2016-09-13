@@ -334,9 +334,16 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
               </span>
                 <input type="text" ng-model="unsplash_query" ng-change ="inputChange()" type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
             </div>
+
           </div>
        
          </li>
+          <li id="imageLi" ng-repeat= "i in imageArray track by $index"  ng-click="selected_upload_image(i)" style="width:100%;height:auto;">
+         
+            <img ng-src={[i]} style="width:100%;" ng-style="{'height':uploaded_aspects(i)}" align="middle" /> 
+          
+           
+          </li>
           
         </ul>
          
