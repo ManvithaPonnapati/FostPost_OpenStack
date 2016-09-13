@@ -1636,7 +1636,7 @@ $scope.upload_logo = function (file) {
   {
     console.log("SCROLL EVENT DETECTED")
   }
- $scope.uploaded_aspects = [100]
+ $scope.uploaded_aspects = []
  // at the bottom of your controller
 $scope.init = function () {
   $http({
@@ -1651,8 +1651,10 @@ $scope.init = function () {
                       {
                         image_string=(response.data[i].file.replace("/CraftCloud/FostPost/fostpost_app",""))
                         $scope.uploaded_images.push(image_string)
-                        $scope.uploaded_aspects.push($scope.getImageMeta(image_string)+'px')
-                        console.log($scope.uploaded_images)
+                        $scope.getImageMeta(image_string)
+
+                
+                    
                       }
 
                    
@@ -1668,7 +1670,10 @@ $scope.init = function () {
 
     var img = new Image();
     img.addEventListener("load", function(){
-       return this.naturalHeight/this.naturalWidth*100; 
+      console.log(this.naturalHeight/this.naturalWidth)
+      $scope.uploaded_aspects.push((this.naturalHeight/this.naturalWidth)*100+'px')
+  
+       return this.naturalHeight/this.naturalWidth; 
         
     });
     img.src = url;
