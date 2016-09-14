@@ -436,16 +436,16 @@ function generatelevels(numberoflevels)
     if(ad_type==4)
     {
 
-        $scope.canvas_width=0.75*$scope.parentWidth;
-        $scope.canvas_height=$scope.canvas_width; 
+        $scope.canvas_width=0.25*$scope.parentWidth;
+        $scope.canvas_height=(572/236)*$scope.canvas_width;  
         
 
     }
     if(ad_type==5)
     {
-
-        $scope.canvas_width=$scope.parentWidth;
-        $scope.canvas_height=(572/236)*$scope.canvas_width;  
+        $scope.canvas_width=0.75*$scope.parentWidth;
+        $scope.canvas_height=$scope.canvas_width; 
+       
 
     }
     if(ad_type==6)
