@@ -171,8 +171,9 @@ def authenticate_email(request):
 
 
 
-def get_the_next_word(request):
-
-	#hkjhkh 
-	return "words"
-
+def get_the_next_word(request, history):
+    wordPredictor = SkipGramWordPredictor()
+    wordPredictor.setupModel()
+    nextWord = wordPredictor.guessNextWord(history)
+    
+    return nextWord

@@ -251,24 +251,23 @@ class SkipGramWordPredictor(AbstractWordPredictor):
             print (log_str)
         return close_word
 
-
+    def setupModel(self):
+        # Check if models are already learnt.
+        if os.path.exists('sim.pkl') and os.path.exists('revDict.pkl'):
+            print ('Models are already learnt, loading the models')
+            self.__sim = pickle.load(open('sim.pkl','rb+'))
+            #print ('sim: ',self.__sim)
+            self.__reverse_dictionary=pickle.load(open('revDict.pkl', 'rb+'))
+        else:
+            print ('Models not learnt. Learning now')
+            fileDetails = ('text8.zip', 'http://mattmahoney.net/dc/',31344016)
+            filename = maybe_download(*fileDetails)
+            wordPredictor.train(filename)
 
 
 if __name__ == "__main__":
     # Check if models are already learnt.
     wordPredictor = SkipGramWordPredictor()
-    sim=None
-    revDict=None
-    if os.path.exists('sim.pkl') and os.path.exists('revDict.pkl'):
-        print ('Models are already learnt, loading the models')
-        sim = pickle.load(open('sim.pkl','rb+'))
-        print ('sim: ',sim)
-        revDict=pickle.load(open('revDict.pkl', 'rb+'))
-    else:
-        print ('Models not learnt. Learning now')
-        fileDetails = ('text8.zip', 'http://mattmahoney.net/dc/',31344016)
-        filename = maybe_download(*fileDetails)
-        wordPredictor.train(filename)
-
-    wordPredictor.guessNextWord('next word is',sim,revDict)
+    wordPredictor.setupModel()
+    wordPredictor.guessNextWord('next word is')
 
