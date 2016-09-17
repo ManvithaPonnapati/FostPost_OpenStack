@@ -17,15 +17,15 @@ from django.conf.urls import url,include,patterns
 from django.contrib import admin
 from rest_framework_nested import routers
 
-from fostpost_app.views import CraftCloud_AccountViewSet
-
-router = routers.SimpleRouter()
-router.register(r'accounts', CraftCloud_AccountViewSet,base_name='accounts')
 
 
 urlpatterns = patterns(
      '',
     # ... URLs
-    url(r'^api/v1/', include(router.urls)),
-    url(r'^$', include('fostpost_app.urls'))   
+    
+    url(r'', include('fostpost_app.urls')),
+
+
+   
+
 )

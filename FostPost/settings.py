@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-                  'fostpost_app'
+    'fostpost_app'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,14 +77,15 @@ WSGI_APPLICATION = 'FostPost.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fostpostdata_db',
-        'USER': 'fostpostadmin',
-        'PASSWORD':'Scamozzi1616',
-        'HOST':'localhost',
-        'PORT':'5432'
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'fostpost_data',
+       'USER': 'super_user',
+       'PASSWORD':'Scamozzi1616',
+       'HOST':'localhost',
+       'PORT':'5432',
+
+   }
 }
 
 
@@ -105,7 +106,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -125,5 +131,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-
-AUTH_USER_MODEL='fostpost_app.CraftCloud_Account'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'fostpost_app/media')
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'fostpost_app/assets')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'fostpost_app/static/'),
+)

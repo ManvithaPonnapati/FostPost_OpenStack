@@ -1,0 +1,3 @@
+ var x=angular.element(document.querySelector('[ng-controller="createCtrl"]')).scope().dummy
+ console.log("x")
+
