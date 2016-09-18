@@ -33,7 +33,7 @@ import os
 #import numpy as np
 #import cv2
 #from matplotlib import pyplot as plt
-
+from skipGramWordPredictor import *
 
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
@@ -171,9 +171,10 @@ def authenticate_email(request):
 
 
 
-def get_the_next_word(request, history):
+def get_next_word(request):
+    history = "next word is"
     wordPredictor = SkipGramWordPredictor()
     wordPredictor.setupModel()
     nextWord = wordPredictor.guessNextWord(history)
     
-    return nextWord
+    return HttpResponse(nextWord)
