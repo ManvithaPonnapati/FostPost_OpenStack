@@ -13,8 +13,8 @@ import numpy as np
 from six.moves import urllib
 from six.moves import xrange  # pylint: disable=redefined-builtin
 import tensorflow as tf
-from utils import *
-from abstractWordPredictor import AbstractWordPredictor
+from fostpost_app.skip_utils import *
+from fostpost_app.abstractWordPredictor import AbstractWordPredictor
 import pickle
 
 class SkipGramWordPredictor(AbstractWordPredictor):
@@ -251,24 +251,24 @@ class SkipGramWordPredictor(AbstractWordPredictor):
             print (log_str)
         return close_word
 
-
+    def setupModel(self):
+        # Check if models are already learnt.
+        print (os.getcwd())
+        if os.path.exists('fostpost_app/sim.pkl') and os.path.exists('fostpost_app/revDict.pkl'):
+            print ('Models are already learnt, loading the models')
+            self.__sim = pickle.load(open('fostpost_app/sim.pkl','rb+'))
+            #print ('sim: ',self.__sim)
+            self.__reverse_dictionary=pickle.load(open('fostpost_app/revDict.pkl', 'rb+'))
+        else:
+            print ('Models not learnt. Learning now')
+            fileDetails = ('text8.zip', 'http://mattmahoney.net/dc/',31344016)
+            filename = maybe_download(*fileDetails)
+            self.train(filename)
 
 
 if __name__ == "__main__":
     # Check if models are already learnt.
     wordPredictor = SkipGramWordPredictor()
-    sim=None
-    revDict=None
-    if os.path.exists('sim.pkl') and os.path.exists('revDict.pkl'):
-        print ('Models are already learnt, loading the models')
-        sim = pickle.load(open('sim.pkl','rb+'))
-        print ('sim: ',sim)
-        revDict=pickle.load(open('revDict.pkl', 'rb+'))
-    else:
-        print ('Models not learnt. Learning now')
-        fileDetails = ('text8.zip', 'http://mattmahoney.net/dc/',31344016)
-        filename = maybe_download(*fileDetails)
-        wordPredictor.train(filename)
-
-    wordPredictor.guessNextWord('next word is',sim,revDict)
+    wordPredictor.setupModel()
+    wordPredictor.guessNextWord('next word is')
 
