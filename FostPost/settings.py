@@ -135,6 +135,4 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'fostpost_app/media')
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'fostpost_app/static/'),
-)
+STATICFILES_DIRS = ( 'FostPost_OpenStack/fostpost_app/static/',)
