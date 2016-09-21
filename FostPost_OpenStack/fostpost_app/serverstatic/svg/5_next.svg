@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="406px" height="191px" viewBox="0 -1.309 406 191"
+	 overflow="visible" enable-background="new 0 -1.309 406 191" xml:space="preserve">
+<defs>
+</defs>
+<path fill="#EF4223" d="M404.979,165.99c0,12.703-10.297,23-23,23H23c-12.703,0-23-10.297-23-23V23C0,10.297,10.297,0,23,0h358.979
+	c12.703,0,23,10.297,23,23V165.99z"/>
+<rect x="59.287" y="12.314" fill="none" width="322.209" height="104.883"/>
+<text transform="matrix(1 0 0 1 59.2871 93.0361)" fill="#FFFFFF" font-family="'AvenirNext-Bold'" font-size="106.7744">NEXT</text>
+<line fill="none" stroke="#FFFFFF" stroke-width="3.7978" stroke-miterlimit="10" x1="63.606" y1="107.186" x2="341.373" y2="107.186"/>
+<rect x="80.993" y="142.671" fill="none" width="242.994" height="37.353"/>
+<text transform="matrix(1 0 0 1 80.9927 168.791)" fill="#FFFFFF" font-family="'AvenirNext-Regular'" font-size="34.5512">Set your layout</text>
+</svg>

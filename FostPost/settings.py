@@ -134,5 +134,5 @@ STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'fostpost_app/media')
 MEDIA_URL = '/media/'
-STATIC_ROOT = 'FostPost_OpenStack/fostpost_app/static/'
-STATICFILES_DIRS = ( 'FostPost_OpenStack/static/',)
+STATIC_ROOT = '/static/'
+STATICFILES_DIRS = ( '/CraftCloud/FostPost/fostpost_app/static/',)
