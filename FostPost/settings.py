@@ -134,5 +134,5 @@ STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'fostpost_app/media')
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = '/home/ec2-user/static/'
 STATICFILES_DIRS = ('fostpost_app/static/',)
