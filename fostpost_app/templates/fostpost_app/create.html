@@ -206,7 +206,7 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
               </ul>
             </div>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-canvas btn-canvas-download" onclick="LinkedIn698x400()">DOWNLOAD
+              <button type="button" class="btn btn-canvas btn-canvas-download" ng-click="download_canvas()">DOWNLOAD
               </button>
             </div>
           </div>
@@ -292,19 +292,14 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
 
         <div class="nav nav-tabs list-inline" role="tablist" >
           <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
-            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Image {{ MEDIA_URL }} Search 
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Uploaded
             </a>
           </div>
           <div ng-click="uploaded_item()"role="presentation" id="tab-right">
-            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Uploaded Images
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Unsplash
             </a>
           </div>
-            <!-- text field input for image search -->
-            <div class="input-group">
-              <span class="input-group-addon" id="smalltext_line">Search
-              </span>
-                <input type="text" ng-model="unsplash_query" ng-change ="inputChange()" type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
-            </div>
+           
           </div>
        
          </li>
@@ -321,11 +316,11 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
         <!-- tabs for image search and upload -->
         <div class="nav nav-tabs list-inline" role="tablist" >
           <div ng-click="craftcloud_item()" role="presentation" class="active" id="tab-left">
-            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Images
+            <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Uploaded
             </a>
           </div>
           <div ng-click="uploaded_item()"role="presentation" id="tab-right">
-            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Uploaded
+            <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Unsplash
             </a>
           </div>
             <!-- text field input for image search -->
