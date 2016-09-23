@@ -413,7 +413,7 @@ function generatelevels(numberoflevels)
   {
     if(ad_type==1)
     {
-
+        
         $scope.canvas_width=$scope.parentWidth;
         $scope.canvas_height=(628/1200)*$scope.canvas_width;  
 

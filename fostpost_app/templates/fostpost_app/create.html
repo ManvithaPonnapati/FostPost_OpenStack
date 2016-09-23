@@ -161,13 +161,13 @@ src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}");
         <div class = "col-sm-12 nopad col-xs-8 nopad"  id="tabs">
           <div class= "btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group " role="group" ng-click="change_canvas_size(1)" style="text-align:center">
-               <select >
+               <select ng-model="facebook_selected" ng-change="change_canvas_size(1)">
               <option value="1200x628" selected> Facebook </option>
               <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
             </div>
             <div class="btn-group" role="group" ng-click="change_canvas_size(2)">
-             <select >
+             <select ng-change="change_canvas_size(2)" ng-model="google_selected" >
               <option value="300x600" selected> Google </option>
               <option ng-repeat="(key, value) in googleSizes" value="{[value]}" > {[key]} {[value]}</option>
             </select>
