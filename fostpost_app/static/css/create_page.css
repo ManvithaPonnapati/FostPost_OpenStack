@@ -45,7 +45,11 @@ margin-top:12px;
   color:red;
 }
 
-
+.btn-group
+{
+  width:12.5%;position:relative;margin:0 !important;padding:0px;
+  float: left;
+}
 
 .btn-canvas {
   font-family: 'muli', 'helvetica', arial;
