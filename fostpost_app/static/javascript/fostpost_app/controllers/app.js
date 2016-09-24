@@ -1,18 +1,73 @@
-var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload']);
- app.config(function($interpolateProvider) {
+var app = angular.module('angularjs-starter', ['ngResource','ngSanitize','ngFileUpload','ngMaterial','mdColorPicker','ngRoute']);
+//myApp.directive('myDirective', function() {});
+app.directive("scroll", function ($window) {
+   return {
+      scope: {
+         scrollEvent: '&'
+      },
+      link : function(scope, element, attrs) {
+        $("#"+attrs.id).scroll(function($e) { scope.scrollEvent != null ?  scope.scrollEvent()($e) : null })
+      }
+   }
+})
+
+app.config(function($interpolateProvider) {
         $interpolateProvider.startSymbol('{[');
         $interpolateProvider.endSymbol(']}');
-    });
+});
 
-app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
+app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routeParams,$location) {
   console.log("Inside create");
+  $scope.scopeVariable={}
+  $scope.scopeVariable.options = {
+    label: "Choose a color",
+    icon: "brush",
+    default: "#f00",
+    genericPalette: false,
+    history: false
+};
+  $scope.unsplash = 0
+  $scope.craftcloud_item = function ()
+  {
+    
+      $scope.unsplash = 1
+    
+  }
+  $scope.uploaded_item = function ()
+  {
+
+    $scope.unsplash = 0
+  }
+  $scope.scrollevent = function($e){
+   console.log("I am the super cool scroll")
+   }
+   $scope.$watch('scopeVariable.color',function(){
+        $scope.background_r = hexToRgb($scope.scopeVariable.color).r
+        $scope.background_b =hexToRgb($scope.scopeVariable.color).b
+        $scope.background_g = hexToRgb($scope.scopeVariable.color).g
+    });
+  $scope.scopeVariable.color = "#FFFFFF"
+   $scope.getParameter = function(name, url){
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+  $scope.current_user = $scope.getParameter('user')      
+  $scope.fontfamily = $scope.getParameter('font')
+  $scope.array_image_incrementer = 1
   $scope.image = null;
   $scope.imageFileName = '';
   $scope.x_point=[]
   $scope.y_point=[]
   $scope.aw=0
   $scope.ah=0
+
   var doww=1200;
+  $scope.test = "SFDF"
   var dowh=628;
   var facebook=1;
   var google=0;
@@ -40,8 +95,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   var subrx=0
   var subry=0
   var TextHandles=[]
-  var TextArray=["Main Text","Body Text","Small Text"]
-  var selectors=[[]]
+  $scope.TextArray=["Main Text","Body Text","Small Text"]
+  $scope.selectors=[[]]
   var TextHandles=[];
   var textdragx=[];
   var textdragy=[]
@@ -50,8 +105,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   var wrapWidths=[0,0,0];
   var addLogo=0;
   
-  
-
+  $scope.unsplash_query = "car"
+   $scope.uploaded_images =[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"]
   var delText=0;
   var delLogo=0;
   var delLogoX=0;
@@ -80,16 +135,16 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 
 
   HandlesArray[1]=0;
-  selectors[1]=[];
-  selectors[1][0]=40
-  selectors[1][1]=40
+  $scope.selectors[1]=[];
+  $scope.selectors[1][0]=40
+  $scope.selectors[1][1]=40
   wrapWidths[1]=copywidth;
   textdragx[1]=0;
   textdragy[1]=0;
   HandlesArray[2]=0;
-  selectors[2]=[];
-  selectors[2][0]=50
-  selectors[2][1]=50
+  $scope.selectors[2]=[];
+  $scope.selectors[2][0]=50
+  $scope.selectors[2][1]=50
   wrapWidths[2]=copywidth;
   textdragx[2]=0;
   textdragy[2]=0;
@@ -97,27 +152,31 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.text_fontSize[1]=0.08*parseInt($scope.canvas_height)
   $scope.text_fontSize[2]=0.05*parseInt($scope.canvas_height)
   $scope.addMore=0
-  $scope.imageArray=[]
+  
   $scope.addLogo=0
   $scope.zoomValue=0
   $scope.dummy="I am dummy";
   $window.dummy = $scope.dummy; 
-  $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
-  $scope.logo_source=[];
+  $scope.fontArray=["Antic-Regular","Asar-Regular","Asap-Regular","Anaheim-Regular","Arvo-Regular","Armata-Regular"]
+  $scope.image_selected_source = DJANGO_STATIC_URL+"images/placeholderbackground.jpg"
+
+  // $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
+  // $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
+  $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];
   $scope.image_positionsX=[0];
   $scope.image_positionsY=[0];
   $scope.image_sizesW=[1200];
   $scope.image_sizesH=[628];
   imageRatio=$scope.image_sizesW[0]/$scope.image_sizesH[0]
-  $scope.logo_sizeW=10;
-  $scope.logo_sizeH=10;
+  $scope.logo_sizeW=50;
+  $scope.logo_sizeH=50;
   $scope.logo_X=0
   $scope.logo_Y=100
   $scope.background_r=230;
   $scope.background_g=221;
   $scope.background_b=236;
   $scope.online="{% static 'images/placeholdergoog_360.jpg' %}"
-  $scope.text_array=['','','']
+  $scope.text_array=['Drag your own image onto the canvas','','']
   $scope.text_x=[20,20,20]
   $scope.text_y=[100,140,180]
   $scope.text_font=["Arial"]
@@ -126,7 +185,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.text_padding=5
   $scope.selected_item=1
   $scope.html_test=$sce.trustAsHtml("<img  src='{% static 'svg/layout.svg' %}' style='width: 50%;height:65%' align='middle' />")
-  $scope.parentWidth=(document.getElementById("canvasParent")).clientWidth;
+  $scope.parentWidth=0.8*(document.getElementById("canvasParent")).clientWidth;
   $scope.parentHeight=(document.getElementById("canvasParent")).clientHeight;
   $scope.colors_Array=[]
   console.log($scope.parentWidth)
@@ -134,10 +193,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   $scope.canvas_height=(628/1200)*$scope.canvas_width;
   $scope.image_sizesW[0]=$scope.canvas_width;
   $scope.image_sizesH[0]=$scope.canvas_height;
-  $scope.MainText=" "
+  $scope.MainText="Drag your own image onto the canvas"
   $scope.SmallText=" "
   $scope.BodyText=" "
-  $scope.font_imageArray=["/static/svg/font1.svg","/static/svg/font2.svg","/static/svg/font3.svg","/static/svg/font4.svg","/static/svg/font5.svg","/static/svg/font6.svg","/static/svg/font7.svg"]
+  $scope.font_imageArray=["/static/svg/font1.svg","/static/svg/font2.svg","/static/svg/font3.svg","/static/svg/font4.svg","/static/svg/font5.svg","/static/svg/font6.svg"]
   $scope.canvas_color='#dfd333'
   var copywidth=$scope.canvas_width;
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
@@ -145,8 +204,13 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   console.log($scope.facebookSizes)
   $scope.googleSizes={"Large Rectangle": "336x280", "Medium Rectangle": "300x250", "Leaderboard": "728x90","Half Page":"300x600","Large Mobile Banner":"320x100"};
   console.log($scope.googleSizes)
-  var copySession=$scope.image_sources[0]
-  for(i=0;i<TextArray.length;i++)
+  var copySession=$scope.image_selected_source
+  $scope.unsplash_width=[100]
+
+  $scope.unsplash_height=[100]
+  $scope.upload_width = [240,240,240,240,240,240,240,240,240]
+  $scope.upload_height = [100]
+  for(i=0;i<$scope.TextArray.length;i++)
   {
     $scope.text_fontSize[i]=parseInt($scope.canvas_height)*0.08;
     wrapWidths[i]=copywidth;
@@ -159,15 +223,109 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   {
     TextHandles[i]=0;
   }
+  
+var numberoflevels=41;
+var zoomcanvasWidth=14;
+var onslider=0;
+var onplus=0;
+var onminus=0
+var counterzoom=0
+$scope.zoomcanvas_width=30
+$scope.zoomcanvas_height=100
+var zoomCanvas=document.getElementById('zoombarcanvas')
+var zoomctx=zoomCanvas.getContext('2d')
+var ZoomProcessing=new Processing(zoomCanvas,sketchZoom)
 
+function sketchZoom(processing)
+{
+  counterzoom = generatelevels(numberoflevels);
+  var completeLine=processing.loadImage(DJANGO_STATIC_URL+"svg/zoombarplusminus.svg")
+  var handle=processing.loadImage(DJANGO_STATIC_URL+"svg/zoomhandle.svg")
+  $scope.zoomcanvas_height = $scope.canvas_height
+  var mousedragY=0;
+  var sliderx=0;
+  var slidery=$scope.canvas_height/2;
+  var delta=$scope.canvas_height/20;
+  zoomCanvas.height=$scope.canvas_height;
+  zoomCanvas.width=$scope.canvas_width
+  processing.size($scope.zoomcanvas_width,$scope.zoomcanvas_height)
+  processing.background(0,1)
+  $('#zoombarcanvas').css('width',$scope.zoomcanvas_width)
+  $('#zoombarcanvas').css('height',$scope.canvas_height)
+  //$('#zoombarcanvas').css('background-color','transparent')
+  zoomcanvasWidth=$scope.zoomcanvas_width
+  var sliderh=40;
+  var sliderw=(25/71)*40;
+  var plusheight=(0.35)*$scope.canvas_height;
+  sliderx=((zoomcanvasWidth-sliderw)/2)
+  slidery=(($scope.canvas_height-sliderh)/2+20)
+  console.log(sliderx,slidery,sliderw,sliderh,$scope.canvas_height)
+  processing.draw=function()
+  {
+    processing.background(0,0)
+    processing.image(completeLine,0,0,zoomcanvasWidth,$scope.canvas_height)
+    processing.image(handle,sliderx,slidery,sliderw,sliderh)
+  }
+  processing.mousePressed=function()
+  {
+    mousedragY=slidery-processing.mouseY;
+    if(processing.mouseX>parseInt(sliderx) && processing.mouseX<parseInt(sliderx)+parseInt(sliderw) && processing.mouseY> parseInt(slidery) && processing.mouseY<parseInt(slidery)+parseInt(sliderh))
+    {
+      onslider=1;
+      $scope.zoomValue=0;
+    }
+  }
+  processing.mouseDragged=function()
+  {
+    
+    if(onslider==1)
+    {
+      console.log("On Slider")
+      slidery=mousedragY+processing.mouseY
+      for(i=0;i<numberoflevels;i++)
+      {
+        if(slidery>i*delta && slidery<(i+1)*delta)
+        $scope.zoomValue=counterzoom[i]
+        
+      }
+    }
+  }
+  processing.mouseReleased=function()
+  {
+    onslider=0;
+  }
+  processing.mouseOut=function()
+  {
+    onslider=0
+  }
+}
+function generatelevels(numberoflevels)
+{
+  var halfx=parseInt(numberoflevels/2)
+  var levels=[]
+  for(i=0;i<halfx-1;i++)
+  {
+    levels[i]=halfx-i;
+  }
+  levels[halfx-1]=0
+  for(i=halfx;i<numberoflevels;i++)
+  {
+    levels[i]=halfx-i;
+  }
+  console.log(levels)
+  return levels;
+  }
   for(l=0;l<HandlesArray.length;l++)
   {
-    selectors[l][0]=20;
-    selectors[l][1]=20;
+    $scope.selectors[l][0]=20;
+    $scope.selectors[l][1]=20;
   }
   $scope.changeLayout =function(index)
   {
     $scope.layout=index
+    processingInstance1.exit();
+    processingInstance1=new Processing(c,sketchProc)
+
   }
   $scope.changeItem=function(navbar_item)
   {
@@ -175,6 +333,15 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
     $scope.selected_navbar_item=navbar_item
     $scope.change_subItems(navbar_item)
     console.log($scope.selected_navbar_item)
+    if(navbar_item==2)
+    {
+      $scope.unsplash = 1
+    }
+  }
+  $scope.inputChange = function()
+  {
+   
+    
   }
   $scope.change_subItems=function(navbar_item)
   {
@@ -187,25 +354,21 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
       if(navbar_item==2)
       {
          console.log("I am going to display images")
-         $http({
-                method: 'GET',
-                url: '/api/unsplash_images/'
+         console.log($scope.unsplash_query)
+          $scope.imageArray=[]
+          $http({
+                method: 'POST',
+                url: '/api/unsplash_images/',
+                body: $scope.unsplash_query,
                     }).then(function successCallback(response) {
-    
-                console.log(response)
-                array_sr=response.data
-                console.log(array_sr[1])
-                for(i=0;i<10;i++)
-                {
-                  $scope.imageArray[i]="/static/images_uploaded/uploaded_"+i
-                }
-                  console.log($scope.imageArray)
-
+                      console.log(response.data.y)
+                      $scope.imageArray =  response.data.y
+                      console.log("I got a response back")
+                    
                     }, function errorCallback(response) {
     
                 });
-         
-          
+      
       }
       if(navbar_item==3)
       {
@@ -226,7 +389,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
          $http({
                 method: 'POST',
                 url: '/api/get_colors/',
-                data: $scope.image_sources[0],
+                data: $scope.image_selected_source,
                     }).then(function successCallback(response) {
                    console.log(response)
                     $scope.colors_Array=(response.data)
@@ -274,22 +437,22 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
     if(ad_type==4)
     {
 
-        $scope.canvas_width=$scope.parentWidth;
-        $scope.canvas_height=(220/440)*$scope.canvas_width; 
+        $scope.canvas_width=0.25*$scope.parentWidth;
+        $scope.canvas_height=(572/236)*$scope.canvas_width;  
         
 
     }
     if(ad_type==5)
     {
-
-        $scope.canvas_width=$scope.parentWidth;
-        $scope.canvas_height=(572/236)*$scope.canvas_width;  
+        $scope.canvas_width=0.75*$scope.parentWidth;
+        $scope.canvas_height=$scope.canvas_width; 
+       
 
     }
     if(ad_type==6)
     {
 
-        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_width=0.65*$scope.parentWidth;
         $scope.canvas_height=(400/400)*$scope.canvas_width;  
 
     }
@@ -303,15 +466,23 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
   }
   $scope.changeColor=function(index)
   {
+    console.log(hexToRgb($scope.scopeVariable.color))
     $scope.background_r = $scope.colors_Array[index][0]
     $scope.background_g = $scope.colors_Array[index][1]
     $scope.background_b = $scope.colors_Array[index][2]
   }
-
+  
   $scope.get_image_data = function(data){
     return 'data:image/jpeg;base64,' + data;
   }
-
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
     $scope.toDataUrl=function(url, callback) {
             var xhr = new XMLHttpRequest();
               xhr.responseType = 'blob';
@@ -337,10 +508,21 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
     var processingInstance1=new Processing(c,sketchProc);
     $scope.changeImage=function(index)
   {
+
+    if($scope.unsplash == 1)
+    {
     console.log("I am here")
-    $scope.image_sources[0]="/static/images_uploaded/uploaded_"+index;
+    $scope.image_selected_source="/static/images_uploaded/uploaded_"+index+".jpg";
     processingInstance1.exit()
     processingInstance1=new Processing(c,sketchProc)
+  }
+  else
+  {
+    console.log("I am here")
+    $scope.image_selected_source="/static/images_uploaded/up"+index+".jpg";
+    processingInstance1.exit()
+    processingInstance1=new Processing(c,sketchProc)
+  }
   }
     function sketchProc(processing) {
             var online=new processing.PImage;
@@ -386,7 +568,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 
         processing.size($scope.canvas_width,$scope.canvas_height)
         processing.background($scope.background_r,$scope.background_g,$scope.background_b)
-        online=processing.requestImage($scope.image_sources[0])
+        online=processing.requestImage($scope.image_selected_source)
+        online1=processing.requestImage($scope.logo_source[0])
         delButton=processing.requestImage(DJANGO_STATIC_URL+"images/deletetextbox.png")
         logoResize=processing.requestImage(DJANGO_STATIC_URL+"svg/logosize.svg")
         sizearrow=processing.requestImage(DJANGO_STATIC_URL+"images/sizearrow.png")
@@ -400,9 +583,9 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         
       processing.size($scope.canvas_width,parseInt($scope.canvas_height))
       processing.fill(0,14,23)
-      TextArray[0]=$scope.MainText
-      TextArray[1]=$scope.BodyText
-      TextArray[2]=$scope.SmallText
+      $scope.TextArray[0]=$scope.MainText
+      $scope.TextArray[1]=$scope.BodyText
+      $scope.TextArray[2]=$scope.SmallText
       $('#adcanvas').css('width',$scope.canvas_width);
       $('#adcanvas').css('height',parseInt($scope.canvas_height));
       adcanvas.width=$scope.canvas_width;
@@ -428,7 +611,35 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
             imw=originalW;
             imh=originalH;
           }
-          
+          if($scope.zoomValue>0 )
+    {
+      
+      var xw=originalW;
+      var xh=originalH;
+      var m=Math.abs($scope.zoomValue)
+      for(i=0;i<m;i++)
+      {
+       xw=xw*1.1
+      ////console.log(im1w)
+       xh=xh*1.1
+      }
+      imw=xw;
+      imh=xh;
+    }
+    if($scope.zoomValue<0)
+    {
+      var xw=originalW
+      var xh=originalH;
+      var m=Math.abs($scope.zoomValue)
+      for(i=0;i<m;i++)
+      {
+       xw=xw/1.1
+      ////console.log(im1w)
+       xh=xh/1.1
+      }
+      imw=xw;
+      imh=xh;
+    }
           if($scope.addMore==1)
           {
             processing.image(extra,extrax,extray,imw,imh)
@@ -484,7 +695,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         }
       var totalarea=0;
       
-      for(h=0;h<TextArray.length;h++)
+      for(h=0;h<$scope.TextArray.length;h++)
       {
 
         if(wrapWidths[h]>0.95*parseInt($scope.canvas_width))
@@ -494,15 +705,16 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         }
       }
      
-      for(i=0;i<TextArray.length;i++)
+      for(i=0;i<$scope.TextArray.length;i++)
       {
-        var selectory=selectors[i][1];
-        var selectorx=selectors[i][0];
-        var words=TextArray[i].split(" ");
+        var selectory=$scope.selectors[i][1];
+        var selectorx=$scope.selectors[i][0];
+        var words=$scope.TextArray[i].split(" ");
         var wordlengths=[];
         for(j=0;j<words.length;j++)
         {
-          processing.textFont("Helvetica",$scope.text_fontSize[i])
+          $scope.create_font=processing.createFont($scope.fontfamily)
+          processing.textFont($scope.create_font,$scope.text_fontSize[i])
           wordlengths[j]=processing.textWidth(words[j]);
         }
         var spacelength=processing.textWidth(" ")
@@ -539,7 +751,8 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
        
         processing.textAlign(processing.LEFT,processing.TOP)
         processing.fill(text1r,text1g,text1b)
-        processing.textFont("fontfamily",$scope.text_fontSize[i])
+        $scope.create_font=processing.createFont($scope.fontfamily)
+        processing.textFont($scope.create_font,$scope.text_fontSize[i])
         processing.text(strings[k],selectorx,texttempy)
         stringlengths[k]=processing.textWidth(strings[k]);
         texttempy=texttempy+$scope.text_fontSize[i];
@@ -563,7 +776,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         processing.image(delButton,selectorx+selectorw,copyy-20,20,20)
              }
        selectory=selectory+addtoy;
-       selectors[i]=[selectorx,copyy,selectorw,addtoy]
+       $scope.selectors[i]=[selectorx,copyy,selectorw,addtoy]
        
       }
         
@@ -591,17 +804,17 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
               wrapWidths[0]=0.75*parseInt($scope.canvas_width)
              
               
-              var textlen=processing.textWidth(TextArray[0])
+              var textlen=processing.textWidth($scope.TextArray[0])
              
               var numberlines=Math.ceil(textlen/wrapWidths[0])
-        selectors[0][0]=parseInt($scope.canvas_height)*0.025;
-        selectors[0][1]=0.65*parseInt($scope.canvas_height)+parseInt($scope.canvas_height)*0.025;
-        if(TextArray.length>1){
-        for(i=1;i<TextArray.length;i++){
+        $scope.selectors[0][0]=parseInt($scope.canvas_height)*0.025;
+        $scope.selectors[0][1]=0.65*parseInt($scope.canvas_height)+parseInt($scope.canvas_height)*0.025;
+        if($scope.TextArray.length>1){
+        for(i=1;i<$scope.TextArray.length;i++){
           
             wrapWidths[i]=0.75*parseInt($scope.canvas_width);
-            selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[0][1]+numberlines*$scope.text_fontSize[0]
+            $scope.selectors[i][0]=$scope.selectors[0][0]
+            $scope.selectors[i][1]=$scope.selectors[0][1]+numberlines*$scope.text_fontSize[0]
             }
         }
         
@@ -628,24 +841,24 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
       
               wrapWidths[0]=0.8*parseInt($scope.canvas_width)
              
-              var tlen=processing.textWidth(TextArray[0])
-              var textlen=processing.textWidth(TextArray[0])
+              var tlen=processing.textWidth($scope.TextArray[0])
+              var textlen=processing.textWidth($scope.TextArray[0])
              //  //console.log(textlen,wrapWidths[0])
               var numberlines=Math.ceil(textlen/wrapWidths[0])
               if(textlen<wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-textlen)/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-textlen)/2
         }
         if(textlen>wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
         }
-        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
-        ////console.log(selectors[0][0])
-        if(TextArray.length>1){
-        for(i=1;i<TextArray.length;i++){
+        $scope.selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
+        ////console.log($scope.selectors[0][0])
+        if($scope.TextArray.length>1){
+        for(i=1;i<$scope.TextArray.length;i++){
             
             wrapWidths[i]=0.9*parseInt($scope.canvas_width);
-            selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
+            $scope.selectors[i][0]=$scope.selectors[0][0]
+            $scope.selectors[i][1]=$scope.selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
             }
         }
         
@@ -684,24 +897,24 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
           $scope.addMore=0
         wrapWidths[0]=0.9*parseInt($scope.canvas_width)
              
-              var tlen=processing.textWidth(TextArray[0])
-              var textlen=processing.textWidth(TextArray[0])
+              var tlen=processing.textWidth($scope.TextArray[0])
+              var textlen=processing.textWidth($scope.TextArray[0])
              //  //console.log(textlen,wrapWidths[0])
               var numberlines=Math.ceil(textlen/wrapWidths[0])
               if(textlen<wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-textlen)/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-textlen)/2
         }
         if(textlen>wrapWidths[0]){
-        selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
+        $scope.selectors[0][0]=(($scope.canvas_width)-wrapWidths[0])/2
         }
-        selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
-        ////console.log(selectors[0][0])
-        if(TextArray.length>1){
-        for(i=1;i<TextArray.length;i++){
+        $scope.selectors[0][1]=parseInt($scope.canvas_height)/2-(numberlines*$scope.text_fontSize[0])/2
+        ////console.log($scope.selectors[0][0])
+        if($scope.TextArray.length>1){
+        for(i=1;i<$scope.TextArray.length;i++){
             
             wrapWidths[i]=0.9*parseInt($scope.canvas_width);
-            selectors[i][0]=selectors[0][0]
-            selectors[i][1]=selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
+            $scope.selectors[i][0]=$scope.selectors[0][0]
+            $scope.selectors[i][1]=$scope.selectors[i-1][1]+numberlines*$scope.text_fontSize[i-1];
             }
         }
         
@@ -743,16 +956,16 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
 //        
 //        
 //        if(processing.keyCode==processing.BACKSPACE){
-//          TextArray[selectedLineofText-1].substring(0, TextArray[i].length-1);
+//          $scope.TextArray[selectedLineofText-1].substring(0, $scope.TextArray[i].length-1);
 //          }
 //         else if(processing.keyCode==processing.SHIFT || processing.keyCode==processing.CONTROL ||processing.keyCode==processing.ALT|| processing.keyCode==processing.TAB ||processing.keyCode==processing.ENTER)
 //          {
-//            TextArray[selectedLineofText-1]=TextArray[selectedLineofText-1]+''
+//            $scope.TextArray[selectedLineofText-1]=$scope.TextArray[selectedLineofText-1]+''
 //          }
 //          else
 //          {
-//        TextArray[selectedLineofText-1]=TextArray[selectedLineofText-1]+String.fromCharCode(processing.key);
-//        inputBox.value=TextArray[selectedLineofText-1]
+//        $scope.TextArray[selectedLineofText-1]=$scope.TextArray[selectedLineofText-1]+String.fromCharCode(processing.key);
+//        inputBox.value=$scope.TextArray[selectedLineofText-1]
 //        
 //      }
 //      }
@@ -799,10 +1012,10 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         {
           
           HandlesArray[i]=0;
-          var sx=selectors[i][0];
-          var sy=selectors[i][1];
-          var sw=selectors[i][2];
-          var sh=selectors[i][3];
+          var sx=$scope.selectors[i][0];
+          var sy=$scope.selectors[i][1];
+          var sw=$scope.selectors[i][2];
+          var sh=$scope.selectors[i][3];
           
           
           if(processing.mouseX>sx && processing.mouseX<sx+sw && processing.mouseY>sy && processing.mouseY<sy+sh)
@@ -864,7 +1077,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
             TextHandles[0]=0;
             delText=1;
             //console.log("Delete")
-            TextArray[selectedLineofText-1]="";
+            $scope.TextArray[selectedLineofText-1]="";
             
           }
           
@@ -927,7 +1140,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
           
           
         var oldWrapWidths=wrapWidths
-        console.log(TextHandles)
+        
         if(TextHandles[1]==1&&layout3_extra==0)
         {
            lerpFlag=0
@@ -974,12 +1187,12 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
         }
         if(TextHandles[0]==1&&layout3_extra==0 ){
            dragged=1;
-          selectors[selectedLineofText-1][0]=textdragx[selectedLineofText-1]+processing.mouseX;
-          selectors[selectedLineofText-1][1]=textdragy[selectedLineofText-1]+processing.mouseY;
-          dottedx1=selectors[selectedLineofText-1][0]
-          dottedx2=selectors[selectedLineofText-1][0]
-          dottedy11=selectors[selectedLineofText-1][1]
-          dottedy21=selectors[selectedLineofText-1][1]
+          $scope.selectors[selectedLineofText-1][0]=textdragx[selectedLineofText-1]+processing.mouseX;
+          $scope.selectors[selectedLineofText-1][1]=textdragy[selectedLineofText-1]+processing.mouseY;
+          dottedx1=$scope.selectors[selectedLineofText-1][0]
+          dottedx2=$scope.selectors[selectedLineofText-1][0]
+          dottedy11=$scope.selectors[selectedLineofText-1][1]
+          dottedy21=$scope.selectors[selectedLineofText-1][1]
           dottedy1=0
           dottedy2=parseInt($scope.canvas_height)
           dottedx11=0
@@ -1095,7 +1308,7 @@ app.controller('createCtrl', function($scope,$http,$sce,$window,Upload) {
           subdragx=0;
           subdragy=0;
           ontherect=0;
-          for(i=0;i<TextArray.length;i++)
+          for(i=0;i<$scope.TextArray.length;i++)
           {
             TextHandles[i]=0
             HandlesArray[i]=0
@@ -1172,30 +1385,27 @@ CanvasDown.id="CanvasDown"
 var ContextDown=CanvasDown.getContext('2d')
 var downloadnow=0;
 var ProcessDown=new Processing(CanvasDown,SketchDown)
-function downloadcanvas()
+$scope.download_canvas=function()
 {
-  
-    downloadnow=1;
-    var imag1=new Image()
-    var srimage1=new Image()
-    srimage1.src=$scope.image_sources[0]
-    imag1.src = jic.compress(srimage1,80,'jpg').src; 
-    $scope.image_sources[0]=imag1.src
-    ProcessDown.exit();
+  downloadnow=1
+  ProcessDown.exit();
     ProcessDown=new Processing(CanvasDown,SketchDown)
 }
+
 function SketchDown(processing)
 { 
+  console.log($scope.image_selected_source)
   processing.hint(processing.ENABLE_NATIVE_FONTS)
   processing.hint(processing.ENABLE_OPENGL_4X_SMOOTH)
-  var TextArray_download=TextArray
-  var selectors_download=selectors
+  var TextArray_download=$scope.TextArray
+  var selectors_download=$scope.selectors
   var wraps_download=wrapWidths
+  console.log(selectors_download,TextArray_download)
   var rt=(doww/parseInt($scope.canvas_width))
   var rt1=(dowh/parseInt($scope.canvas_height))
     console.log(rt,rt1)
-  var img1=processing.loadImage($scope.image_sources[0])
-  var log1=processing.loadImage(sessionStorage.source1)
+  var img1=processing.requestImage($scope.image_selected_source)
+  var log1=processing.requestImage($scope.logo_source[0])
   var im1x=parseInt(rt*$scope.image_positionsX[0])
   var im1y=parseInt(rt*$scope.image_positionsY[0])
   var im1w=parseInt(rt*$scope.image_sizesW[0])
@@ -1235,7 +1445,8 @@ function SketchDown(processing)
           processing.textAlign(processing.LEFT,processing.TOP)
           processing.fill(text1r,text1g,text1b)
           fs=50;
-          processing.textFont("Helvetica",32)
+          $scope.create_font=processing.createFont($scope.fontfamily)
+          processing.textFont($scope.create_font,32)
           processing.fill(text1r,text1g,text1b)
           for(i=0;i<3;i++)
               {
@@ -1245,7 +1456,8 @@ function SketchDown(processing)
                     var wordlengths=[];
                     for(j=0;j<words.length;j++)
                   {
-                     processing.textFont("Helvetica",rt*$scope.text_fontSize[i])
+                    $scope.create_font=processing.createFont($scope.fontfamily)
+                     processing.textFont($scope.create_font,rt*$scope.text_fontSize[i])
                      wordlengths[j]=processing.textWidth(words[j]);
                   }
                  var spacelength=processing.textWidth(" ")
@@ -1279,7 +1491,8 @@ function SketchDown(processing)
              
           processing.textAlign(processing.LEFT,processing.TOP)
           processing.fill(text1r,text1g,text1b)
-          processing.textFont("Helvetica",rt*$scope.text_fontSize[i])
+          $scope.create_font=processing.createFont($scope.fontfamily)
+          processing.textFont($scope.create_font,rt*$scope.text_fontSize[i])
           
           processing.text(strings[k],x_cord,y_cord)
           stringlengths[k]=processing.textWidth(strings[k]);
@@ -1366,31 +1579,149 @@ today = mm+''+dd+''+yyyy;
 }
 
 $scope.changeLayout(1)
-$scope.download_canvas=function()
+
+$scope.changeFont = function(index)
 {
-  downloadnow=1
+  
+    console.log("Changing font")
+    if(index==1)
+  {
+     $scope.fontfamily="Allerta-Regular";
+  
+  }
+  if(index==2)
+  {
+    $scope.fontfamily=("Asar-Regular");
+  }
+  if(index==3)
+  {
+     $scope.fontfamily=("Asap-Regular");
+  }
+  if(index==4)
+  {
+     $scope.fontfamily=("Anaheim-Regular");
+  }
+  
+  if(index==5)
+  {
+     $scope.fontfamily=("Arvo-Regular");
+  }
+  if(index==6)
+  {
+     $scope.fontfamily=("Armata-Regular");
+  }
+  console.log($scope.fontfamily)
+
 }
-  //Adding drop and drag capabilities for uploading image onto the canvas
-$scope.upload = function (file) {
-       Upload.base64DataUrl(file).then(function(urls){
+$scope.upload_logo = function (file) {
+  Upload.base64DataUrl(file).then(function(urls){
             $http({
                 method: 'POST',
-                url: '/api/drag_upload/',
+                url: '/api/upload_logo/',
                 data: urls,
                     }).then(function successCallback(response) {
-                    console.log(response.data.x)
-                    $scope.x_point=response.data.x
-                    $scope.y_point=response.data.y
-                    $scope.aw=response.data.aw
-                    $scope.ah=response.data.ah
-                    $scope.image_sources[0]="/static/images_uploaded/"+"up1.jpg"
+
+                   
+                    $scope.logo_source[0]="/assets/images_uploaded/logo_image.png"
                     processingInstance1.exit()
                     processingInstance1=new Processing(c,sketchProc)
+                    $scope.unsplash = 1
                    
                     }, function errorCallback(response) {
     
                 });
        });
+  }
+
+  $scope.get_more_images = function()
+  {
+    console.log("SCROLL EVENT DETECTED")
+  }
+ $scope.uploaded_aspects = []
+ // at the bottom of your controller
+$scope.init = function () {
+  $http({
+                method: 'POST',
+                url: '/api/get_all_uploaded_images/',
+                data: {"user":$scope.getParameter('user')},
+                    }).then(function successCallback(response) {
+                      console.log("Getting response back")
+                      $scope.uploaded_images = []
+                      $scope.uploaded_objects = []
+                      for(i=0;i<(response.data).length;i++)
+                      {
+                        image_string=(response.data[i].file.replace("/CraftCloud/FostPost/fostpost_app",""))
+                        $scope.uploaded_images.push(image_string)
+                        $scope.getImageMeta(image_string)
+
+                
+                    
+                      }
+
+                   
+                    }, function errorCallback(response) {
+    
+                });
+   // check if there is query in url
+   // and fire search in case its value is not empty
+};
+// and fire it after definition
+  $scope.getImageMeta = function(url)
+  {
+
+    var img = new Image();
+    img.addEventListener("load", function(){
+      console.log(this.naturalHeight/this.naturalWidth)
+      $scope.uploaded_aspects.push((this.naturalHeight/this.naturalWidth)*100+'px')
+  
+       return this.naturalHeight/this.naturalWidth; 
+        
+    });
+    img.src = url;
+
+  }
+    $scope.selected_upload_image = function(index)
+    {
+      
+      $scope.image_selected_source = index;
+      processingInstance1.exit()
+      processingInstance1=new Processing(c,sketchProc)
+
+    }
+  $scope.save_creative = function()
+  {
+        $http({
+                method: 'POST',
+                url: '/api/save_creative/',
+                data: {"email":$scope.current_user, "image_url":$scope.image_selected_source,"logo_url":$scope.logo_source,"image_x":$scope.image_positionsX,"image_y":$scope.image_positionsY,"logo_x":0,"logo_y":10,"strings":$scope.text_array,"strings_x":$scope.text_x,"strings_y":$scope.text_y},
+                    }).then(function successCallback(response) {
+                    console.log("Successfully Saved to the database")
+                    
+                    }, function errorCallback(response) {
+    
+                }); 
+
+                 }
+  //Adding drop and drag capabilities for uploading image onto the canvas
+  $scope.upload = function (file) {
+       Upload.base64DataUrl(file).then(function(urls){
+            $http({
+                method: 'POST',
+                url: '/api/drag_upload/',
+                data: {"urls":urls, "increment":$scope.array_image_incrementer,"user":$scope.current_user},
+                    }).then(function successCallback(response) {
+                    console.log("I am trying to upload the images dropped")
+                    console.log(response.data.file_string)
+                    
+                    $scope.image_selected_source = response.data.file_string
+                    processingInstance1.exit()
+                    processingInstance1=new Processing(c,sketchProc)
+                    $scope.init()
+                    }, function errorCallback(response) {
+    
+                });
+       });
     };
+    $scope.init();
 });
 

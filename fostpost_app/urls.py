@@ -4,6 +4,8 @@ from __future__ import absolute_import, unicode_literals
 from django.conf.urls import patterns,url
 
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = patterns('',
 
@@ -16,4 +18,9 @@ urlpatterns = patterns('',
     url(r'^api/unsplash_images/', views.unsplash_images, name='unsplash_images'),
     url(r'^api/get_colors/', views.get_colors, name='get_colors'),
     url(r'^api/drag_upload/', views.drag_upload, name='drag_upload'),
+    url(r'^api/upload_logo/', views.upload_logo, name='upload_logo'),
+    url(r'^api/get_next_word/', views.get_next_word, name='get_next_word'),
+    url(r'^api/save_creative/',views.save_creative,name='save_creative'),
+    url(r'^api/get_all_uploaded_images/',views.get_all_uploaded_images,name='get_all_uploaded_images'),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,'show_indexes':True}),
 )

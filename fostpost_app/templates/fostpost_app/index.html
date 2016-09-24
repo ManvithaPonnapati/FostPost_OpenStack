@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand topnav top-logo" href="#">
-                    <img class= " center-start"src="{% static 'svg/fostpostwordSM.svg'%}" alt="Description" >
+                    <img class= " center-start" src="{% static 'svg/fostpostwordSM.svg'%}" alt="Description" >
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -225,7 +225,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address
                                 </label>
-                                <input type="email" class="form-control input-lg" id="logInEmail"  ng-model="email_field" placeholder="Email">
+                                <input type="email" class="form-control input-lg" id="logInEmail"  ng-model="email_field" ng-focus="clear_email()" placeholder="">
                           </div>
                           <button type="submit" class="btn btn-default" ng-click="email_submit()">Submit
                           </button>

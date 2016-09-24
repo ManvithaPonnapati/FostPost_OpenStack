@@ -1,14 +1,21 @@
 from django.db import models
-
 from django.utils import timezone
 from django.contrib.auth.models import BaseUserManager
 from django.conf import settings
 from django.conf.urls.static import static
+from django.core.files.storage import FileSystemStorage
+class OverwriteStorage(FileSystemStorage):
+    def _save(self, name, content):
+        if self.exists(name):
+            self.delete(name)
+        return super(OverwriteStorage, self)._save(name, content)
 
+    def get_available_name(self, name):
+        return name
 class Photo(models.Model):
-    file = models.ImageField('Label', upload_to='/CraftCloud/FostPost/fostpost_app'+settings.STATIC_URL+'images_uploaded/')
+    file = models.ImageField('Label', upload_to='/CraftCloud/FostPost/fostpost_app/media/',storage=OverwriteStorage())
     email = models.CharField(max_length=40)
-
+    
 
 class CraftCloud_User(models.Model):
     email = models.CharField(max_length=30)

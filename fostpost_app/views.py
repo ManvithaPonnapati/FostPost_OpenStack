@@ -13,9 +13,11 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from fostpost_app.models import Photo
+from fostpost_app.models import creative
 import urllib
 import urllib2
 import json
+from PIL import Image
 import requests
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
@@ -27,7 +29,11 @@ from django.conf.urls.static import static
 from colorthief import ColorThief
 import base64
 from base64 import b64decode
-
+import os
+#import numpy as np
+#import cv2
+#from matplotlib import pyplot as plt
+from skipGramWordPredictor import *
 
 def RegisterView(request):
 	return render(request,'fostpost_app/register.html')
@@ -46,32 +52,87 @@ def create(request):
 @csrf_exempt
 def unsplash_images(request):
 	image_array=[]
-	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query=office&client_id=b348e0941b9d614b3c439557924e2b5a2b14b896bc97f2211929d9ac9fcb8a91").read()
+	x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query="+(request.body)+"&client_id=1f783afb6d0a3a793da48335a7bda1a2a2923b5cf43c69bdfd0f86281db4331c").read()
 	x=json.loads(x)
 	y=[]
+	w=[]
+	h=[]
 	for i in range(0,len(x)):
 		y.append(x[i]['urls']['thumb'])
-		img_temp = NamedTemporaryFile(delete=True)
-		img_temp.write(urllib2.urlopen(x[i]['urls']['thumb']).read())
-		img_temp.flush()
-		im=Photo(email="rp493@cornell.edu")
-		im.file.save("uploaded_"+str(i), File(img_temp))
-	return HttpResponse(json.dumps(y))
+		# img_temp = NamedTemporaryFile(delete=True)
+		# temp_file_name = img_temp.name
+		# img_temp.write(urllib2.urlopen(x[i]['urls']['thumb']).read())
+		# img_temp.flush()
+		# im=Photo(email="rp493@cornell.edu")
+		# im.file.save("uploaded_"+str(i)+".jpg", File(img_temp))
+		# file_string = "uploaded_"+str(i)+".jpg"
+		# imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string)
+		# w.append(imgx.size[0])
+		# h.append(imgx.size[1])
+	return HttpResponse(json.dumps({"y":y,"width":w,"height":h}))
 
 @csrf_exempt
 def drag_upload(request):
+	json_body = json.loads(request.body)
+	x = json_body["urls"]
+	y = json_body["increment"]
+	user = json_body["user"]
+	image_base64 = x.split('base64,', 1 )
+	image_base64[1] = image_base64[1].encode('utf-8').strip()
+	image_data = b64decode(image_base64[1])
+	im=Photo(email=user)
+	img_temp = NamedTemporaryFile(delete=True)
+	temp_file_name = img_temp.name
+	img_temp.write(image_data)
+	img_temp.flush()
+	user = user.replace("@","")
+	(dirName, fileName) = os.path.split(temp_file_name)
+	fileBaseName = os.path.splitext(fileName)[0]
+	file_name_append=str(user)+"_"+str(fileBaseName)
+	file_string = "/media/"+file_name_append+".jpg"
+	im.file.save(file_string, File(img_temp))
+	return HttpResponse(json.dumps({'file_string':file_string}))
+
+
+@csrf_exempt
+def get_all_uploaded_images(request):
+	json_body = json.loads(request.body)
+	user = json_body["user"]
+	all_images = Photo.objects.filter(email=user).values('file')
+	return HttpResponse(json.dumps(list(all_images)))
+
+@csrf_exempt
+def save_creative(request):
+	json_body = json.loads(request.body)
+	email = str(json_body["email"])
+	image_string = str(json_body["image_url"])
+	logo_url = str(json_body["logo_url"])
+	image_x = str(json_body["image_x"])
+	image_y=str(json_body["image_y"])
+	logo_x=json_body["logo_x"]
+	logo_y=json_body["logo_y"]
+	strings=str(json_body["strings"])
+	strings_x=str(json_body["strings_x"])
+	strings_y=str(json_body["strings_y"])
+	new_creative = creative(email=email,image_url=image_string,logo_url=logo_url,image_x=image_x,image_y=image_y,logo_x=logo_x,logo_y=logo_y,strings=strings,strings_x=strings_x,strings_y=strings_y)
+	return "Success Saved"
+
+@csrf_exempt
+def upload_logo(request):
 	x = request.body
 	image_base64 = x.split('base64,', 1 )
 	image_base64[1] = image_base64[1].encode('utf-8').strip()
 	image_data = b64decode(image_base64[1])
 	im=Photo(email="rp493@cornell.edu")
 	img_temp = NamedTemporaryFile(delete=True)
+	temp_file_name = img_temp.name
 	img_temp.write(image_data)
-	
-
 	img_temp.flush()
-	
-	return HttpResponse(json.dumps({'x':[],'y':[],'aw':0,'ah':0}))
+
+	file_string = "logo_image.png"
+	im.file.save(file_string, File(img_temp))
+	#imgx=Image.open("/CraftCloud/FostPost/fostpost_app/static/images_uploaded/"+file_string,0)
+	return HttpResponse(json.dumps({'file_string':file_string}))
 
 
 def decode_base64(data):
@@ -110,4 +171,10 @@ def authenticate_email(request):
 
 
 
-
+def get_next_word(request):
+    history = "next word is"
+    wordPredictor = SkipGramWordPredictor()
+    wordPredictor.setupModel()
+    nextWord = wordPredictor.guessNextWord(history)
+    
+    return HttpResponse(nextWord)

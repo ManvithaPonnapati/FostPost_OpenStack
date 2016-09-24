@@ -2,7 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}"></link>
-	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
 	<script src="{% static 'javascript/jquery-1.11.3.js' %}" ></script>
 	<script src="{% static 'javascript/flowtype.js' %}"></script>
 	
@@ -87,61 +88,61 @@ font-family: "Anton";
 
 </style>
 </head>
-<body >
+<body ng-app="font_app" ng-controller="font_controller" >
 
 	<div id="OutsideContainer" class="OutsideContainer">
 	
 		<div id="TopContainer" class="TopContainer">
 		    <div id="TheText" class="TheText">
 		    	<ul class="TextList">
-		    	<li class="heading"> Font Suiter <sup style="font-size:12px;"> TM </sup> </li>
-		    	<li class="description"> What's your brand's dress code? </li>
+		    	<li class="heading">  <sup style="font-size:12px;">  </sup> </li>
+		    	<li class="description"> </li>
 		    	</ul>
 		    </div>
 		</div>
 		<div id="MiddleContainer" class="MiddleContainer">
 			<table class="FontPeople" >
 				<tr>
-					<td id="Guy1" class="svgfile"  >
-					<a href="{% url 'create' %}">
+					<td id="Guy1" class="svgfile"  ng-click="font_selected('Antic-Regular')">
+					<a>
 						<img src="{% static 'svg/font1.svg' %}" class="imge"   ></img>
-						<p class="paragrap"   >Tuxedo</p>	
-						<p id="family1" style="font-family:Antic-Regular;font-size:18px;visibility:hidden"   >Antic</p>		
+							
+						<p id="family1" style="font-family:Antic-Regular;font-size:18px;visibility:hidden"   ></p>		
 						</a>
 					</td>
-					<td id="Guy2" class="svgfile">
-					<a href="{% url 'create' %}">
-						<img src="{% static 'svg/font3.svg' %}"  class="imge"></img>
-						<p class="paragrap"   >Business Casual</p>
-						<p id="family2" style="font-family:Asar-Regular;font-size:18px;visibility:hidden"   >Asar</p>
+					<td id="Guy2" class="svgfile" ng-click="font_selected('Asar-Regular')">
+					<a>
+						<img src="{% static 'svg/font2.svg' %}"  class="imge" ></img>
+						
+						<p id="family2" style="font-family:Asar-Regular;font-size:18px;visibility:hidden"   ></p>
 						</a>
 					</td>
-					<td id="Guy3" class="svgfile">
-					<a href="{% url 'create' %}">
-						<img src="{% static 'svg/font5.svg' %}" class="imge"></img>
-						<p class="paragrap"   >Dressy Casual</p>
-						<p id="family3" style="font-family:Asap-Regular;font-size:18px;visibility:hidden"   >Asap</p>
+					<td id="Guy3" class="svgfile" ng-click="font_selected('Asap-Regular')">
+					<a>
+						<img src="{% static 'svg/font3.svg' %}" class="imge" ></img>
+						
+						<p id="family3" style="font-family:Asap-Regular;font-size:18px;visibility:hidden"   ></p>
 						</a>
 					</td>
-					<td id="Guy4" class="svgfile">
-					<a href="{% url 'create' %}">
-						<img src="{% static 'svg/font7.svg' %}"  class="imge"></img>
-						<p class="paragrap"   >Smart Casual</p>
-						<p id="family4" style="font-family:Anaheim-Regular;font-size:18px;visibility:hidden"   >Anaheim</p>
+					<td id="Guy4" class="svgfile" ng-click="font_selected('Anaheim-Regular')">
+					<a>
+						<img src="{% static 'svg/font4.svg' %}"  class="imge" ></img>
+						
+						<p id="family4" style="font-family:Anaheim-Regular;font-size:18px;visibility:hidden"   ></p>
 						</a>
 					</td>
-					<td id="Guy5" class="svgfile">
-					<a href="{% url 'create' %}">
-						<img src="{% static 'svg/font8.svg' %}" class="imge"></img>
-						<p class="paragrap"   >Casual</p>
-						<p id="family5" style="font-family:Arvo-Regular;font-size:18px;visibility:hidden"   >Arvo</p>
+					<td id="Guy5" class="svgfile" ng-click="font_selected('Arvo-Regular')">
+					<a>
+						<img src="{% static 'svg/font5.svg' %}" class="imge" ></img>
+					
+						<p id="family5" style="font-family:Arvo-Regular;font-size:18px;visibility:hidden"   ></p>
 						</a>
 					</td>
-					<td id="Guy6" class="svgfile">
-					<a href="{% url 'create' %}">
-						<img src="{% static 'svg/font9.svg' %}"  class="imge"></img>
-						<p class="paragrap"   >Street</p>
-						<p id="family6" style="font-family:Armata-Regular;font-size:18px;visibility:hidden"   >Armata</p>
+					<td id="Guy6" class="svgfile" ng-click="font_selected('Armata-Regular')">
+					<a>
+						<img src="{% static 'svg/font6.svg' %}"  class="imge"></img>
+						
+						<p id="family6" style="font-family:Armata-Regular;font-size:18px;visibility:hidden"   ></p>
 						</a>
 					</td>
 				</tr>
@@ -159,6 +160,37 @@ font-family: "Anton";
 	</div>
 	<script src="{% static 'javascript/font.js' %}" type="text/javascript" >
 		
+	</script>
+	<script>
+	var app = angular.module('font_app', ['ngRoute']);
+ app.config([
+        '$routeProvider',
+        function($routeProvider) {
+            $routeProvider.when('/font/:user', {
+                templateUrl: 'font.html',
+                controller: 'font_controller'
+            });
+        }
+    ]);
+
+		app.controller('font_controller', function($scope,$http,$window,$routeParams,$location) {
+			
+			$scope.font_selected=function(font_name){
+					$window.location.href = '/create/?user='+$scope.getParameter('user')+'&font='+font_name
+
+		}
+		$scope.getParameter = function getParameterByName(name, url) {
+				    if (!url) url = window.location.href;
+				    name = name.replace(/[\[\]]/g, "\\$&");
+				    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				        results = regex.exec(url);
+				    if (!results) return null;
+				    if (!results[2]) return '';
+				    return decodeURIComponent(results[2].replace(/\+/g, " "));
+				}
+		})
+		
+
 	</script>
 	<script type="text/javascript" >
 		$('#fontchange').flowtype({

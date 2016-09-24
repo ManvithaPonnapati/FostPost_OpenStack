@@ -1,0 +1,52 @@
+
+@font-face{
+font-family: "Antic-Regular"; 
+src: url('{% static 'javascript/Allerta-Regular.ttf' %}'); 
+}
+@font-face{
+font-family: "Allerta-Regular"; 
+src: url("{% static 'javascript/Allerta-Regular.ttf' %}"); 
+}
+@font-face{
+  font-family: "Anaheim-Regular"; 
+src: url("{% static 'javascript/Anaheim-Regular.ttf' %}"); 
+}
+@font-face{
+  font-family: "Arbutus-Regular"; 
+src: url("{% static 'javascript/Arbutus-Regular.ttf' %}"); 
+}
+@font-face{
+  font-family: "Armata-Regular"; 
+src: url("{% static 'javascript/Armata-Regular.ttf' %}"); 
+}
+@font-face{
+  
+font-family: "Arvo-Regular"; 
+src: url("{% static 'javascript/Arvo-Regular.ttf' %}");
+}
+@font-face{
+  font-family: "Asap-Regular"; 
+src: url("{% static 'javascript/Asap-Regular.ttf' %}"); 
+}
+@font-face{
+  font-family: "Asar-Regular"; 
+src: url("{% static 'javascript/Asar-Regular.ttf' %}"); 
+}
+
+@font-face{
+  font-family: "Belleza-Regular"; 
+src: url("{% static 'javascript/Belleza-Regular.ttf' %}"); 
+}
+@font-face{
+  font-family: "Baumans-Regular"; 
+src: url("{% static 'javascript/Baumans-Regular.ttf' %}"); 
+}
+@font-face{
+  font-family: "Bitter-Regular"; 
+src: url("{% static 'javascript/Bitter-Regular.ttf' %}"); 
+}
+@font-face{
+  font-family: "ContrailOne-Regular"; 
+src: url("{% static 'javascript/ContrailOne-Regular.ttf' %}"); 
+}
+
