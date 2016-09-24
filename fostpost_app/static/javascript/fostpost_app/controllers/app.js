@@ -10,10 +10,11 @@ app.directive("scroll", function ($window) {
       }
    }
 })
- app.config(function($interpolateProvider) {
+
+app.config(function($interpolateProvider) {
         $interpolateProvider.startSymbol('{[');
         $interpolateProvider.endSymbol(']}');
-    });
+});
 
 app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routeParams,$location) {
   console.log("Inside create");
@@ -413,7 +414,7 @@ function generatelevels(numberoflevels)
   {
     if(ad_type==1)
     {
-        
+
         $scope.canvas_width=$scope.parentWidth;
         $scope.canvas_height=(628/1200)*$scope.canvas_width;  
 
