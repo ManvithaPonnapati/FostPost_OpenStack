@@ -60,24 +60,24 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js">
 </script>
-<script src="{% static 'javascript/mfont.js' %}">
+<script src="{% static 'javascript/libraries/mfont.js' %}">
 </script>
-<script src="{% static 'javascript/flowtype.js' %}">
+<script src="{% static 'javascript/libraries/flowtype.js' %}">
 </script>
 <!-- Angular Material Library -->
 <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js">
 </script>
-<script src="{% static 'javascript/tinycolor.js' %}">
+<script src="{% static 'javascript/libraries/tinycolor.js' %}">
 </script>
-<script src="{% static 'javascript/mdColorPicker.min.js' %}">
+<script src="{% static 'javascript/libraries/mdColorPicker.min.js' %}">
 </script>
-<script src="{% static 'javascript/processing.js' %}">
+<script src="{% static 'javascript/libraries/processing.js' %}">
 </script>
-<script src="{% static 'javascript/ng-file-upload-shim.js' %}">
+<script src="{% static 'javascript/libraries/ng-file-upload-shim.js' %}">
 </script>
-<script src="{% static 'javascript/ng-file-upload.js' %}">
+<script src="{% static 'javascript/libraries/ng-file-upload.js' %}">
 </script>
-<script src="{% static 'javascript/ng-file-upload-all.js' %}">
+<script src="{% static 'javascript/libraries/ng-file-upload-all.js' %}">
 </script>
 <script src="{% static 'javascript/fostpost_app/controllers/app.js' %}">
 </script>
@@ -107,15 +107,12 @@
     <div class="row row-canvas-tabs"> 
       <div class = "col-sm-12 nopad col-xs-8 nopad"  id="tabs">
         <div class= "btn-group" role="group" aria-label="...">
-          <select ng-model="facebook_selected" ng-change="change_canvas_size(1)">
-            <option value="1200x628" selected> Facebook </option>
-            <option ng-repeat="(key, value) in facebookSizes" value="{[value]}" > {[key]} {[value]}</option>
+        {[facebook_selected.selected]}
+          <select ng-model="facebook_selected.index" ng-change="change_canvas_size(1)" ng-options = "obj.id as obj.name for obj in facebookSizes">
           </select>
         </div>
         <div class= "btn-group" role="group" aria-label="...">
-          <select ng-change="change_canvas_size(2)" ng-model="google_selected" >
-              <option value="300x600" selected> Google </option>
-              <option ng-repeat="(key, value) in googleSizes" value="{[value]}" > {[key]} {[value]}</option>
+          <select ng-model="google_selected.index" ng-change="change_canvas_size(2)" ng-options = "obj.id as obj.name for obj in googleSizes">
           </select>
         </div>
         <div class="btn-group" role="group" ng-click="change_canvas_size(3)">

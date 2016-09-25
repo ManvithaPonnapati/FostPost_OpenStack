@@ -159,7 +159,9 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $window.dummy = $scope.dummy; 
   $scope.fontArray=["Antic-Regular","Asar-Regular","Asap-Regular","Anaheim-Regular","Arvo-Regular","Armata-Regular"]
   $scope.image_selected_source = DJANGO_STATIC_URL+"images/placeholderbackground.jpg"
-
+  $scope.facebook_selected = {"index":1}
+  $scope.google_selected = {"index":1}
+  
   // $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
   // $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
   $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];
@@ -200,9 +202,8 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.canvas_color='#dfd333'
   var copywidth=$scope.canvas_width;
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
-  $scope.facebookSizes={"Conversions": "1200x628", "Post Page Engagement": "1200x900", "Carousel": "600x600"};
-  console.log($scope.facebookSizes)
-  $scope.googleSizes={"Large Rectangle": "336x280", "Medium Rectangle": "300x250", "Leaderboard": "728x90","Half Page":"300x600","Large Mobile Banner":"320x100"};
+  $scope.facebookSizes=[{id: 1,name: 'Conversions 1200x628'}, {id: 2,name: 'Post Page Engagement 1200x900'}, {id: 3,name: 'Carousel 600x600'}];
+  $scope.googleSizes=[{id: 1,name: 'Large Rectangle 336x280'}, {id: 2,name: 'Medium Rectangle 300x250'}, {id: 3,name: 'Leaderboard 728x90'},{id:4,name:'Half Page 300x600'},{id:5,name:'Large Mobile Banner 320x100'}];
   console.log($scope.googleSizes)
   var copySession=$scope.image_selected_source
   $scope.unsplash_width=[100]
