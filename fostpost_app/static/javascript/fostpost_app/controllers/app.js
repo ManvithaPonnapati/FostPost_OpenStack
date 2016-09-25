@@ -820,13 +820,13 @@ function hexToRgb(hex) {
         
     processing.fill(233,72,44)
     if(lerpFlag==1){
-    for(var i=0; i<=50; i++) {
+    for(var i=0; i<=20; i++) {
 
-        var x = processing.lerp(dottedx1, dottedx2, i/50.0);
+        var x = processing.lerp(dottedx1, dottedx2, i/20.0);
 
-        var y = processing.lerp(dottedy1, dottedy2, i/50.0);
-          var x1=processing.lerp(dottedx11, dottedx21, i/50.0);
-      var y1=processing.lerp(dottedy11, dottedy21, i/50.0);
+        var y = processing.lerp(dottedy1, dottedy2, i/20.0);
+          var x1=processing.lerp(dottedx11, dottedx21, i/20.0);
+      var y1=processing.lerp(dottedy11, dottedy21, i/20.0);
       processing.point(x1, y1);
       processing.point(x,y)
       
