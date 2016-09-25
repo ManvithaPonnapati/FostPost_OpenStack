@@ -20,11 +20,13 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   console.log("Inside create");
   $scope.scopeVariable={}
   $scope.scopeVariable.options = {
-    label: "Choose a color",
-    icon: "brush",
-    default: "#f00",
+    label: "Color Dialog",
+    icon: "",
+    default: hexToRgb,
     genericPalette: false,
-    history: false
+    history: false,
+    clearButton:false,
+
 };
   $scope.unsplash = 0
   $scope.craftcloud_item = function ()

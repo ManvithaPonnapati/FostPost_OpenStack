@@ -174,9 +174,8 @@ li{
   padding:0px;
   border: 1px solid #91a0e2;
   text-align: center;
-  height:10%;
+  height:15%;
   color: #ef4223;
-  height:30px;
   font-family: 'avenir next', 'helvetica', 'arial';
   font-size: 1.50rem;
   font-weight: 100;
@@ -470,5 +469,13 @@ canvas {
 .sidenav_svg
 {
   color:#ef4223;
+}
+.drawer-colors input
+{
+  color:white !important;
+}
+.drawer-colors label
+{
+  color:white !important;
 }
 
