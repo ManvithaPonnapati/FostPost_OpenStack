@@ -202,8 +202,8 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.canvas_color='#dfd333'
   var copywidth=$scope.canvas_width;
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
-  $scope.facebookSizes=[{id: 1,name: 'Conversions 1200x628'}, {id: 2,name: 'Post Page Engagement 1200x900'}, {id: 3,name: 'Carousel 600x600'}];
-  $scope.googleSizes=[{id: 1,name: 'Large Rectangle 336x280'}, {id: 2,name: 'Medium Rectangle 300x250'}, {id: 3,name: 'Leaderboard 728x90'},{id:4,name:'Half Page 300x600'},{id:5,name:'Large Mobile Banner 320x100'}];
+  $scope.facebookSizes=[{id: 1,name: 'Facebook'}, {id: 2,name: 'Post Page Engagement 1200x900'}, {id: 3,name: 'Carousel 600x600'}];
+  $scope.googleSizes=[{id: 1,name: 'Google'}, {id: 2,name: 'Medium Rectangle 300x250'}, {id: 3,name: 'Leaderboard 728x90'},{id:4,name:'Half Page 300x600'},{id:5,name:'Large Mobile Banner 320x100'}];
   console.log($scope.googleSizes)
   var copySession=$scope.image_selected_source
   $scope.unsplash_width=[100]
@@ -415,17 +415,52 @@ function generatelevels(numberoflevels)
   {
     if(ad_type==1)
     {
-
+       if($scope.facebook_selected.index == 1)
+       {
         $scope.canvas_width=$scope.parentWidth;
         $scope.canvas_height=(628/1200)*$scope.canvas_width;  
+      }
+      if($scope.facebook_selected.index == 2)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(900/1200)*$scope.canvas_width;  
+      }
+      if($scope.facebook_selected.index == 3)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(600/600)*$scope.canvas_width;  
+      }
 
     }
 
     if(ad_type==2)
     {
-
+      if($scope.google_selected.index == 1)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(280/336)*$scope.canvas_width;  
+      }
+      if($scope.google_selected.index == 2)
+       {
         $scope.canvas_width=$scope.parentWidth;
         $scope.canvas_height=(250/300)*$scope.canvas_width;  
+      }
+      if($scope.google_selected.index == 3)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(90/728)*$scope.canvas_width;  
+      }
+      
+      if($scope.google_selected.index == 4)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(600/300)*$scope.canvas_width;  
+      }
+      if($scope.google_selected.index == 5)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(100/320)*$scope.canvas_width;  
+      }
 
     }
     if(ad_type==3)
