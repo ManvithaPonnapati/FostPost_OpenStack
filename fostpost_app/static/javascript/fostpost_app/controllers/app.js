@@ -1729,6 +1729,26 @@ $scope.init = function () {
       processingInstance1=new Processing(c,sketchProc)
 
     }
+    $scope.selected_unsplash_image = function(index)
+    {
+      console.log("Unsplash Image")
+       $http({
+                method: 'POST',
+                url: '/api/save_unsplash/',
+                data: {"url_string":index, "user":$scope.current_user},
+                
+                    }).then(function successCallback(response) {
+                    console.log("Successfully Saved to the database")
+                    console.log(response.data)
+                    $scope.image_selected_source = response.data;
+                    processingInstance1.exit()
+                    processingInstance1=new Processing(c,sketchProc)
+                    }, function errorCallback(response) {
+    
+                }); 
+
+      console.log(index)
+    }
   $scope.save_creative = function()
   {
         $http({
