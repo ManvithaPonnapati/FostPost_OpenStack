@@ -10,20 +10,23 @@ app.directive("scroll", function ($window) {
       }
    }
 })
- app.config(function($interpolateProvider) {
+
+app.config(function($interpolateProvider) {
         $interpolateProvider.startSymbol('{[');
         $interpolateProvider.endSymbol(']}');
-    });
+});
 
 app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routeParams,$location) {
   console.log("Inside create");
   $scope.scopeVariable={}
   $scope.scopeVariable.options = {
-    label: "Choose a color",
-    icon: "brush",
-    default: "#f00",
+    label: "Color Dialog",
+    icon: "",
+    default: hexToRgb,
     genericPalette: false,
-    history: false
+    history: false,
+    clearButton:false,
+
 };
   $scope.unsplash = 0
   $scope.craftcloud_item = function ()
@@ -158,7 +161,9 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $window.dummy = $scope.dummy; 
   $scope.fontArray=["Antic-Regular","Asar-Regular","Asap-Regular","Anaheim-Regular","Arvo-Regular","Armata-Regular"]
   $scope.image_selected_source = DJANGO_STATIC_URL+"images/placeholderbackground.jpg"
-
+  $scope.facebook_selected = {"index":1}
+  $scope.google_selected = {"index":1}
+  
   // $scope.image_sources=[DJANGO_STATIC_URL+"images/placeholderbackground.jpg"];
   // $scope.uploaded_images=[DJANGO_STATIC_URL+"images/up1.jpg",DJANGO_STATIC_URL+"images/up2.jpg",DJANGO_STATIC_URL+"images/up3.jpg",DJANGO_STATIC_URL+"images/up4.jpg",DJANGO_STATIC_URL+"images/up5.jpg",DJANGO_STATIC_URL+"images/up6.jpg",DJANGO_STATIC_URL+"images/up7.jpg",DJANGO_STATIC_URL+"images/up8.jpg"];
   $scope.logo_source=[DJANGO_STATIC_URL+"images/logo_image.jpg"];
@@ -199,9 +204,8 @@ app.controller('createCtrl', function($scope,$http,$sce,Upload,$window,$routePar
   $scope.canvas_color='#dfd333'
   var copywidth=$scope.canvas_width;
   $scope.selected_navbar_item=1  //Layouts nav bar item is selected by default
-  $scope.facebookSizes={"Conversions": "1200x628", "Post Page Engagement": "1200x900", "Carousel": "600x600"};
-  console.log($scope.facebookSizes)
-  $scope.googleSizes={"Large Rectangle": "336x280", "Medium Rectangle": "300x250", "Leaderboard": "728x90","Half Page":"300x600","Large Mobile Banner":"320x100"};
+  $scope.facebookSizes=[{id: 1,name: 'Facebook'}, {id: 2,name: 'Post Page Engagement 1200x900'}, {id: 3,name: 'Carousel 600x600'}];
+  $scope.googleSizes=[{id: 1,name: 'Google'}, {id: 2,name: 'Medium Rectangle 300x250'}, {id: 3,name: 'Leaderboard 728x90'},{id:4,name:'Half Page 300x600'},{id:5,name:'Large Mobile Banner 320x100'}];
   console.log($scope.googleSizes)
   var copySession=$scope.image_selected_source
   $scope.unsplash_width=[100]
@@ -413,17 +417,52 @@ function generatelevels(numberoflevels)
   {
     if(ad_type==1)
     {
-        
+       if($scope.facebook_selected.index == 1)
+       {
         $scope.canvas_width=$scope.parentWidth;
         $scope.canvas_height=(628/1200)*$scope.canvas_width;  
+      }
+      if($scope.facebook_selected.index == 2)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(900/1200)*$scope.canvas_width;  
+      }
+      if($scope.facebook_selected.index == 3)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(600/600)*$scope.canvas_width;  
+      }
 
     }
 
     if(ad_type==2)
     {
-
+      if($scope.google_selected.index == 1)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(280/336)*$scope.canvas_width;  
+      }
+      if($scope.google_selected.index == 2)
+       {
         $scope.canvas_width=$scope.parentWidth;
         $scope.canvas_height=(250/300)*$scope.canvas_width;  
+      }
+      if($scope.google_selected.index == 3)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(90/728)*$scope.canvas_width;  
+      }
+      
+      if($scope.google_selected.index == 4)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(600/300)*$scope.canvas_width;  
+      }
+      if($scope.google_selected.index == 5)
+       {
+        $scope.canvas_width=$scope.parentWidth;
+        $scope.canvas_height=(100/320)*$scope.canvas_width;  
+      }
 
     }
     if(ad_type==3)
@@ -781,13 +820,13 @@ function hexToRgb(hex) {
         
     processing.fill(233,72,44)
     if(lerpFlag==1){
-    for(var i=0; i<=50; i++) {
+    for(var i=0; i<=20; i++) {
 
-        var x = processing.lerp(dottedx1, dottedx2, i/50.0);
+        var x = processing.lerp(dottedx1, dottedx2, i/20.0);
 
-        var y = processing.lerp(dottedy1, dottedy2, i/50.0);
-          var x1=processing.lerp(dottedx11, dottedx21, i/50.0);
-      var y1=processing.lerp(dottedy11, dottedy21, i/50.0);
+        var y = processing.lerp(dottedy1, dottedy2, i/20.0);
+          var x1=processing.lerp(dottedx11, dottedx21, i/20.0);
+      var y1=processing.lerp(dottedy11, dottedy21, i/20.0);
       processing.point(x1, y1);
       processing.point(x,y)
       
@@ -1576,6 +1615,9 @@ today = mm+''+dd+''+yyyy;
     
   }
 }
+$scope.redirect = function(url){
+  $location.path('/#/');
+}
 
 $scope.changeLayout(1)
 
@@ -1686,6 +1728,26 @@ $scope.init = function () {
       processingInstance1.exit()
       processingInstance1=new Processing(c,sketchProc)
 
+    }
+    $scope.selected_unsplash_image = function(index)
+    {
+      console.log("Unsplash Image")
+       $http({
+                method: 'POST',
+                url: '/api/save_unsplash/',
+                data: {"url_string":index, "user":$scope.current_user},
+                
+                    }).then(function successCallback(response) {
+                    console.log("Successfully Saved to the database")
+                    console.log(response.data)
+                    $scope.image_selected_source = response.data;
+                    processingInstance1.exit()
+                    processingInstance1=new Processing(c,sketchProc)
+                    }, function errorCallback(response) {
+    
+                }); 
+
+      console.log(index)
     }
   $scope.save_creative = function()
   {

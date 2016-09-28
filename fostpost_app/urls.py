@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     url(r'^api/get_next_word/', views.get_next_word, name='get_next_word'),
     url(r'^api/save_creative/',views.save_creative,name='save_creative'),
     url(r'^api/get_all_uploaded_images/',views.get_all_uploaded_images,name='get_all_uploaded_images'),
+    url(r'^api/save_unsplash/',views.save_unsplash,name='save_unsplash'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,'show_indexes':True}),
 )
