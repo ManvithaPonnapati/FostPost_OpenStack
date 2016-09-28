@@ -93,10 +93,12 @@
     <div class="row">
         <div class="header-style">
           <div class=" col-sm-2" ng-click="">
+          <a href="/#/">
             <img src="{% static 'images/fostpostword.png' %}" class="header-logo-img">
+            </a>
           </div>
-          <div class="header-logout col-sm-offset-8 col-sm-2" ng-click="">
-                Logout
+          <div class="header-logout col-sm-offset-8 col-sm-2" ng-click="redirect()">
+               Logout
           </div>
        </div>
     </div>
@@ -238,17 +240,20 @@
               <a href="#test" aria-controls="home" role="tab" data-toggle="tab">Uploaded
               </a>
             </div>
-            <div ng-click="uploaded_item()"role="presentation" id="tab-right">
+            <div ng-click="uploaded_item()"role="presentation" id="tab-right" >
               <a href="#test" aria-controls="settings" role="tab" data-toggle="tab">Unsplash
               </a>
             </div>
             <!-- text field input for image search -->
-            <div class="input-group">
+            
+          </div>
+         </li>
+         <li>
+         <div class="input-group">
               <span class="input-group-addon" id="smalltext_line">Search
               </span>
                 <input type="text" ng-model="unsplash_query" ng-change ="inputChange()" type="text" class="form-control text-field" placeholder="Enter Small Text" aria-describedby="basic-addon1">
             </div>
-          </div>
          </li>
          <li id="imageLi" ng-repeat= "i in imageArray track by $index"  ng-click="selected_upload_image(i)" style="width:100%;height:auto;">
             <img ng-src={[i]} style="width:100%;" ng-style="{'height':uploaded_aspects(i)}" align="middle" /> 

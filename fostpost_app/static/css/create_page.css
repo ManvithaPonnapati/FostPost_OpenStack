@@ -174,8 +174,9 @@ li{
   padding:0px;
   border: 1px solid #91a0e2;
   text-align: center;
-  height:15%;
+  height:10%;
   color: #ef4223;
+  height:30px;
   font-family: 'avenir next', 'helvetica', 'arial';
   font-size: 1.50rem;
   font-weight: 100;
@@ -470,12 +471,19 @@ canvas {
 {
   color:#ef4223;
 }
-.drawer-colors input
-{
-  color:white !important;
-}
-.drawer-colors label
-{
-  color:white !important;
-}
 
+
+#tab-left
+{
+  
+  position:absolute;
+  width: 40%;
+  float: left;
+}
+#tab-right
+{
+  
+  position: absolute;
+  width: 40%;
+  margin-left: 50%;
+}

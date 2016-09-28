@@ -1615,6 +1615,9 @@ today = mm+''+dd+''+yyyy;
     
   }
 }
+$scope.redirect = function(url){
+  $location.path('/#/');
+}
 
 $scope.changeLayout(1)
 
