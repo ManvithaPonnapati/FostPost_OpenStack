@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'yc1%*2%6or8_0x88zmvz04lcp))02ziay8473i0eb8%_d#j9w0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-52-33-217-21.us-west-2.compute.amazonaws.com','localhost','127.0.0.1']
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
        'USER': 'super_user',
        'PASSWORD':'Scamozzi1616',
        'HOST':'localhost',
-       'PORT':'5432',
+       'PORT':'',
 
    }
 }
@@ -132,7 +132,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-MEDIA_ROOT = os.path.join(BASE_DIR, 'fostpost_app/media')
-MEDIA_URL = '/media/'
-STATIC_ROOT = '/CraftCloud/FostPost/fostpost_app/assets/'
-STATICFILES_DIRS = ('/CraftCloud/FostPost/fostpost_app/static/',)
+MEDIA_ROOT = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/media/')
+MEDIA_URL = '/home/ec2-user/FostPost_OpenStack/media/'
+STATIC_ROOT = '/home/ec2-user/FostPost_OpenStack/static/'
+STATICFILES_DIRS = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/static/',)

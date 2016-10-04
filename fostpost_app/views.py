@@ -52,6 +52,10 @@ def create(request):
     return render(request,'fostpost_app/create.html')
 
 @csrf_exempt
+def server_get(request):
+    return HttpResponse("I am here")
+
+@csrf_exempt
 def unsplash_images(request):
     image_array=[]
     x=urllib2.urlopen("https://api.unsplash.com/photos/search?page=1&query="+(request.body)+"&client_id=1f783afb6d0a3a793da48335a7bda1a2a2923b5cf43c69bdfd0f86281db4331c").read()
