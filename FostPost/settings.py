@@ -133,12 +133,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-MEDIA_ROOT = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/media')
-MEDIA_URL = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/media/'
-STATIC_ROOT = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/static/'
-STATICFILES_DIRS = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/static',)
-#PROD SETTINGS
-# MEDIA_ROOT = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/media/')
-# MEDIA_URL = '/home/ec2-user/FostPost_OpenStack/media/'
-# STATIC_ROOT = '/home/ec2-user/FostPost_OpenStack/static/'
-# STATICFILES_DIRS = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/static/',)
+# MEDIA_ROOT = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/media')
+# MEDIA_URL = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/media/'
+# STATIC_ROOT = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/static/'
+# STATICFILES_DIRS = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/static',)
+# #PROD SETTINGS
+MEDIA_ROOT = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/media/')
+MEDIA_URL = '/home/ec2-user/FostPost_OpenStack/media/'
+STATIC_ROOT = '/home/ec2-user/FostPost_OpenStack/static/'
+STATICFILES_DIRS = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/static/',)
