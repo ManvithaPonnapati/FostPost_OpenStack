@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'yc1%*2%6or8_0x88zmvz04lcp))02ziay8473i0eb8%_d#j9w0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['ec2-52-33-217-21.us-west-2.compute.amazonaws.com','localhost','127.0.0.1']
 
@@ -132,14 +132,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+MEDIA_ROOT = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/media')
+MEDIA_URL = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/media/'
+STATIC_ROOT = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/static/'
+STATICFILES_DIRS = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/static',)
 #PROD SETTINGS
 # MEDIA_ROOT = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/media/')
 # MEDIA_URL = '/home/ec2-user/FostPost_OpenStack/media/'
 # STATIC_ROOT = '/home/ec2-user/FostPost_OpenStack/static/'
 # STATICFILES_DIRS = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/static/',)
-
-
-MEDIA_ROOT = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/media/')
-MEDIA_URL = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/media/'
-STATIC_ROOT = '/Users/manvithaponnapati/Documents/FostPost_OpenStack/static/'
-STATICFILES_DIRS = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/static/',)
