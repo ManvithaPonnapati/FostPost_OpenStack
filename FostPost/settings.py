@@ -127,7 +127,7 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': False,
         },
-        'MYAPP': {
+        'fostpost_app': {
             'handlers': ['console', 'logfile'],
             'level': 'DEBUG',
         },
