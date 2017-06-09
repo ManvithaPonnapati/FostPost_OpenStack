@@ -35,6 +35,11 @@ import requests
 #import numpy as np
 #import cv2
 #from matplotlib import pyplot as plt
+# import the logging library
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 from skipGramWordPredictor import *
 
 def RegisterView(request):
@@ -88,6 +93,7 @@ def save_unsplash(request):
     media_string = "/media/"+"unsplash_"+user+".jpg"
     file_string = "/CraftCloud/FostPost/fostpost_app"+media_string
     file_path = file_string
+    logger.debug("Begin Trying to Upload")
     try:
         fp = open(file_path)
         fp.seek(0)
