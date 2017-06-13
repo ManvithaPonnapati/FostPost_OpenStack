@@ -37,7 +37,7 @@ import requests
 #from matplotlib import pyplot as plt
 # import the logging library
 import logging
-
+import boto
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 from skipGramWordPredictor import *
@@ -90,8 +90,8 @@ def save_unsplash(request):
     resource = urllib2.urlopen(url_string)
     file_check = os.path.isfile(url_string)
     user = user.replace("@","")
-    media_string = "/media/"+"unsplash_"+user+".jpg"
-    file_string = "/CraftCloud/FostPost/fostpost_app"+media_string
+    media_string = "unsplash_"+user+".jpg"
+    file_string = "http://fostpostmedia.s3.amazonaws.com/"+media_string
     file_path = file_string
     logger.debug("Begin Trying to Upload")
     try:
@@ -111,20 +111,22 @@ def drag_upload(request):
     json_body = json.loads(request.body)
     x = json_body["urls"]
     y = json_body["increment"]
+   
+    conn  = boto.connect_s3(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
+    bucket = conn.get_bucket( 'fostpostmedia', validate=False)
     user = json_body["user"]
     image_base64 = x.split('base64,', 1 )
     image_base64[1] = image_base64[1].encode('utf-8').strip()
     image_data = b64decode(image_base64[1])
-    im=Photo(email=user)
     img_temp = NamedTemporaryFile(delete=True)
     temp_file_name = img_temp.name
-    img_temp.write(image_data)
-    img_temp.flush()
-    user = user.replace("@","")
-    (dirName, fileName) = os.path.split(temp_file_name)
-    fileBaseName = os.path.splitext(fileName)[0]
-    file_name_append=str(user)+"_"+str(fileBaseName)
-    file_string = "/media/"+file_name_append+".jpg"
+    username = user.replace("@","")
+    k = bucket.new_key(username+"/"+temp_file_name+".jpg")
+    k.set_metadata('Content-Type','jpeg')
+    k.set_contents_from_string(image_data)
+    k.set_acl("public-read")
+    im=Photo(email=user)
+    file_string ="http://fostpostmedia.s3.amazonaws.com/"+username+"/"+temp_file_name+".jpg"
     im.file.save(file_string, File(img_temp))
     return HttpResponse(json.dumps({'file_string':file_string}))
 

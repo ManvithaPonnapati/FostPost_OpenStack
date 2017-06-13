@@ -27,7 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['ec2-52-33-217-21.us-west-2.compute.amazonaws.com','localhost','127.0.0.1']
 
+AWS_STORAGE_BUCKET_NAME = 'fostpostmedia'
+AWS_ACCESS_KEY_ID = 'AKIAJ3HIYGH6TE2MMHSA'
+AWS_SECRET_ACCESS_KEY = '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'
 
+    # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+    # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+    # This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+    # We also use it in the next setting.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'fostpost_app'
+    'fostpost_app',
+    'storages'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -138,6 +147,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # STATICFILES_DIRS = ('/Users/manvithaponnapati/Documents/FostPost_OpenStack/fostpost_app/static',)
 # #PROD SETTINGS
 MEDIA_ROOT = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/media/')
-MEDIA_URL = '/home/ec2-user/FostPost_OpenStack/media/'
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATIC_ROOT = '/home/ec2-user/FostPost_OpenStack/static/'
 STATICFILES_DIRS = ('/home/ec2-user/FostPost_OpenStack/fostpost_app/static/',)
