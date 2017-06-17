@@ -12,8 +12,9 @@ class OverwriteStorage(FileSystemStorage):
 
     def get_available_name(self, name):
         return name
+
 class Photo(models.Model):
-    file = models.ImageField('Label', upload_to='http://fostpostmedia.s3.amazonaws.com/',storage=OverwriteStorage())
+    file = models.CharField(max_length=512)
     email = models.CharField(max_length=40)
     
 
