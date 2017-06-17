@@ -87,24 +87,28 @@ def save_unsplash(request):
     json_body = json.loads(request.body)
     url_string  = json_body["url_string"]
     user = json_body["user"]
-    resource = urllib2.urlopen(url_string)
-    file_check = os.path.isfile(url_string)
+    #resource = urllib2.urlopen(url_string)
+    #file_check = os.path.isfile(url_string)
     user = user.replace("@","")
-    media_string = "unsplash_"+user+".jpg"
-    file_string = "http://fostpostmedia.s3.amazonaws.com/"+media_string
-    file_path = file_string
-    logger.debug("Begin Trying to Upload")
-    try:
-        fp = open(file_path)
-        fp.seek(0)
-        fp.write(resource.read())
-        fp.close()
-    except IOError:
-        fp = open(file_path, 'w+')
-        fp.seek(0)
-        fp.write(resource.read())
-        fp.close()
-    return HttpResponse(media_string)
+    response = requests.get(url_string)
+    conn  = boto.connect_s3(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
+    bucket = conn.get_bucket( 'fostpostmedia', validate=False)
+    print(response.content)
+    response_data = response.content.encode('utf-8').strip()
+    image_data = b64decode(response_data)
+    #image_data = Image.open(requests.get(url_string, stream=True).raw)
+    #image_data_ut8 = unicode(response.content)
+    img_temp = NamedTemporaryFile(delete=True)
+    temp_file_name = img_temp.name
+    username = user.replace("@","")
+    k = bucket.new_key(username+"/unsplash/"+temp_file_name+".jpg")
+    k.set_metadata('Content-Type','jpeg')
+    k.set_contents_from_string(image_data)
+    k.set_acl("public-read")
+    im=Photo(email=user)
+    file_string ="http://fostpostmedia.s3.amazonaws.com/"+username+"/"+temp_file_name+".jpg"
+    im.file.save(file_string, File(img_temp))
+    return HttpResponse(json.dumps({'file_string':file_string}))
 
 @csrf_exempt
 def drag_upload(request):
