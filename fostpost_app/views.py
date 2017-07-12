@@ -89,6 +89,7 @@ def save_unsplash(request):
     user = json_body["user"]
     #resource = urllib2.urlopen(url_string)
     #file_check = os.path.isfile(url_string)
+    print("who is the user%s"%user)
     user = user.replace("@","")
     response = requests.get(url_string)
     conn  = boto.connect_s3(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
