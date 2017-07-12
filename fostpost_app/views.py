@@ -208,6 +208,7 @@ def email_list(request):
 
 @csrf_exempt
 def authenticate_email(request):
+    print("Authenticating Email%s"%request.body)
     new_user=CraftCloud_User(email=request.body)
     return HttpResponse("Success")
 
